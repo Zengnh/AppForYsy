@@ -1,0 +1,4 @@
+rootProject.name='AppForYsy'
+include ':app'
+include ':rootlibs'
+include ':toolmvplibrary'

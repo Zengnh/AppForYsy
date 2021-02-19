@@ -1,0 +1,113 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.
+          0,minimum-scale=1.0,user-scalable=yes"/>
+</head>
+<body>
+<button id="button" onclick="callAndroid()" type="button">获取定位地址</button>
+<script>
+
+            function confMsg(){
+                if(window.confirm("测试")){
+                alert("yes")
+                }else{
+                alert("no")
+                }
+            }
+
+
+<!--选择图片完成 start-->
+            function toSelectImg(){
+                ysapp.toSelectPic();
+            }
+             function  selectPicResult(path){
+             alert(path);
+               }
+
+
+<!--选择图片完成end-->
+
+<!--选择地理位置完成 start-->
+            function callAndroid(){
+            ysapp.getLocation();
+            }
+           window.getLocationResult=function(parameterMapInfo){
+                alert(parameterMapInfo);
+            }
+<!--            两种都可以-->
+<!--             function getLocationResult(parameterMapInfo){-->
+<!--                alert(parameterMapInfo);-->
+<!--            }-->
+<!--选择地理位置完成end-->
+
+
+<!--跳转到指定页面完成 start-->
+            function toAct(){
+<!--            var str=JSON.stringify({"type":3,"value":"10004"});-->
+            var str=JSON.stringify({"type":4,"value":"http://www.baidu.com"});
+            ysapp.toActivity(str);
+            }
+
+
+<!--跳转到指定页面完成 end-->
+
+
+            function toRightBtn(){
+            var str=JSON.stringify({"type":1,"value":"javaCallJs"});
+            ysapp.toControlTopRightBtn(str);
+            }
+
+
+
+            function callScan(){
+                 ysapp.toScanning();
+            }
+
+            function scanningResult(scanResult){
+                alert(scanResult);
+            }
+
+            function choseItem(){
+              var selectItem=JSON.stringify([{"value":"选择项1","id": "10001","isdef":0},{"value":"选择项2","id": "10002","isdef": 1}]);
+<!--                  ysapp.selectCriteria("");-->
+              ysapp.selectCriteria(selectItem);
+            }
+
+            function selectCriteriaResult(result){
+              alert(result);
+            }
+
+
+            // Android需要调用的方法
+            function javaCallJs(){
+              alert("Android调用了JS的方法");
+             }
+              window.setUpBench=function(){
+              alert("Android调用了JS的方法");
+             }
+
+</script>
+<br/>
+<br/>
+<button id="button1" onclick="callScan()" type="button">跳转到扫描</button>
+<br/>
+<br/>
+<button id="button3" onclick="toSelectImg()" type="button">选择图片</button>
+<br/>
+<br/>
+<button id="button4" onclick="toAct()" type="button">跳转到指定页面</button>
+<br/>
+<br/>
+<button id="button6" onclick="choseItem()" type="button">栏目选择</button>
+<br/>
+<br/>
+<button id="button5" onclick="javaCallJs()" type="button">alert</button>
+<br/>
+<br/><button id="button7" onclick="confMsg()" type="button">confirm</button>
+<br/>
+<br/>
+<!--<img id="img" alt="展示图片位置" style="width: 100%;height: 100%"/>-->
+</body>
+</html>

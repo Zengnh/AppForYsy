@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>玻璃图</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="windows-Target" content="_top">
+    <meta name="viewport" content="width=device-width,height=device-height,
+    initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=750px, user-scalable=yes">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="/resources/layui/css/layui.css">
+    <style type="text/css" media="all">
+            #app img{
+                position: absolute;
+            }
+        </style>
+</head>
+<body>
+<div id="app">
+    <img id=""  :src="item.src" :style="{left: item.left+'px',top: item.top+'px'}" v-for="item in glasses" alt="" @click="toMore(item)"  />
+</div>
+
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/layui/layui.js"></script>
+<script src="/resources/js/vue.min.js"></script>
+<script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    glasses:[]
+                },
+                created: function() {
+                    this.loadData()
+                },
+                mounted: function() {
+
+                },
+                watch: {
+
+                },
+                updated: function() {
+
+                },
+                methods: {
+                    toMore:function(item){
+                        javascript:Android.glassPosition(item.glassPositionId)
+                    },
+                    loadData:function(){
+                        var that=this;
+                        $.ajax({
+            				type: "post",
+            				url: "/api/FYZPP_6ER8QFP1/Biz_BKWTIR90",
+            				async: false,
+            				data: {
+            				    vehicleModelId:"193"
+            				},
+            				dataType: "json",
+            				success: function (response) {
+            					that.glasses = response.data;
+            				}
+            			});
+                    }
+                }
+            })
+        </script>
+</body>
+</html>

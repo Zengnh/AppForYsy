@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">YSCloud</string>
+
+
+    <string name="title_home">Main</string>
+    <string name="title_dashboard">Contents</string>
+    <string name="title_notifications">LOGO</string>
+    <string name="title_work">Work</string>
+    <string name="title_my">My</string>
+    <string name="forgetpwd">forget pwd?</string>
+
+
+    <string name="download">download</string>
+
+    <string name="pickimg">pick img</string>
+
+    <string name="inputphone">input account</string>
+    <string name="hint_password">input password</string>
+
+    <string name="hint_account">intput account</string>
+
+    <string name="login">login</string>
+
+    <string name="register_new_user">register</string>
+</resources>
