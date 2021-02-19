@@ -8,4 +8,5 @@ public interface RootInterUi {
     void hitLoading();
     void hitKeyBox();
     Context getContext();
+
 }

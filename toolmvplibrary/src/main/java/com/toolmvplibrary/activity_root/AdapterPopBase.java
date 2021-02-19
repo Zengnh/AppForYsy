@@ -16,6 +16,7 @@ public class AdapterPopBase extends BaseAdapter {
         this.dataList = dataList;
     }
 
+
     @Override
     public int getCount() {
         return dataList.size();

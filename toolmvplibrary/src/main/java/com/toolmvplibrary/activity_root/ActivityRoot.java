@@ -122,6 +122,7 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
         initData();
     }
 
+
     private void getActionBarHighth() {
         actionBarHight=getStatusBarHeight(this);
         if (actionBarHight <= 0) {

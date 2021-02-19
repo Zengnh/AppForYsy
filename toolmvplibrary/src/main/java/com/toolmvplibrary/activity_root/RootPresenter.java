@@ -52,6 +52,7 @@ public abstract class RootPresenter<U extends RootInterUi, M extends RootModel> 
         }
     }
 
+
     @Override
     public void hitLoading() {
         if (isViewAttached()) {

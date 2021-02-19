@@ -5,5 +5,6 @@ package com.toolmvplibrary.activity_root;
  * 数据库查询，
  * 数据保存等操作
  */
-public interface RootModel {
+public interface
+RootModel {
 }

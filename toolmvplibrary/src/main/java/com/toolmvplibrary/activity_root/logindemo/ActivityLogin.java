@@ -12,6 +12,8 @@ public class ActivityLogin extends ActivityRoot<PresenterLogin> implements Login
         return new PresenterLogin();
     }
 
+
+
     @Override
     public int setCutLayout() {
         return R.layout.activity_login;

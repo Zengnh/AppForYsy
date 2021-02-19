@@ -36,6 +36,7 @@ public abstract class FragmenRoot<P extends RootPresenter> extends Fragment impl
         }
     }
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
