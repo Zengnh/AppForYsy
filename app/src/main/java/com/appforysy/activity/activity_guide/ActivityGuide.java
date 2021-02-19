@@ -11,8 +11,14 @@ import android.widget.RelativeLayout;
 import com.appforysy.R;
 import com.appforysy.activity.activity_img_main.ActivityImageMain;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.RootPresenter;
 
 public class ActivityGuide extends ActivityRoot {
+    @Override
+    protected RootPresenter setPresenter() {
+        return null;
+    }
+
     @Override
     public int setCutLayout() {
         return R.layout.activity_guide;

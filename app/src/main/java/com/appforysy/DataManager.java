@@ -2,9 +2,9 @@ package com.appforysy;
 import android.os.Handler;
 
 import com.toolmvplibrary.activity_root.InterCallBack;
-import com.toolmvplibrary.activity_root.RootDataManager;
+import com.toolmvplibrary.activity_root.RootModel;
 
-public class DataManager implements RootDataManager {
+public class DataManager implements RootModel {
 
     public void login(String name, String pwd, InterCallBack<String> callBack){
         new Handler().postDelayed(new Runnable() {

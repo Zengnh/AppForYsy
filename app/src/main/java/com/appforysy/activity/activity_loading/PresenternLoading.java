@@ -2,29 +2,32 @@ package com.appforysy.activity.activity_loading;
 
 import com.appforysy.ModelCom;
 import com.toolmvplibrary.activity_root.InterCallBack;
-import com.toolmvplibrary.activity_root.PresenterRoot;
+import com.toolmvplibrary.activity_root.RootInterUi;
+import com.toolmvplibrary.activity_root.RootPresenter;
 
 
-public class PresenternLoading extends PresenterRoot<InterLoading, ModelCom> {
+public class PresenternLoading extends RootPresenter<InterLoading, ModelCom> implements RootInterUi {
 
-    public PresenternLoading(){
-        model=new ModelCom();
-    }
 
     public void checkVersion() {
-        interfaceView.showLoading();
+        showLoading();
         model.dataManager.checkVersion(new InterCallBack<String>() {
             @Override
             public void result(String res) {
-                interfaceView.hitLoading();
-                interfaceView.checkV();
+                hitLoading();
+                getViewInterface().checkV();
             }
 
             @Override
             public void err(String msg) {
-                interfaceView.hitLoading();
-                interfaceView.toLogin();
+                hitLoading();
+                getViewInterface().toLogin();
             }
         });
+    }
+
+    @Override
+    public ModelCom createModel() {
+        return new ModelCom();
     }
 }

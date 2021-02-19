@@ -1,22 +1,20 @@
 package com.toolmvplibrary.activity_root;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.toolmvplibrary.R;
@@ -24,7 +22,27 @@ import com.toolmvplibrary.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmenRoot extends Fragment {
+public abstract class FragmenRoot<P extends RootPresenter> extends Fragment implements RootInterUi {
+    abstract P createPresenter();
+
+    protected P presenter;
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        presenter = createPresenter();
+        if (presenter != null) {
+            presenter.attUIView(this);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (presenter != null) {
+            presenter.detachView();
+        }
+    }
 
     private Toast toast;
 
@@ -75,6 +93,10 @@ public class FragmenRoot extends Fragment {
         });
     }
 
+    @Override
+    public void hitKeyBox() {
+
+    }
 
 
     //###########################################################################################
@@ -87,6 +109,7 @@ public class FragmenRoot extends Fragment {
     private AdapterPopBase adapterPopBase;
     private List<String> dataListBase = new ArrayList<>();
     private ItemClick interListener;
+
     public void showPopWindow(View view, List<String> dl, ItemClick listener) {
         this.interListener = listener;
         if (popupWindowBase == null) {

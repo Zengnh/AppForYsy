@@ -2,7 +2,7 @@ package com.toolmvplibrary.activity_root;
 
 import android.content.Context;
 
-public interface InterUiRoot {
+public interface RootInterUi {
     void showToast(String str);
     void showLoading();
     void hitLoading();

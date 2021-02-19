@@ -1,8 +1,14 @@
 package com.appforysy.activity.activity_rotation;
 import com.appforysy.R;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.RootPresenter;
 
 public class ActivityRotation extends ActivityRoot {
+
+    @Override
+    protected RootPresenter setPresenter() {
+        return null;
+    }
 
     @Override
     public int setCutLayout() {

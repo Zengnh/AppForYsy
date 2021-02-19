@@ -1,6 +1,8 @@
-package com.toolmvplibrary.activity_root;
+package com.toolmvplibrary.activity_root.logindemo;
 
-public class ModelRoot<M extends RootDataManager> {
+import com.toolmvplibrary.activity_root.RootModel;
+
+public class ModelRoot<M extends RootModel> implements RootModel {
     //数据请求参数
     protected String[] mParams;
     /**

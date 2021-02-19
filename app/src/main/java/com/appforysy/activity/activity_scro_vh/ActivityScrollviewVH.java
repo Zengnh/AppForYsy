@@ -10,11 +10,17 @@ import android.widget.TextView;
 import com.appforysy.R;
 import com.appforysy.activity.activity_time_note.ToolColor;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.RootPresenter;
 
 
 import java.util.Random;
 
 public class ActivityScrollviewVH extends ActivityRoot {
+    @Override
+    protected RootPresenter setPresenter() {
+        return null;
+    }
+
     @Override
     public int setCutLayout() {
         return R.layout.activvity_scrollview_vh;

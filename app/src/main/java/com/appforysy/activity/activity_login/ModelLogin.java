@@ -2,7 +2,7 @@ package com.appforysy.activity.activity_login;
 
 import com.appforysy.DataManager;
 import com.toolmvplibrary.activity_root.InterCallBack;
-import com.toolmvplibrary.activity_root.ModelRoot;
+import com.toolmvplibrary.activity_root.logindemo.ModelRoot;
 
 
 public class ModelLogin extends ModelRoot<DataManager> {

@@ -15,11 +15,17 @@ import androidx.core.app.ActivityCompat;
 import com.appforysy.R;
 import com.appforysy.activity.activity_camera.camera.CameraManager;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.RootPresenter;
 
 
 import java.io.IOException;
 
 public class ActivityCamrea extends ActivityRoot implements SurfaceHolder.Callback {
+    @Override
+    protected RootPresenter setPresenter() {
+        return null;
+    }
+
     @Override
     public int setCutLayout() {
         Window window = getWindow();

@@ -12,11 +12,17 @@ import com.appforysy.activity.activity_scro_vh.ActivityScrollviewVH;
 import com.rootlibs.database.AppDBConfig;
 import com.rootlibs.database.ToolGoogleRoom;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.RootPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityTimeNote extends ActivityRoot {
+    @Override
+    protected RootPresenter setPresenter() {
+        return null;
+    }
+
     @Override
     public int setCutLayout() {
         return R.layout.activity_time_note;

@@ -21,26 +21,20 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.toolmvplibrary.R;
 import com.toolmvplibrary.tool_app.ToolKeyBoard;
 import com.toolmvplibrary.tool_app.ToolShotScreen;
 import com.toolmvplibrary.tool_app.ToolSys;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class ActivityRoot<P extends PresenterRoot> extends AppCompatActivity implements InterUiRoot {
+public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatActivity implements RootInterUi {
     protected P presenter;
 
-    protected P setPresenter() {
-        return (P) new PresenterRoot<InterUiRoot, ModelRoot<RootDataManager>>();
-    }
-
+    protected abstract P setPresenter();
     /***
      * 是否全屏。
      * @return
@@ -94,7 +88,6 @@ public abstract class ActivityRoot<P extends PresenterRoot> extends AppCompatAct
 
     protected void befSetContentView() {
     }
-
     protected void befSuperCreate() {
     }
 
@@ -123,7 +116,6 @@ public abstract class ActivityRoot<P extends PresenterRoot> extends AppCompatAct
         }
         presenter = setPresenter();
         if (presenter != null) {
-            presenter.setContent(this);
             presenter.attUIView(this);
         }
         initView();

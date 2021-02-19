@@ -20,6 +20,7 @@ import com.rootlibs.chosefile.InterFaceResult;
 import com.rootlibs.chosefile.ToolSelectFile;
 import com.rootlibs.database.ToolGoogleRoom;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.RootPresenter;
 import com.toolmvplibrary.tool_app.ToolThreadPool;
 
 import java.util.List;
@@ -36,6 +37,11 @@ public class ActivityNotiEdit extends ActivityRoot {
     public void initView() {
         et_detail = findViewById(R.id.editInput);
         addImage = findViewById(R.id.addImage);
+    }
+
+    @Override
+    protected RootPresenter setPresenter() {
+        return null;
     }
 
     @Override

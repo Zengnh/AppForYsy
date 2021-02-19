@@ -97,4 +97,8 @@ class ActivityImageMain : ActivityRoot<PresenterImgOther>() {
         val pagerSnapHelper = PagerSnapHelper()
         pagerSnapHelper.attachToRecyclerView(recyclerViewMainFra)
     }
+
+    override fun setPresenter(): PresenterImgOther {
+       return PresenterImgOther()
+    }
 }
