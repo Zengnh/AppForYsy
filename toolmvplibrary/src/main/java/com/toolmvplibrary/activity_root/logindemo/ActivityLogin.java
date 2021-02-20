@@ -5,14 +5,13 @@ import android.widget.Button;
 
 import com.toolmvplibrary.R;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 
-public class ActivityLogin extends ActivityRoot<PresenterLogin> implements LoginManager.LoginView{
+public class ActivityLogin extends ActivityRootInit<PresenterLogin> implements LoginManager.LoginView{
     @Override
     protected PresenterLogin setPresenter() {
         return new PresenterLogin();
     }
-
-
 
     @Override
     public int setCutLayout() {

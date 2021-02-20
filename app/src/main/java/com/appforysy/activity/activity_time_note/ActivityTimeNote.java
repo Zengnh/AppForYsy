@@ -11,13 +11,13 @@ import com.appforysy.R;
 import com.appforysy.activity.activity_scro_vh.ActivityScrollviewVH;
 import com.rootlibs.database.AppDBConfig;
 import com.rootlibs.database.ToolGoogleRoom;
-import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.toolmvplibrary.activity_root.RootPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityTimeNote extends ActivityRoot {
+public class ActivityTimeNote extends ActivityRootInit {
     @Override
     protected RootPresenter setPresenter() {
         return null;

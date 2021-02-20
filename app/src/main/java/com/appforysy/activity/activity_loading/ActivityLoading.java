@@ -6,14 +6,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.appforysy.activity.activity_login.ActivityLogin;
-import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 
 import com.appforysy.R;
 import com.toolmvplibrary.tool_premission.ToolAppPremission;
 import com.toolmvplibrary.view.DialogListener;
 import com.toolmvplibrary.view.DialogStyleMy;
 
-public class ActivityLoading extends ActivityRoot<PresenternLoading> implements InterLoading {
+public class ActivityLoading extends ActivityRootInit<PresenternLoading> implements InterLoading {
     @Override
     protected PresenternLoading setPresenter() {
         return new PresenternLoading();

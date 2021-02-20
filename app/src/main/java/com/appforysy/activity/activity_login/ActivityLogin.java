@@ -6,13 +6,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.rootlibs.loadimg.ToolGlide;
 import com.appforysy.R;
 import com.appforysy.activity.activity_main.ActivityMain;
 import com.toolmvplibrary.tool_app.ToolLanguage;
 
-public class ActivityLogin extends ActivityRoot<PresenterLogin> implements InterViewLogin, View.OnClickListener {
+public class ActivityLogin extends ActivityRootInit<PresenterLogin> implements InterViewLogin, View.OnClickListener {
     private TextView userLogin;
     private EditText userName, userPwd;
     private ImageView imageviewgif;

@@ -71,20 +71,20 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
         }
     }
 
-
-    /**
-     * 设置布局
-     *
-     * @return
-     */
-    public abstract int setCutLayout();
-
-    /**
-     * 初始化视图
-     */
-    public abstract void initView();
-
-    public abstract void initData();
+//
+//    /**
+//     * 设置布局
+//     *
+//     * @return
+//     */
+//    public abstract int setCutLayout();
+//
+//    /**
+//     * 初始化视图
+//     */
+//    public abstract void initView();
+//
+//    public abstract void initData();
 
     protected void befSetContentView() {
     }
@@ -93,12 +93,11 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
 
     private int actionBarHight=0;
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        initView();
-        initData();
-    }
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        super.onNewIntent(intent);
+//
+//    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,7 +108,7 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
         super.onCreate(savedInstanceState);
         getActionBarHighth();
         befSetContentView();
-        setContentView(setCutLayout());
+//        setContentView(setCutLayout());
         if (isFullWindow()) {
             setBlackFull();
             setAndroidNativeLightStatusBar(this, isStateItemBack());
@@ -118,8 +117,6 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
         if (presenter != null) {
             presenter.attUIView(this);
         }
-        initView();
-        initData();
     }
 
 

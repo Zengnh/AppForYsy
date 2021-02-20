@@ -16,7 +16,7 @@ import com.appforysy.activity.activity_main.home.HomeFragment
 import com.appforysy.activity.activity_main.imgcard.FragmentImgCard
 import com.appforysy.activity.activity_main.notifications.NotificationsFragment
 import com.appforysy.service.ServiceMain
-import com.toolmvplibrary.activity_root.ActivityRoot
+import com.toolmvplibrary.activity_root.ActivityRootInit
 import com.toolmvplibrary.tool_app.LogUtil
 import com.toolmvplibrary.tool_app.ToolLanguage
 import com.toolmvplibrary.tool_app.ToolPreferences
@@ -24,7 +24,7 @@ import com.workysy.activity.activity_main.notifications.WorkFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class ActivityMain : ActivityRoot<PresenterMain>(),
+class ActivityMain : ActivityRootInit<PresenterMain>(),
     InterUiMain {
 
 

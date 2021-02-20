@@ -10,10 +10,10 @@ import android.widget.RelativeLayout;
 
 import com.appforysy.R;
 import com.appforysy.activity.activity_img_main.ActivityImageMain;
-import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.toolmvplibrary.activity_root.RootPresenter;
 
-public class ActivityGuide extends ActivityRoot {
+public class ActivityGuide extends ActivityRootInit {
     @Override
     protected RootPresenter setPresenter() {
         return null;

@@ -19,13 +19,13 @@ import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.rootlibs.chosefile.InterFaceResult;
 import com.rootlibs.chosefile.ToolSelectFile;
 import com.rootlibs.database.ToolGoogleRoom;
-import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.toolmvplibrary.activity_root.RootPresenter;
 import com.toolmvplibrary.tool_app.ToolThreadPool;
 
 import java.util.List;
 
-public class ActivityNotiEdit extends ActivityRoot {
+public class ActivityNotiEdit extends ActivityRootInit {
     @Override
     public int setCutLayout() {
         return R.layout.activity_noti_edit;

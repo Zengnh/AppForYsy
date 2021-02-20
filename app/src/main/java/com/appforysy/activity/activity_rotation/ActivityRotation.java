@@ -1,9 +1,9 @@
 package com.appforysy.activity.activity_rotation;
 import com.appforysy.R;
-import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.toolmvplibrary.activity_root.RootPresenter;
 
-public class ActivityRotation extends ActivityRoot {
+public class ActivityRotation extends ActivityRootInit {
 
     @Override
     protected RootPresenter setPresenter() {

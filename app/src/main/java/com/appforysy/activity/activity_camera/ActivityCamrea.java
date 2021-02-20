@@ -14,13 +14,13 @@ import androidx.core.app.ActivityCompat;
 
 import com.appforysy.R;
 import com.appforysy.activity.activity_camera.camera.CameraManager;
-import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.toolmvplibrary.activity_root.RootPresenter;
 
 
 import java.io.IOException;
 
-public class ActivityCamrea extends ActivityRoot implements SurfaceHolder.Callback {
+public class ActivityCamrea extends ActivityRootInit implements SurfaceHolder.Callback {
     @Override
     protected RootPresenter setPresenter() {
         return null;

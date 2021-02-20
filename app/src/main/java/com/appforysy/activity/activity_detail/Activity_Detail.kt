@@ -2,9 +2,9 @@ package com.appforysy.activity.activity_detail
 
 
 import com.appforysy.R
-import com.toolmvplibrary.activity_root.ActivityRoot
+import com.toolmvplibrary.activity_root.ActivityRootInit
 
-class Activity_Detail : ActivityRoot<PresenterDetail>() {
+class Activity_Detail : ActivityRootInit<PresenterDetail>() {
     override fun setCutLayout(): Int {
         return R.layout.activity_detail;
     }

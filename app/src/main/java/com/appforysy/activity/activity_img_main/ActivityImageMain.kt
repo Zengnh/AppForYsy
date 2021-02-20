@@ -13,12 +13,12 @@ import com.appforysy.activity.activity_main.ActivityMain
 import com.appforysy.activity.activity_edt_note.ActivityNotiEdit
 import com.appforysy.activity.activity_rotation.ActivityRotation
 import com.appforysy.activity.activity_time_note.ActivityTimeNote
-import com.toolmvplibrary.activity_root.ActivityRoot
+import com.toolmvplibrary.activity_root.ActivityRootInit
 import com.toolmvplibrary.activity_root.ItemClick
 import kotlinx.android.synthetic.main.activity_image_main.*
 import java.util.*
 
-class ActivityImageMain : ActivityRoot<PresenterImgOther>() {
+class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
     override fun setCutLayout(): Int {
         return R.layout.activity_image_main
     }

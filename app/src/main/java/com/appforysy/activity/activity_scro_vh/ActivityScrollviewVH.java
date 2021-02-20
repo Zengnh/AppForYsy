@@ -9,13 +9,13 @@ import android.widget.TextView;
 
 import com.appforysy.R;
 import com.appforysy.activity.activity_time_note.ToolColor;
-import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.toolmvplibrary.activity_root.RootPresenter;
 
 
 import java.util.Random;
 
-public class ActivityScrollviewVH extends ActivityRoot {
+public class ActivityScrollviewVH extends ActivityRootInit {
     @Override
     protected RootPresenter setPresenter() {
         return null;
