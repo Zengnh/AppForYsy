@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name">优速云DEMO</string>
+    <string name="app_name">测试使用</string>
 
-
-    <string name="title_home">首页</string>
-    <string name="title_dashboard">通信录</string>
-    <string name="title_notifications">企业门户</string>
-    <string name="title_work">工作台</string>
+    <string name="title_home">类型一</string>
+    <string name="title_dashboard">类型二</string>
+    <string name="title_notifications">类型三</string>
+    <string name="title_work">自定义视图</string>
     <string name="title_my">我的</string>
 
 

@@ -1,5 +1,6 @@
 package com.appforysy.activity.activity_main;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import java.util.List;
 
 public class AdapterBtnItem extends BaseAdapter {
     private List<ItemMainBtn> dataList;
-    public AdapterBtnItem(List<ItemMainBtn> dataList){
-        this.dataList=dataList;
+
+    public AdapterBtnItem(List<ItemMainBtn> dataList) {
+        this.dataList = dataList;
     }
+
     @Override
     public int getCount() {
         return dataList.size();
@@ -34,24 +37,35 @@ public class AdapterBtnItem extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Holder holder;
-        if(convertView==null){
-            convertView= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_btn,null);
-            holder=new Holder(convertView);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_btn, null);
+            holder = new Holder(convertView);
             convertView.setTag(holder);
-        }else{
-            holder= (Holder) convertView.getTag();
+        } else {
+            holder = (Holder) convertView.getTag();
         }
-
         holder.itemText.setText(dataList.get(position).text);
-        holder.itemImage.setImageResource(dataList.get(position).img);
+        if (cutSelectPos == position) {
+            holder.itemText.setTextColor(Color.RED);
+        } else {
+            holder.itemText.setTextColor(Color.BLACK);
+        }
         return convertView;
     }
-    class Holder{
+
+    private int cutSelectPos = 0;
+
+    public void setItemClick(int position) {
+        this.cutSelectPos = position;
+        notifyDataSetChanged();
+    }
+
+    class Holder {
         private TextView itemText;
-        public ImageView itemImage;
-        public Holder(View view){
-            itemText=view.findViewById(R.id.itemText);
-            itemImage=view.findViewById(R.id.itemImage);
+
+        public Holder(View view) {
+            itemText = view.findViewById(R.id.itemText);
+
         }
     }
 }

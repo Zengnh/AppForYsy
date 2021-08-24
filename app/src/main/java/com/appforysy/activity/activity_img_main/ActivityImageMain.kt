@@ -3,6 +3,8 @@ package com.appforysy.activity.activity_img_main
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +17,9 @@ import com.appforysy.activity.activity_rotation.ActivityRotation
 import com.appforysy.activity.activity_time_note.ActivityTimeNote
 import com.toolmvplibrary.activity_root.ActivityRootInit
 import com.toolmvplibrary.activity_root.ItemClick
+import com.toolmvplibrary.tool_app.LogUtil
+import com.toolmvplibrary.view.DialogListener
+import com.toolmvplibrary.view.DialogStyleMy
 import kotlinx.android.synthetic.main.activity_image_main.*
 import java.util.*
 
@@ -25,6 +30,11 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
 
     override fun initView() {
 
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        LogUtil.i("znh_configchagne","@@@@@@@@@"+newConfig.orientation)
     }
 
 
@@ -81,10 +91,20 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
 
         adapter = AdapterHomeFra(dataList, object : ItemClick<Int> {
             override fun itemClick(rst: Int?) {
-                if (dataList.get(rst!!).toNext != null) {
-                    var inTime = Intent(context, rst?.let { dataList.get(it).toNext })
-                    startActivity(inTime)
-                }
+                if (dataList.get(rst!!).floag == 5) {
+                    var tv = TextView(context)
+                    tv.setText("测试公用弹窗")
+                    dialog = DialogStyleMy(context, tv, "确定", "取消", object : DialogListener {
+                        override fun click(str: String?) {
+                            dialog.dismiss()
+                        }
+                    })
+                    dialog.show()
+                } else
+                    if (dataList.get(rst!!).toNext != null) {
+                        var inTime = Intent(context, rst?.let { dataList.get(it).toNext })
+                        startActivity(inTime)
+                    }
             }
         })
 
@@ -98,7 +118,9 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
         pagerSnapHelper.attachToRecyclerView(recyclerViewMainFra)
     }
 
+    lateinit var dialog: DialogStyleMy
+
     override fun setPresenter(): PresenterImgOther {
-       return PresenterImgOther()
+        return PresenterImgOther()
     }
 }

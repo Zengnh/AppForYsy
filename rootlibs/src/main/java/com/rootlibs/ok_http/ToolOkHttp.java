@@ -4,14 +4,16 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
 
-
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -102,4 +104,23 @@ public class ToolOkHttp {
     }
 
 
+    public void initHttp() {
+        //  构建okHttpClient，相当于请求的客户端，Builder设计模式
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(5, TimeUnit.SECONDS)
+                .build();
+        // 构建一个请求体，同样也是Builder设计模式
+        Request request = new Request.Builder()
+                .url("http://www.baidu.com")
+                .build();
+        //  生成一个Call对象，该对象是接口类型，后面会说
+        Call call = okHttpClient.newCall(request);
+        try {
+            //  拿到Response
+            Response response = call.execute();
+            Log.i("TAG", response.body().string());
+        } catch (IOException e) {
+        }
+    }
 }
+

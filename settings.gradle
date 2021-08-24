@@ -1,3 +1,4 @@
+include ':mykotlin'
 rootProject.name='AppForYsy'
 include ':app'
 include ':rootlibs'

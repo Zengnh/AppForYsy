@@ -113,4 +113,18 @@ public class ToolRetrofit {
             }
         });
     }
+
+
+    public void aaa(){
+//        @GET("/user/{user}/repos")
+//        Call<List<Repo>> listRepos(@Path("user") String user);
+//
+//        //call封装了整个okhttp的请求
+//
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("https://api.github.com/")
+//                .addConverterFactory(GsonConverteractory.create())
+//                //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//                .build();
+    }
 }

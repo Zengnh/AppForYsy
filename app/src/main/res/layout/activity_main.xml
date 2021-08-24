@@ -20,22 +20,23 @@
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
-    <LinearLayout
-        android:id="@+id/nav_host_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" />
+
 
     <GridView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/line_blue"
-        android:alpha="0.5"
+        android:background="#fff"
         android:numColumns="5" />
 
-
+    <LinearLayout
+        android:layout_above="@id/nav_view"
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+    <!--    android:alpha="0.5"-->
     <!--    <fragment-->
     <!--        android:id="@+id/nav_host_fragment"-->
     <!--        android:name="com.appforysy.activity.activity_main.imgcard.FragmentImgCard"-->

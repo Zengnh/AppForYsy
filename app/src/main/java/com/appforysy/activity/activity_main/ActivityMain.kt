@@ -56,6 +56,7 @@ class ActivityMain : ActivityRootInit<PresenterMain>(),
                 position: Int,
                 id: Long
             ) {
+                adapter.setItemClick(position);
                 if (position == 0) {
                     chagneFragmen(FragmentImgCard());
                 } else if (position == 1) {

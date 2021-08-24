@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Kotlin</string>
+
+
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">通信录</string>
+    <string name="title_notifications">企业门户</string>
+    <string name="title_work">工作台</string>
+    <string name="title_my">我的</string>
+
+
+    <string name="inputphone">请输入帐号</string>
+    <string name="hint_password">请输入帐号</string>
+
+    <string name="hint_account">请输入帐号</string>
+
+    <string name="login">登录</string>
+
+    <string name="register_new_user">注册新用户</string>
+
+    <string name="forgetpwd">忘记密码？</string>
+
+
+    <string name="download">下载</string>
+
+    <string name="pickimg">选择图片</string>
+</resources>

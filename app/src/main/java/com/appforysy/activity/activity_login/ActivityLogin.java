@@ -68,13 +68,11 @@ public class ActivityLogin extends ActivityRootInit<PresenterLogin> implements I
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.register:
-                ToolLanguage.changeAppLanguage(this,"en");
-                break;
-            case R.id.login:
-                presenter.clickLogin();
-                break;
+        int id = v.getId();
+        if (id == R.id.register) {
+            ToolLanguage.changeAppLanguage(this, "en");
+        } else if (id == R.id.login) {
+            presenter.clickLogin();
         }
     }
 }
