@@ -120,6 +120,7 @@ dependencies {
 
     implementation project(path: ':rootlibs')
     implementation project(path: ':toolmvplibrary')
+    implementation project(path: ':cameralib')
     if (isNeedMyKotlin.toBoolean()) {
         implementation project(path: ':mykotlin')
     }

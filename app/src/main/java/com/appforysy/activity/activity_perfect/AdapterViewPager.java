@@ -1,21 +1,18 @@
 package com.appforysy.activity.activity_perfect;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.appforysy.R;
 import com.appforysy.activity.activity_banner.ActivityBanner;
-import com.appforysy.activity.activity_camera.ActivityCamrea;
 import com.appforysy.activity.activity_intruct.ActivityIntruct;
 import com.appforysy.activity.activity_login.ActivityLogin;
+import com.cameralib.ActivityCamrea;
 
 import java.util.ArrayList;
 import java.util.List;

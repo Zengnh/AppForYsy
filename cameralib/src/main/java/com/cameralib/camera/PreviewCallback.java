@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.appforysy.activity.activity_camera.camera;
+package com.cameralib.camera;
 
 import android.graphics.Point;
 import android.hardware.Camera;

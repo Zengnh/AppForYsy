@@ -1,49 +1,45 @@
-package com.appforysy.activity.activity_camera;
+package com.cameralib;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
-import com.appforysy.R;
-import com.appforysy.activity.activity_camera.camera.CameraManager;
-import com.toolmvplibrary.activity_root.ActivityRootInit;
-import com.toolmvplibrary.activity_root.RootPresenter;
-
-
+import com.cameralib.camera.CameraManager;
 import java.io.IOException;
 
-public class ActivityCamrea extends ActivityRootInit implements SurfaceHolder.Callback {
-    @Override
-    protected RootPresenter setPresenter() {
-        return null;
-    }
+public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.Callback {
 
     @Override
-    public int setCutLayout() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        return R.layout.activity_camera;
+        setContentView(R.layout.activity_camera);
+        initView();
+        initData();
     }
 
     private CameraManager cameraManager;
     private SurfaceView preview_view;
     private ImageView changeCamera;
 
-    @Override
+
     public void initView() {
         preview_view = findViewById(R.id.preview_view);
         changeCamera = findViewById(R.id.changeCamera);
     }
 
-    @Override
+
     public void initData() {
 
         changeCamera.setOnClickListener(new View.OnClickListener() {

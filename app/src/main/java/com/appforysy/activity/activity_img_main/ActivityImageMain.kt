@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.appforysy.R
-import com.appforysy.activity.activity_camera.ActivityCamrea
+import com.cameralib.ActivityCamrea
 import com.appforysy.activity.activity_main.ActivityMain
 import com.appforysy.activity.activity_edt_note.ActivityNotiEdit
 import com.appforysy.activity.activity_rotation.ActivityRotation
@@ -83,7 +83,7 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
 
         dataList.add(ItemMain(R.mipmap.image_noti_head, ActivityNotiEdit::class.java))
         dataList.add(ItemMain(R.mipmap.image_time_info, ActivityTimeNote::class.java))
-        dataList.add(ItemMain(3, R.mipmap.image_camer, ActivityCamrea::class.java))
+        dataList.add(ItemMain(3, R.mipmap.image_camer, com.cameralib.ActivityCamrea::class.java))
         dataList.add(ItemMain(R.mipmap.image_main_img, ActivityMain::class.java))
         dataList.add(ItemMain(R.mipmap.image_rotation, ActivityRotation::class.java))
         dataList.add(ItemMain(5, R.mipmap.image_all_image))

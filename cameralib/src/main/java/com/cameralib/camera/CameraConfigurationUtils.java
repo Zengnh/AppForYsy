@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.appforysy.activity.activity_camera.camera;
+package com.cameralib.camera;
 
 import android.annotation.SuppressLint;
 import android.graphics.Point;

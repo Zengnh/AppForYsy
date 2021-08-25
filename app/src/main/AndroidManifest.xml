@@ -81,9 +81,9 @@
         <activity
             android:name=".activity.activity_img_main.ActivityImageMain"
             tools:ignore="Instantiatable" />
-        <activity
-            android:name=".activity.activity_camera.ActivityCamrea"
-            tools:ignore="Instantiatable" />
+<!--        <activity-->
+<!--            android:name="com.cameralib.ActivityCamrea"-->
+<!--            tools:ignore="Instantiatable" />-->
         <activity
             android:name=".activity.activity_rotation.ActivityRotation"
             tools:ignore="Instantiatable" />

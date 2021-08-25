@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.appforysy.activity.activity_camera.camera;
+package com.cameralib.camera;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,7 +24,7 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.appforysy.activity.activity_camera.PreferencesActivity;
+import com.cameralib.PreferencesActivity;
 
 import java.util.ArrayList;
 import java.util.Collection;
