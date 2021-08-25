@@ -73,7 +73,9 @@
 
         <activity
             android:name=".activity.activity_loading.ActivityLoading"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable">
+
+        </activity>
 
 
         <activity
@@ -92,14 +94,26 @@
             tools:ignore="Instantiatable"></activity>
         <!--            android:authorities="${applicationId}.fileprovider"-->
 
-        <activity
-            android:name=".activity.activity_main.ActivityMain"
-            tools:ignore="Instantiatable">
+        <activity android:name=".activity.activity_banner.ActivityBanner">
 
+        </activity>
+
+        <activity android:name=".activity.activity_intruct.ActivityIntruct">
+
+        </activity>
+
+        <activity android:name=".activity.activity_perfect.ActivityPerfect">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.activity_main.ActivityMain"
+            tools:ignore="Instantiatable">
+
+
         </activity>
 
         <activity

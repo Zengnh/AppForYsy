@@ -21,12 +21,15 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.toolmvplibrary.R;
 import com.toolmvplibrary.tool_app.ToolKeyBoard;
 import com.toolmvplibrary.tool_app.ToolShotScreen;
 import com.toolmvplibrary.tool_app.ToolSys;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +37,15 @@ import java.util.List;
 public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatActivity implements RootInterUi {
     protected P presenter;
 
-    protected abstract P setPresenter();
+    protected P setPresenter() {
+        return (P) new RootPresenter() {
+            @Override
+            public RootModel createModel() {
+                return null;
+            }
+        };
+    }
+
     /***
      * 是否全屏。
      * @return
@@ -88,10 +99,11 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
 
     protected void befSetContentView() {
     }
+
     protected void befSuperCreate() {
     }
 
-    private int actionBarHight=0;
+    private int actionBarHight = 0;
 
 //    @Override
 //    protected void onNewIntent(Intent intent) {
@@ -121,7 +133,7 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
 
 
     private void getActionBarHighth() {
-        actionBarHight=getStatusBarHeight(this);
+        actionBarHight = getStatusBarHeight(this);
         if (actionBarHight <= 0) {
             actionBarHight = ToolSys.dip2px(this, 25);
         }
@@ -300,6 +312,7 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
     private AdapterPopBase adapterPopBase;
     private List<String> dataListBase = new ArrayList<>();
     private ItemClick interListener;
+
     public void showPopWindow(View view, List<String> dl, ItemClick listener) {
         this.interListener = listener;
         if (popupWindowBase == null) {
