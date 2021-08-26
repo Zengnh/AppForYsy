@@ -12,9 +12,9 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="320dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/image_camer"
+            android:src="@mipmap/image_banner_heard"
             app:layout_scrollFlags="scroll|snap" />
 
         <com.google.android.material.tabs.TabLayout
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/content14"
+            android:background="@color/content9"
             app:tabIndicatorColor="@color/colorPrimary"
             app:tabIndicatorHeight="3dp"
             app:tabSelectedTextColor="@color/colorPrimary"

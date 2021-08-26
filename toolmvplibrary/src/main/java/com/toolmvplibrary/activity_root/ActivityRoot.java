@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -117,14 +118,17 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
             ToolShotScreen.enableScreen(this);
         }
         befSuperCreate();
+        if (isFullWindow()) {
+            setStatusBar(R.color.color_fff);
+        }
         super.onCreate(savedInstanceState);
         getActionBarHighth();
         befSetContentView();
+
+//        setBlackFull()
+//        setAndroidNativeLightStatusBar(this, isStateItemBack());
 //        setContentView(setCutLayout());
-        if (isFullWindow()) {
-            setBlackFull();
-            setAndroidNativeLightStatusBar(this, isStateItemBack());
-        }
+
         presenter = setPresenter();
         if (presenter != null) {
             presenter.attUIView(this);
@@ -201,39 +205,61 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
         return this;
     }
 
-
-    //    设置满屏状态
-    protected void setBlackFull() {
-//透明导航栏
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-//透明状态栏
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            getWindow().setStatusBarColor(Color.TRANSPARENT); //也可以设置成灰色透明的，比较符合Material Design的风格
-        }
-
+//
+//    //    设置满屏状态
+//    protected void setBlackFull() {
+////透明导航栏
+////        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+////透明状态栏
+////        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //        if (Build.VERSION.SDK_INT >= 21) {
 //            View decorView = getWindow().getDecorView();
 //            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 //            decorView.setSystemUiVisibility(option);
-//            getWindow().setStatusBarColor(Color.TRANSPARENT);
+//            getWindow().setStatusBarColor(Color.TRANSPARENT); //也可以设置成灰色透明的，比较符合Material Design的风格
 //        }
+//    }
 
 
-    }
-
-    //    设置状态栏文字是黑色还是白色
-    protected void setAndroidNativeLightStatusBar(Activity activity, boolean dark) {
-        View decor = activity.getWindow().getDecorView();
-        if (dark) {
-            decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    protected void setStatusBar(int colorId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            //根据上面设置是否对状态栏单独设置颜色
+            if (useThemestatusBarColor) {
+                getWindow().setStatusBarColor(getResources().getColor(colorId));//设置状态栏背景色
+            } else {
+                getWindow().setStatusBarColor(Color.TRANSPARENT);//透明
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//4.4到5.0
+            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         } else {
-            decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            Toast.makeText(this, "低于4.4的android系统版本不存在沉浸式状态栏", Toast.LENGTH_SHORT).show();
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && useStatusBarColor) {//android6.0以后可以对状态栏文字颜色和图标进行修改
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
+
+    //是否使用特殊的标题栏背景颜色，android5.0以上可以设置状态栏背景色，如果不使用则使用透明色值
+    protected boolean useThemestatusBarColor = false;
+    //是否使用状态栏文字和图标为暗色，如果状态栏采用了白色系，则需要使状态栏和图标为暗色，android6.0以上可以设置
+    protected boolean useStatusBarColor = true;
+
+
+//    //    设置状态栏文字是黑色还是白色
+//    protected void setAndroidNativeLightStatusBar(Activity activity, boolean dark) {
+//        View decor = activity.getWindow().getDecorView();
+//        if (dark) {
+//            decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+//        } else {
+//            decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//        }
+//    }
 
     //    点击edit外关闭软件盘
     @Override

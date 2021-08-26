@@ -38,7 +38,7 @@ class ActivityMain : ActivityRootInit<PresenterMain>(),
 
     lateinit var adapter: AdapterBtnItem
     override fun initView() {
-        setBlackFull()
+
         var lan = ToolPreferences.getString(this, "lan");
         if (!TextUtils.isEmpty(lan)) {
             ToolLanguage.changeAppLanguage(context, lan)

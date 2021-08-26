@@ -38,8 +38,9 @@ public class ActivityPerfect extends ActivityRoot {
 //    private LinearLayoutManager linearLayoutManager;
 //    private AdapterRecycler adapter;
     private TabLayout tabayView;
-    private String[] title = {"热门", "简介", "我的"};
+    private String[] title = {"教程", "简介", "我的"};
     private AdapterViewPager adapterViewPager;
+
     private void initView() {
         tabayView = findViewById(R.id.tabayView);
         viewPager = findViewById(R.id.viewPager);
@@ -48,8 +49,8 @@ public class ActivityPerfect extends ActivityRoot {
             tabayView.addTab(tabayView.newTab());
             tabayView.getTabAt(i).setText(title[i]);
         }
-        tabayView.setupWithViewPager(viewPager,false);
-        adapterViewPager=new AdapterViewPager(title);
+        tabayView.setupWithViewPager(viewPager, false);
+        adapterViewPager = new AdapterViewPager(title);
         viewPager.setAdapter(adapterViewPager);
 
 

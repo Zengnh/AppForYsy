@@ -38,7 +38,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:name">
 
-<!--设置比例处理-->
+        <!--设置比例处理-->
 
         <meta-data
             android:name="android.max_aspect"
@@ -81,9 +81,9 @@
         <activity
             android:name=".activity.activity_img_main.ActivityImageMain"
             tools:ignore="Instantiatable" />
-<!--        <activity-->
-<!--            android:name="com.cameralib.ActivityCamrea"-->
-<!--            tools:ignore="Instantiatable" />-->
+        <!--        <activity-->
+        <!--            android:name="com.cameralib.ActivityCamrea"-->
+        <!--            tools:ignore="Instantiatable" />-->
         <activity
             android:name=".activity.activity_rotation.ActivityRotation"
             tools:ignore="Instantiatable" />
@@ -102,7 +102,9 @@
 
         </activity>
 
-        <activity android:name=".activity.activity_perfect.ActivityPerfect">
+        <activity android:name=".activity.activity_perfect.ActivityPerfect"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
