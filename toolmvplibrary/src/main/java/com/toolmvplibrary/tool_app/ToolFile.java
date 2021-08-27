@@ -65,7 +65,7 @@ public class ToolFile {
     }
 
     public static String exitDistory() {
-        String strRoot = Environment.getExternalStorageDirectory().getPath() + "/DCIM/yousucloud/";
+        String strRoot = Environment.getExternalStorageDirectory().getPath() + "/DCIM/zfile/";
         File file = new File(strRoot);
         if (!file.exists()) {
             file.mkdirs();

@@ -12,5 +12,7 @@
         <activity
             android:name=".ActivityCamrea"
             android:screenOrientation="portrait" />
+        <activity android:name=".camera_result.ActivityTakePhotoView"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>
