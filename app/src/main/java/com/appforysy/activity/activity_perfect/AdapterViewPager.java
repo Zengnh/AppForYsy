@@ -11,10 +11,12 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.appforysy.R;
 import com.appforysy.activity.activity_banner.ActivityBanner;
 import com.appforysy.activity.activity_edt_note.ActivityNotiEdit;
+import com.appforysy.activity.activity_guide.ActivityGuide;
 import com.appforysy.activity.activity_intruct.ActivityIntruct;
 import com.appforysy.activity.activity_login.ActivityLogin;
 import com.appforysy.activity.draw_line.ActivityDrawVeiw;
 import com.cameralib.ActivityCamrea;
+import com.cameralib.selectimg.ActivityLocalImageList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,12 +58,13 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent item3 = new ItemPagerContent();
                 item3.icon = R.mipmap.icon_red_list;
                 item3.itemName = "展示";
-                item2.nextClass = ActivityLogin.class;
+
                 content.add(item3);
 
                 ItemPagerContent item4 = new ItemPagerContent();
                 item4.icon = R.mipmap.icon_red_heard;
                 item4.itemName = "关心";
+                item4.nextClass = ActivityLogin.class;
                 content.add(item4);
 
                 ItemPagerContent item5 = new ItemPagerContent();
@@ -79,7 +82,7 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent destory = new ItemPagerContent();
                 destory.icon = R.mipmap.icon_red_distory;
                 destory.itemName = "文件夹";
-//                destory.nextClass = ActivityCamrea.class;
+                destory.nextClass = ActivityLocalImageList.class;
                 content.add(destory);
 
 
@@ -93,6 +96,7 @@ public class AdapterViewPager extends PagerAdapter {
                 edit.itemName = "编辑";
                 edit.nextClass = ActivityNotiEdit.class;
                 content.add(edit);
+
                 ItemPagerContent search = new ItemPagerContent();
                 search.icon = R.mipmap.icon_red_search;
                 search.itemName = "搜索";
@@ -126,6 +130,7 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent help = new ItemPagerContent();
                 help.icon = R.mipmap.icon_red_what;
                 help.itemName = "帮助";
+                help.nextClass= ActivityGuide.class;
                 content.add(help);
 
             } else {
@@ -136,6 +141,7 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent left = new ItemPagerContent();
                 left.icon = R.mipmap.icon_red_toleft;
                 left.itemName = "转向";
+
                 content.add(left);
             }
             listContent.add(content);

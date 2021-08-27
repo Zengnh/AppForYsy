@@ -14,5 +14,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".camera_result.ActivityTakePhotoView"
             android:screenOrientation="portrait"/>
+        <activity android:name=".selectimg.ActivityLocalImageList" android:screenOrientation="portrait"/>
+        <activity android:name=".selectimg.ActivityLocalImagePager" android:screenOrientation="portrait"/>
     </application>
 </manifest>

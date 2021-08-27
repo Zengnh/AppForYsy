@@ -45,10 +45,9 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
         setContentView(R.layout.cameralib_activity_camera);
         initView();
         initEvent();
-        initData();
     }
 
-    private void initData() {
+    private void initCreateCamreaObject() {
         cameraManager = new CameraManager(getApplication());
         isFontCamrea = cameraManager.getBackCamera();
         surfaceHolder = preview_view.getHolder();
@@ -69,6 +68,8 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
         cameraSure = findViewById(R.id.cameraSure);
     }
 
+    private boolean isblackCamera = true;
+
     /**
      *
      */
@@ -81,7 +82,9 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
                 cameraManager.closeDriver();
                 if (isFontCamrea == cameraManager.getfrontCamera()) {
                     isFontCamrea = cameraManager.getBackCamera();
+                    isblackCamera = true;
                 } else {
+                    isblackCamera = false;
                     isFontCamrea = cameraManager.getfrontCamera();
                 }
                 initCamera(surfaceHolder);
@@ -97,13 +100,11 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
                         @Override
                         public void onPictureTaken(byte[] bytes, Camera camera) {
                             Bitmap bipmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                            saveBitmap(ActivityCamrea.this, bipmap);
 
-
-                            if (bipmap.getWidth() > bipmap.getHeight()) {
+                            if (isblackCamera) {
                                 ToolCameraManager.getInstance().setCameraBitmap(rotaingImageView(90, bipmap));
                             } else {
-                                ToolCameraManager.getInstance().setCameraBitmap(bipmap);
+                                ToolCameraManager.getInstance().setCameraBitmap(rotaingImageView(-90, bipmap));
                             }
                             cameraManager.stopPreview();
                             cameraReSet.setVisibility(View.VISIBLE);
@@ -137,7 +138,6 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
                 cameraSure.setVisibility(View.GONE);
                 changeCamera.setVisibility(View.VISIBLE);
                 cameraClick.setEnabled(true);
-
                 Intent intent = new Intent(ActivityCamrea.this, ActivityTakePhotoView.class);
                 startActivity(intent);
             }
@@ -157,11 +157,6 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
 
     private SurfaceHolder surfaceHolder;
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -195,6 +190,7 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
 
     }
 
+
     /**
      * 初始化Camera
      *
@@ -217,7 +213,13 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initCreateCamreaObject();
+    }
 
+    //***************************************************************************************************
     protected void setStatusBar(int colorId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
             View decorView = getWindow().getDecorView();
