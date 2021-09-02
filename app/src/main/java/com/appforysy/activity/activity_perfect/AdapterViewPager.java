@@ -17,6 +17,7 @@ import com.appforysy.activity.activity_login.ActivityLogin;
 import com.appforysy.activity.draw_line.ActivityDrawVeiw;
 import com.cameralib.ActivityCamrea;
 import com.cameralib.selectimg.ActivityLocalImageList;
+import com.mykotlin.activity.activity_music.ActivityMusic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,11 +121,13 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent wifi = new ItemPagerContent();
                 wifi.icon = R.mipmap.icon_red_wifi;
                 wifi.itemName = "WIFI";
+
                 content.add(wifi);
 
                 ItemPagerContent voice = new ItemPagerContent();
                 voice.icon = R.mipmap.icon_red_voice;
                 voice.itemName = "音乐";
+                voice.nextClass= ActivityMusic.class;
                 content.add(voice);
 
                 ItemPagerContent help = new ItemPagerContent();

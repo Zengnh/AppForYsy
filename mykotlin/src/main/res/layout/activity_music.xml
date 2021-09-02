@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorAccent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMusic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_layout"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text9Key"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@color/content3"
+            android:gravity="center"
+            android:text="9"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/text26Key"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/content3"
+            android:gravity="center"
+            android:text="26"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</RelativeLayout>

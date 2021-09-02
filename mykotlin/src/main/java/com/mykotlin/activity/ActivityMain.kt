@@ -1,6 +1,5 @@
 package com.mykotlin.activity
 
-import android.widget.TextView
 
 class ActivityMain {
     open class Animal {

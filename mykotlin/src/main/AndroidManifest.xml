@@ -27,6 +27,10 @@
 
         </activity>
 
+        <activity android:name=".activity.activity_music.ActivityMusic"
+            android:screenOrientation="landscape"
+            />
+
         <activity android:name=".activity.activity_notification.ActivityNotification">
 
 <!--            <intent-filter>-->

@@ -9,13 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iamgeView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            android:src="@mipmap/image_draw_line_1" />
+
 
         <com.toolmvplibrary.view.zoom_img.PhotoView
             android:id="@+id/zoomImage"

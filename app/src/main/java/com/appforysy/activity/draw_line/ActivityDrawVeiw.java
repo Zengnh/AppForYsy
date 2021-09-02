@@ -32,7 +32,7 @@ public class ActivityDrawVeiw extends ActivityRoot {
 
     private DrawingView dv;
     private FloatingActionButton buttonDrawable;
-    private ImageView imageView;
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull @NotNull Message msg) {
@@ -57,6 +57,12 @@ public class ActivityDrawVeiw extends ActivityRoot {
     private List<ItemEdit> dataList = new ArrayList<>();
 
     private void initData() {
+        iamgeList.clear();
+        iamgeList.add(R.mipmap.image_course_1);
+        iamgeList.add(R.mipmap.image_course_2);
+        iamgeList.add(R.mipmap.image_course_3);
+        iamgeList.add(R.mipmap.image_course_4);
+        showImage(false);
 //            九宫格
         for (int i = 0; i < 9; i++) {
             ItemEdit item = new ItemEdit();
@@ -79,6 +85,13 @@ public class ActivityDrawVeiw extends ActivityRoot {
         dataList.get(5).itemName = "可以绘制";
 
 
+        dataList.get(1).flog = 6;
+        dataList.get(1).itemName = "下一张";
+        dataList.get(1).icon = R.mipmap.icon_red_toright;
+        dataList.get(0).flog = 5;
+        dataList.get(0).itemName = "上一张";
+        dataList.get(0).icon = R.mipmap.icon_red_toleft;
+
         adapter = new AdapterEditGrid(dataList);
         gridViewEidt.setAdapter(adapter);
     }
@@ -99,6 +112,12 @@ public class ActivityDrawVeiw extends ActivityRoot {
 //                    可以绘制
                     showToast("可以绘制");
                     dv.setVisibility(View.VISIBLE);
+                } else if (dataList.get(position).flog == 5) {
+//                    上一张
+                    showImage(true);
+                } else if (dataList.get(position).flog == 6) {
+//                    下一张
+                    showImage(false);
                 } else if (dataList.get(position).flog == 4) {
 //                    保存备注生成图片
                     ToolCutSavePhoto tool = new ToolCutSavePhoto(ActivityDrawVeiw.this);
@@ -143,11 +162,10 @@ public class ActivityDrawVeiw extends ActivityRoot {
     private void initView() {
         drawableRoot = findViewById(R.id.drawableRoot);
         dv = findViewById(R.id.drawLineView);
-        imageView = findViewById(R.id.iamgeView);
         gridViewEidt = findViewById(R.id.gridViewEidt);
         buttonDrawable = findViewById(R.id.buttonDrawable);
         zoomImage = findViewById(R.id.zoomImage);
-        zoomImage.setImageResource(R.mipmap.image_draw_line_1);
+
     }
 
     private DialogStyleMy dialog;
@@ -171,5 +189,26 @@ public class ActivityDrawVeiw extends ActivityRoot {
 
     }
 
+    private int cutPosImage = -1;
+    private List<Integer> iamgeList = new ArrayList();
+
+    public void showImage(boolean ispro) {
+
+
+        if (ispro) {
+            cutPosImage++;
+            if (cutPosImage >= iamgeList.size()) {
+                cutPosImage = 0;
+            }
+        } else {
+            cutPosImage--;
+            if (cutPosImage < 0) {
+                cutPosImage = iamgeList.size() - 1;
+            }
+        }
+        dv.cleanView();
+//        zoomImage.setImageResource(R.mipmap.image_course_3);
+        zoomImage.setImageResource(iamgeList.get(cutPosImage));
+    }
 
 }

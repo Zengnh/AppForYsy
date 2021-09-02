@@ -12,6 +12,9 @@ import com.appforysy.R;
 import com.google.android.material.tabs.TabLayout;
 import com.toolmvplibrary.activity_root.ActivityRoot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ActivityPerfect extends ActivityRoot {
 
@@ -33,15 +36,17 @@ public class ActivityPerfect extends ActivityRoot {
     }
 
     private ViewPager viewPager;
+    private LinearLayoutManager linearLayoutManager;
 
-    //    private RecyclerView recyclerContentView;
-//    private LinearLayoutManager linearLayoutManager;
-//    private AdapterRecycler adapter;
     private TabLayout tabayView;
     private String[] title = {"教程", "简介", "我的"};
     private AdapterViewPager adapterViewPager;
 
+    List<ItemPagerContent> listData=new ArrayList<>();
+    private RecyclerView bannerRecycler;
+    private AdapterMainBanner adapter;
     private void initView() {
+
         tabayView = findViewById(R.id.tabayView);
         viewPager = findViewById(R.id.viewPager);
 
@@ -52,16 +57,29 @@ public class ActivityPerfect extends ActivityRoot {
         tabayView.setupWithViewPager(viewPager, false);
         adapterViewPager = new AdapterViewPager(title);
         viewPager.setAdapter(adapterViewPager);
+//####################################################################################
+        listData.clear();
+        ItemPagerContent bean=new ItemPagerContent();
+        bean.icon=R.mipmap.image_banner_heard;
+        listData.add(bean);
 
 
-//        recyclerContentView=findViewById(R.id.recyclerContentView);
-//        linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-//        adapter=new AdapterRecycler();
-//        recyclerContentView.setLayoutManager(linearLayoutManager);
-//        recyclerContentView.setAdapter(adapter);
+        ItemPagerContent bean2=new ItemPagerContent();
+        bean2.icon=R.mipmap.image_banner_flor;
+        listData.add(bean2);
+
+        ItemPagerContent bean3=new ItemPagerContent();
+        bean3.icon=R.mipmap.image_banner_user;
+        listData.add(bean3);
+
+        bannerRecycler = findViewById(R.id.imageBanner);
+        linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        adapter=new AdapterMainBanner(listData);
+        bannerRecycler.setLayoutManager(linearLayoutManager);
+        bannerRecycler.setAdapter(adapter);
 ////        左右滑动会有磁吸效果。上线就无效
-//        LinearSnapHelper linearSnapHelper = new LinearSnapHelper();
-//        linearSnapHelper.attachToRecyclerView(recyclerContentView);
+        LinearSnapHelper linearSnapHelper = new LinearSnapHelper();
+        linearSnapHelper.attachToRecyclerView(bannerRecycler);
 
     }
 }
