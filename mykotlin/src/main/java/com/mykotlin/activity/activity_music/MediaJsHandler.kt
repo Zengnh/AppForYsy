@@ -82,8 +82,7 @@ class MediaJsHandler(
      * 初始化本地音频
      */
     private fun initSound(): Map<String, Int> {
-        val map: MutableMap<String, Int> =
-            HashMap()
+        val map: MutableMap<String, Int> = HashMap()
         //数字
         map["0"] = R.raw.sound_0
         map["1"] = R.raw.sound_1
@@ -122,6 +121,24 @@ class MediaJsHandler(
         map["X"] = R.raw.sound_x
         map["Y"] = R.raw.sound_y
         map["Z"] = R.raw.sound_z
+
+
+        map["DO"] = R.raw.c
+        map["RE"] = R.raw.d
+        map["MI"] = R.raw.e
+        map["FA"] = R.raw.f
+        map["SO"] = R.raw.g
+        map["LA"] = R.raw.a
+        map["XI"] = R.raw.b
+
+
+//        map["DO"] = R.raw.a
+//        map["RE"] = R.raw.b
+//        map["MI"] = R.raw.c
+//        map["FA"] = R.raw.d
+//        map["SO"] = R.raw.e
+//        map["LA"] = R.raw.f
+//        map["XI"] = R.raw.g
 
 //        //笔画
 //        map["点"] = R.raw.dian

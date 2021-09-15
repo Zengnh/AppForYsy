@@ -30,4 +30,28 @@ class PresenterMusic : RootPresenter<InterFaceMusic, ModelMusic>() {
         }
     }
 
+    fun init7Data() {
+        datalist.clear()
+        var bean = ItemMusic()
+        bean.itemName = "do"
+        datalist.add(bean)
+        var bean2 = ItemMusic()
+        bean2.itemName = "re"
+        datalist.add(bean2)
+        var bean3 = ItemMusic()
+        bean3.itemName = "mi"
+        datalist.add(bean3)
+        var beanfa = ItemMusic()
+        beanfa.itemName = "fa"
+        datalist.add(beanfa)
+        var beanso = ItemMusic()
+        beanso.itemName = "so"
+        datalist.add(beanso)
+        var beanla = ItemMusic()
+        beanla.itemName = "la"
+        datalist.add(beanla)
+        var beanxi = ItemMusic()
+        beanxi.itemName = "xi"
+        datalist.add(beanxi)
+    }
 }

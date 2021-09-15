@@ -102,9 +102,9 @@
 
         </activity>
 
-        <activity android:name=".activity.activity_perfect.ActivityPerfect"
-            android:screenOrientation="portrait"
-            >
+        <activity
+            android:name=".activity.activity_perfect.ActivityPerfect"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -113,10 +113,11 @@
 
         <activity
             android:name=".activity.activity_main.ActivityMain"
-            tools:ignore="Instantiatable">
+            tools:ignore="Instantiatable"></activity>
 
-
-        </activity>
+        <provider
+            android:name=".contentprovider.ConterProviderMain"
+            android:authorities="com.appforysy.mainprovider" />
 
         <activity
             android:name=".activity.activity_edt_note.ActivityNotiEdit"

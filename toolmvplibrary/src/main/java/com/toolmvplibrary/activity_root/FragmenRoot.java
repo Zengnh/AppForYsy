@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class FragmenRoot<P extends RootPresenter> extends Fragment implements RootInterUi {
-    abstract P createPresenter();
+    protected abstract P createPresenter();
 
     protected P presenter;
 
