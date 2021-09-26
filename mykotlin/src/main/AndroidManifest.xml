@@ -18,7 +18,7 @@
         <activity android:name=".activity_demo.ActivityCoroutines">
 
         </activity>
-        <activity android:name=".activity.activity_bubble.BubbleActivity"
+        <activity android:name=".activity.activity_bubble.BluetouchActivity"
             android:theme="@style/AppTheme"
             android:label="title_activity_bubble"
             android:allowEmbedded="true"

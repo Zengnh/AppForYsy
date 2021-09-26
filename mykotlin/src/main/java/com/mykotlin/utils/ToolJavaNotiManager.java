@@ -8,14 +8,13 @@ import android.app.Person;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Icon;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.mykotlin.R;
-import com.mykotlin.activity.activity_bubble.BubbleActivity;
+import com.mykotlin.activity.activity_bubble.BluetouchActivity;
 
 public class ToolJavaNotiManager {
     private String channel_id = "channel_id";
@@ -62,7 +61,7 @@ public class ToolJavaNotiManager {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void createPop(Context mContext){
         // Create bubble intent
-        Intent target = new Intent(mContext, BubbleActivity.class);
+        Intent target = new Intent(mContext, BluetouchActivity.class);
         PendingIntent bubbleIntent =PendingIntent.getActivity(mContext, 0, target, 0 /* flags */);
 
 // Create bubble metadata
