@@ -9,9 +9,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -254,7 +256,6 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
         String locationFile = "";
         try {
             String filePath = Environment.getExternalStorageDirectory().getPath() + "/DCIM/zcamrea/";
-            ;
             File dirFile = new File(filePath);
             if (!dirFile.exists()) {              //如果不存在，那就建立这个文件夹
                 dirFile.mkdirs();
@@ -278,5 +279,7 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
         }
         return locationFile;
     }
+
+
 
 }

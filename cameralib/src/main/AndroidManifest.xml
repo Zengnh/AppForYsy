@@ -12,6 +12,9 @@
         <activity
             android:name=".ActivityCamrea"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityCameraDemo"
+            android:screenOrientation="portrait" />
         <activity android:name=".camera_result.ActivityTakePhotoView"
             android:screenOrientation="portrait"/>
         <activity android:name=".selectimg.ActivityLocalImageList" android:screenOrientation="portrait"/>

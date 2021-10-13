@@ -46,6 +46,11 @@ class ActivityMusic : ActivityRoot<PresenterMusic>() {
 
     }
 
+
+//    fun vars(varage v:Int){
+//
+//    }
+
     val musicPlay = MediaJsHandler(this)
     private fun initData() {
         userFragment(2)

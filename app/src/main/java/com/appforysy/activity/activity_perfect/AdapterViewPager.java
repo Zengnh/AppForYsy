@@ -15,6 +15,7 @@ import com.appforysy.activity.activity_guide.ActivityGuide;
 import com.appforysy.activity.activity_intruct.ActivityIntruct;
 import com.appforysy.activity.activity_login.ActivityLogin;
 import com.appforysy.activity.draw_line.ActivityDrawVeiw;
+import com.cameralib.ActivityCameraDemo;
 import com.cameralib.ActivityCamrea;
 import com.cameralib.selectimg.ActivityLocalImageList;
 import com.mykotlin.activity.activity_music.ActivityMusic;
@@ -59,6 +60,7 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent item3 = new ItemPagerContent();
                 item3.icon = R.mipmap.icon_red_list;
                 item3.itemName = "展示";
+                item3.nextClass = ActivityCameraDemo.class;
 
                 content.add(item3);
 
@@ -127,13 +129,13 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent voice = new ItemPagerContent();
                 voice.icon = R.mipmap.icon_red_voice;
                 voice.itemName = "音乐";
-                voice.nextClass= ActivityMusic.class;
+                voice.nextClass = ActivityMusic.class;
                 content.add(voice);
 
                 ItemPagerContent help = new ItemPagerContent();
                 help.icon = R.mipmap.icon_red_what;
                 help.itemName = "帮助";
-                help.nextClass= ActivityGuide.class;
+                help.nextClass = ActivityGuide.class;
                 content.add(help);
 
             } else {
