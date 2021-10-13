@@ -126,10 +126,6 @@ public class ActivityCameraDemo extends AppCompatActivity {
                 }
                 camera = Camera.open(cameraid);
 
-//                设置左右旋转
-//                Camera.Parameters mParameters = camera.getParameters();
-//                mParameters.setRotation(90);
-//                camera.setParameters(mParameters);
 
             }
 
@@ -158,6 +154,16 @@ public class ActivityCameraDemo extends AppCompatActivity {
 //                    paramets.
 //                    camera.setDisplayOrientation(90);
 //                    camera.setParameters();
+
+                    if (isBalck) {
+
+                    } else {
+                        //前置摄像头 设置左右旋转
+                        Camera.Parameters mParameters = camera.getParameters();
+                        mParameters.setRotation(90);
+                        camera.setParameters(mParameters);
+                    }
+
                     camera.startPreview();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -262,7 +268,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
     MediaRecorder mMediaRecorder = new MediaRecorder();
 
     public void recordVideo() {
-        CamcorderProfile mProfile= CamcorderProfile.get(CamcorderProfile.QUALITY_1080P);
+        CamcorderProfile mProfile = CamcorderProfile.get(CamcorderProfile.QUALITY_1080P);
 // Unlock the camera object before passing it to media recorder.
         camera.unlock();
         mMediaRecorder.setCamera(camera);
@@ -330,26 +336,26 @@ public class ActivityCameraDemo extends AppCompatActivity {
 //        mediarecorder.setVideoFrameRate(30);
         //start实现录像静音
         mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-        if(isBalck){
+        if (isBalck) {
             mMediaRecorder.setOrientationHint(90);
-        }else{
+        } else {
             mMediaRecorder.setOrientationHint(270);
         }
 
 
 //        mediarecorder.setVideoSize(640,480);
-        mMediaRecorder.setVideoSize(1280,720);
+        mMediaRecorder.setVideoSize(1280, 720);
         //设置编码比特率,不设置会使视频图像模糊
 //        mediarecorder.setVideoEncodingBitRate(5*1024*1024);  //清晰     512*1024(不清楚)
-        mMediaRecorder.setVideoEncodingBitRate(900*1024); //较为清晰，且文件大小为3.26M(30秒)
+        mMediaRecorder.setVideoEncodingBitRate(900 * 1024); //较为清晰，且文件大小为3.26M(30秒)
         mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);  //H263的貌似有点不清晰
 //        mediarecorder.setVideoFrameRate(10);  //设置无效
         mMediaRecorder.setMaxDuration(10000);
-        handlerFinish.sendEmptyMessageDelayed(0,10000);
+        handlerFinish.sendEmptyMessageDelayed(0, 10000);
         //end
         mMediaRecorder.setPreviewDisplay(surfaceView.getHolder().getSurface());
         // 设置视频文件输出的路径
-        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/"+System.currentTimeMillis()+".mp4");
+        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + System.currentTimeMillis() + ".mp4");
         try {
             // 准备录制
             mMediaRecorder.prepare();
@@ -360,7 +366,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
         }
     }
 
-    Handler handlerFinish=new Handler(){
+    Handler handlerFinish = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
