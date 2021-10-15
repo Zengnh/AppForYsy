@@ -62,4 +62,15 @@ public class ToolGlide {
                 .into(img);
     }
 
+    public static void loadImageRindLeft(Context context, int url, ImageView img,int def,int r){
+        RoundedCornersTransform transform = new RoundedCornersTransform(context, ToolSys.dip2px(context, r));
+        transform.setNeedCorner(true, false, true, false);
+        RequestOptions optionsRoundImg = new RequestOptions().transform(transform);
+        Glide.with(context)
+                .load(url)
+                .placeholder(def)
+                .error(def)
+                .apply(optionsRoundImg)
+                .into(img);
+    }
 }

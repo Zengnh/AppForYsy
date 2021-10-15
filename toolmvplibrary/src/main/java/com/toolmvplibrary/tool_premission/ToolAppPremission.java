@@ -16,18 +16,19 @@ public class ToolAppPremission {
 
     /**
      * 网络权限
+     *
      * @param act
      * @param reqCode
      */
-    public static void reqInternet(Activity act,int reqCode){
+    public static void reqInternet(Activity act, int reqCode) {
 
         try {
             String[] PERMISSIONS_STORAGE = {Manifest.permission.INTERNET};
             //检测是否有写的权限
-            int permission = ActivityCompat.checkSelfPermission(act,Manifest.permission.INTERNET);
+            int permission = ActivityCompat.checkSelfPermission(act, Manifest.permission.INTERNET);
             if (permission != PackageManager.PERMISSION_GRANTED) {
                 // 没有写的权限，去申请写的权限，会弹出对话框
-                ActivityCompat.requestPermissions(act, PERMISSIONS_STORAGE,reqCode);
+                ActivityCompat.requestPermissions(act, PERMISSIONS_STORAGE, reqCode);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -38,10 +39,11 @@ public class ToolAppPremission {
 
     /**
      * 读写权限
+     *
      * @param act
      * @param reqCode
      */
-    public static void reqWriteDestory(Activity act,int reqCode){
+    public static void reqWriteDestory(Activity act, int reqCode) {
         //先定义
         try {
             String[] PERMISSIONS_STORAGE = {
@@ -49,24 +51,24 @@ public class ToolAppPremission {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.INTERNET};
             //检测是否有写的权限
-            int permission = ActivityCompat.checkSelfPermission(act,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            int permission = ActivityCompat.checkSelfPermission(act, Manifest.permission.WRITE_EXTERNAL_STORAGE);
             if (permission != PackageManager.PERMISSION_GRANTED) {
                 // 没有写的权限，去申请写的权限，会弹出对话框
-                ActivityCompat.requestPermissions(act, PERMISSIONS_STORAGE,reqCode);
+                ActivityCompat.requestPermissions(act, PERMISSIONS_STORAGE, reqCode);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public  static boolean hasWritePremission(Activity act){
+    public static boolean hasWritePremission(Activity act) {
         //检测是否有写的权限
         int permission = ActivityCompat.checkSelfPermission(act,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permission != PackageManager.PERMISSION_GRANTED) {
             // 没有写的权限，去申请写的权限，会弹出对话框
             return false;
-        }else{
+        } else {
             return true;
         }
     }
@@ -74,40 +76,42 @@ public class ToolAppPremission {
 
     /**
      * 摄像头权限
+     *
      * @param act
      * @param reqCode
      */
-    public static void reqCamer(Activity act,int reqCode){
+    public static void reqCamer(Activity act, int reqCode) {
         //先定义
         try {
             String[] PERMISSIONS_STORAGE = {
                     "android.permission.RECORD_AUDIO",
-                    "android.permission.VIBRATE" };
+                    "android.permission.VIBRATE"};
             //检测是否有写的权限
             int permission = ActivityCompat.checkSelfPermission(act,
                     "android.permission.WRITE_EXTERNAL_STORAGE");
             if (permission != PackageManager.PERMISSION_GRANTED) {
                 // 没有写的权限，去申请写的权限，会弹出对话框
-                ActivityCompat.requestPermissions(act, PERMISSIONS_STORAGE,reqCode);
+                ActivityCompat.requestPermissions(act, PERMISSIONS_STORAGE, reqCode);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static boolean hasCamerPremission(Activity act){
+    public static boolean hasCamerPremission(Activity act) {
         //检测是否有写的权限
         int permission = ActivityCompat.checkSelfPermission(act,
                 "android.permission.WRITE_EXTERNAL_STORAGE");
         if (permission != PackageManager.PERMISSION_GRANTED) {
             // 没有写的权限，去申请写的权限，会弹出对话框
             return false;
-        }else{
+        } else {
             return true;
         }
     }
-//#######################################################################
-    public static void reqLocation(Activity act,int reqCode){
+
+    //#######################################################################
+    public static void reqLocation(Activity act, int reqCode) {
         if (ContextCompat.checkSelfPermission(act,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
@@ -129,7 +133,8 @@ public class ToolAppPremission {
                 && ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
     }
-    public static void requestCamer( Activity act,int reqCode){
+
+    public static void requestCamer(Activity act, int reqCode) {
         if (!checkPermission(act)) {
             ActivityCompat.requestPermissions(act, new String[]{
                     Manifest.permission.CAMERA,
@@ -140,7 +145,7 @@ public class ToolAppPremission {
     }
 
     //检测联系人权限
-    public  static boolean checkCONTACTS(Activity act,int reqCode) {
+    public static boolean checkCONTACTS(Activity act, int reqCode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             List<String> permissions = new ArrayList<>();
 //            联系人权限
@@ -173,7 +178,16 @@ public class ToolAppPremission {
     }
 
 
-
+    public static boolean requestCall(Activity act, int reqCode) {
+        if (ContextCompat.checkSelfPermission(act, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(act, new String[]{
+                    Manifest.permission.CALL_PHONE
+            }, reqCode);
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 
 }

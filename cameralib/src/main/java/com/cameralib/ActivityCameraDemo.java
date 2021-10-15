@@ -16,12 +16,15 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,10 +32,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ActivityCameraDemo extends AppCompatActivity {
     //***************************************************************************************************
@@ -64,7 +70,72 @@ public class ActivityCameraDemo extends AppCompatActivity {
         setStatusBar();
         setContentView(R.layout.activity_camera_demo);
         initView();
+        rootPath = Environment.getExternalStorageDirectory().getPath() + File.separator + "cameradir";
+        File file = new File(rootPath);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        initEvent();
     }
+
+    private void initEvent() {
+//        takePhoto.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                takePhoto.setVisibility(View.GONE);
+//                takePictu();
+//                startRecord();
+//            }
+//        });
+
+        takePhoto.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()) {
+
+
+                    case MotionEvent.ACTION_DOWN:
+                        touchTime = System.currentTimeMillis();
+                        handlerRecord.removeMessages(0);
+                        handlerRecord.sendEmptyMessageDelayed(0, 1000);
+//                        Log.i("znh","############################");
+                        break;
+                    case MotionEvent.ACTION_UP:
+//                        Log.i("znh","@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        handlerRecord.removeMessages(0);
+                        long touchTimeCount = System.currentTimeMillis() - touchTime;
+                        if (touchTimeCount < 1000) {
+//                            拍照
+                            takePictu();
+                        } else {
+//                         录屏停止
+                            handlerRecord.sendEmptyMessage(1);
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+    private Handler handlerRecord = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 1) {
+                stopRecord();
+            } else if (msg.what == 0) {
+                startRecord();
+            }
+        }
+    };
+
+
+    private long touchTime = 0;
+
+
+    private String rootPath;
 
     //    #########################
     public void simpleToCamer() {
@@ -96,21 +167,21 @@ public class ActivityCameraDemo extends AppCompatActivity {
 
     private SurfaceView surfaceView;
     private Camera camera;
-    Button takePhoto;
-    ImageView imageView;
+    private ImageView takePhoto;
+    private TextView textView;
 
     private void initView() {
+        textView = findViewById(R.id.textView);
         surfaceView = findViewById(R.id.surfaceView);
         takePhoto = findViewById(R.id.takePhoto);
-        imageView = findViewById(R.id.imageView);
-        takePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                takePhoto.setVisibility(View.GONE);
+//        takePhoto.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                takePhoto.setVisibility(View.GONE);
 //                takePictu();
-                startRecord();
-            }
-        });
+//                startRecord();
+//            }
+//        });
 
         SurfaceHolder sH = surfaceView.getHolder();
         sH.addCallback(new SurfaceHolder.Callback() {
@@ -118,15 +189,13 @@ public class ActivityCameraDemo extends AppCompatActivity {
             public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
 //                    打开摄像头
                 int cameraid;
-                isBalck = false;
+                isBalck = true;
                 if (isBalck) {
                     cameraid = getCameraBId();
                 } else {
                     cameraid = getCameraPId();
                 }
                 camera = Camera.open(cameraid);
-
-
             }
 
             @Override
@@ -154,15 +223,13 @@ public class ActivityCameraDemo extends AppCompatActivity {
 //                    paramets.
 //                    camera.setDisplayOrientation(90);
 //                    camera.setParameters();
-
-                    if (isBalck) {
-
-                    } else {
-                        //前置摄像头 设置左右旋转
-                        Camera.Parameters mParameters = camera.getParameters();
-                        mParameters.setRotation(90);
-                        camera.setParameters(mParameters);
-                    }
+//                    if (isBalck) {
+//                    } else {
+//                        //前置摄像头 设置左右旋转
+//                        Camera.Parameters mParameters = camera.getParameters();
+//                        mParameters.setRotation(270);
+//                        camera.setParameters(mParameters);
+//                    }
 
                     camera.startPreview();
                 } catch (IOException e) {
@@ -214,7 +281,6 @@ public class ActivityCameraDemo extends AppCompatActivity {
     }
 
     private int vX, vY;
-
     private boolean isBalck = true;
 
     public void takePictu() {
@@ -228,27 +294,25 @@ public class ActivityCameraDemo extends AppCompatActivity {
                 } else {
                     bitmapTemp = rotaingImageView(-90, bitmap);//后摄像头
                 }
-                int tempx = bitmapTemp.getWidth();
-                int tempy = bitmapTemp.getHeight();
-
-//                float xPoint = vX / tempx;
-//                float yPoint = vY / tempy;
-//                if (xPoint < yPoint) {
-//                    Bitmap bitmapcut = Bitmap.createBitmap(bitmapTemp, 0, 0, tempx, (int) (vY / xPoint));
-//                    imageView.setImageBitmap(bitmapcut);
-//                } else {
-//                    Bitmap bitmapcut = Bitmap.createBitmap(bitmapTemp, 0, 0, (int) (vX / yPoint), tempy);
-//                    imageView.setImageBitmap(bitmapcut);
-//                }
-
-//                if (vX > 0 && tempx > 0 && vY > 0 && tempy > 0) {
-//                    Bitmap bitmapcut = Bitmap.createBitmap(bitmapTemp, 0, 0, vX, vY);
-//                    imageView.setImageBitmap(bitmapcut);
-//                } else {
-                imageView.setImageBitmap(bitmapTemp);
-//                }
-
-
+                String filePath = rootPath + File.separator + System.currentTimeMillis() + ".jpg";
+                File fileImg = new File(filePath);
+                try {
+                    if (!fileImg.exists()) {
+                        fileImg.createNewFile();
+                    }
+                    FileOutputStream fos = new FileOutputStream(fileImg);
+//                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    bitmapTemp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    fos.flush();
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ActivityCameraResult.startToResult(ActivityCameraDemo.this, filePath);
+                finish();
+//                int tempx = bitmapTemp.getWidth();
+//                int tempy = bitmapTemp.getHeight();
+//                imageView.setImageBitmap(bitmapTemp);
             }
         });
     }
@@ -265,56 +329,54 @@ public class ActivityCameraDemo extends AppCompatActivity {
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 
-    MediaRecorder mMediaRecorder = new MediaRecorder();
-
-    public void recordVideo() {
-        CamcorderProfile mProfile = CamcorderProfile.get(CamcorderProfile.QUALITY_1080P);
-// Unlock the camera object before passing it to media recorder.
-        camera.unlock();
-        mMediaRecorder.setCamera(camera);
-        mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-        mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-        mMediaRecorder.setProfile(mProfile);
-        mMediaRecorder.setMaxDuration(100000);//ms为单位
-        long dateTaken = System.currentTimeMillis();
-        Date date = new Date(dateTaken);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String title = dateFormat.format(date);
-        String filename = title + ".3gp"; // Used when emailing.
-        String cameraDirPath = Environment.getExternalStorageDirectory().getPath();
-        String filePath = cameraDirPath + "/" + filename;
-        File cameraDir = new File(cameraDirPath);
-        cameraDir.mkdirs();
-        mMediaRecorder.setOutputFile(filePath);
-        try {
-            mMediaRecorder.prepare();
-            mMediaRecorder.start(); // Recording is now started
-        } catch (RuntimeException | IOException e) {
-        }
-    }
+    private MediaRecorder mMediaRecorder = new MediaRecorder();
 
     public void stopRecord() {
-        mMediaRecorder.stop();
-        mMediaRecorder.reset();
-        mMediaRecorder.release();
-        mMediaRecorder = null;
-        if (camera != null) {
-            camera.lock();
+        try {
+            if (mMediaRecorder == null) {
+                return;
+            }
+            mMediaRecorder.stop();
+            mMediaRecorder.reset();
+            mMediaRecorder.release();
+            mMediaRecorder = null;
+            if (camera != null) {
+                camera.lock();
+            }
+            timerTask.cancel();
+            timerTask = null;
+            ActivityCameraResult.startToResult(ActivityCameraDemo.this, videoPath);
+            finish();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
+    private Timer timerTask;
+    private int recoreMaxTime = 100000;
 
     public void startRecord() {
-        Camera.Parameters parameters = camera.getParameters();
-        camera.autoFocus(null);
+//        camera.lock();
+//        Camera.Parameters parameters = camera.getParameters();
+//        List<Camera.Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
+//        float tempX=vX,tempY=vY;
+//        float proPoint=100;
+//        float intP=vY/vX;
+//        for (int i = 0; i < supportedPreviewSizes.size(); i++) {
+//            float tempInX=supportedPreviewSizes.get(i).width;
+//            float tempInY=supportedPreviewSizes.get(i).height;
+//            float tempP=tempInY/tempInX;
+//            if(Math.abs(intP-tempP)<proPoint){
+//                tempX=supportedPreviewSizes.get(i).width;
+//                tempY=supportedPreviewSizes.get(i).height;
+//            }
+//            Log.i("znh", "width="+supportedPreviewSizes.get(i).width+";height="+supportedPreviewSizes.get(i).height);
+//        }
+//        Log.i("znh",tempX+"   "+tempY);
+//        camera.autoFocus(null);
         // 解锁camera
         camera.unlock();
         mMediaRecorder.setCamera(camera);
-//        List<Camera.Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
-//        for(int i=0;i<supportedPreviewSizes.size();i++)
-//        {
-////       Log.v("startRecord", "width="+supportedPreviewSizes.get(i).width+";height="+supportedPreviewSizes.get(i).height);
-//        }
         // 设置录制视频源为Camera(相机)
 //        mediarecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
         mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
@@ -341,37 +403,54 @@ public class ActivityCameraDemo extends AppCompatActivity {
         } else {
             mMediaRecorder.setOrientationHint(270);
         }
-
-
 //        mediarecorder.setVideoSize(640,480);
-        mMediaRecorder.setVideoSize(1280, 720);
+//        mMediaRecorder.setVideoSize((int)tempX, (int)tempY);
+        mMediaRecorder.setVideoSize(1920, 1080);
         //设置编码比特率,不设置会使视频图像模糊
 //        mediarecorder.setVideoEncodingBitRate(5*1024*1024);  //清晰     512*1024(不清楚)
-        mMediaRecorder.setVideoEncodingBitRate(900 * 1024); //较为清晰，且文件大小为3.26M(30秒)
+//        mMediaRecorder.setVideoEncodingBitRate(900 * 1024); //较为清晰，且文件大小为3.26M(30秒)
+        mMediaRecorder.setVideoEncodingBitRate(1080 * 1920); //较为清晰
         mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);  //H263的貌似有点不清晰
 //        mediarecorder.setVideoFrameRate(10);  //设置无效
-        mMediaRecorder.setMaxDuration(10000);
-        handlerFinish.sendEmptyMessageDelayed(0, 10000);
+        mMediaRecorder.setMaxDuration(recoreMaxTime);
+        handlerFinish.sendEmptyMessageDelayed(0, recoreMaxTime);
         //end
         mMediaRecorder.setPreviewDisplay(surfaceView.getHolder().getSurface());
         // 设置视频文件输出的路径
-        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + System.currentTimeMillis() + ".mp4");
+        videoPath = rootPath + File.separator + System.currentTimeMillis() + ".mp4";
+        mMediaRecorder.setOutputFile(videoPath);
         try {
             // 准备录制
             mMediaRecorder.prepare();
             // 开始录制
             mMediaRecorder.start();
+            timerTask = new Timer();
+            countTime = 0;
+            TimerTask timeRecord = new TimerTask() {
+                @Override
+                public void run() {
+                    countTime++;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView.setText(countTime + "");
+                        }
+                    });
+                }
+            };
+            timerTask.schedule(timeRecord, 0, 1000);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    Handler handlerFinish = new Handler() {
+    private int countTime = 0;
+    private String videoPath = "";
+    private Handler handlerFinish = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             stopRecord();
-            finish();
         }
     };
 }

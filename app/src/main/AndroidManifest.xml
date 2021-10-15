@@ -20,6 +20,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!--语言变更权限-->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!--    android:resizeableActivity="true"//支持分配功能-->
     <!--    android:configChanges="orientation|screenSize|screenLayout"-->
@@ -103,13 +104,37 @@
         </activity>
 
         <activity
-            android:name=".activity.activity_perfect.ActivityPerfect"
+            android:name=".activity.mlqcollege.activity_mlq.ActivityMLQCollege"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.activity_perfect.ActivityPerfect"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".activity.mlqcollege.activity_mlq_course_list.ActivityMLQCourseList"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.mlqcollege.activity_mlq_teacher_list.ActivityMLQTeacherList"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.mlqcollege.activity_mlq_location.ActivityMlqLocation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.mlqcollege.activity_course_detail.ActivityMlqCourseDetail"
+            android:screenOrientation="portrait"></activity>
+      <activity
+            android:name=".activity.mlqcollege.activity_teacher_detail.ActivityMlqTeacherDetail"
+            android:screenOrientation="portrait"></activity>
+     <activity
+            android:name=".activity.mlqcollege.activity_mlq_imgintro.ActivityMLQImagerList"
+            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".activity.activity_main.ActivityMain"
