@@ -20,22 +20,22 @@ public class PresenterMain extends RootPresenter<InterUiMain, ModelCom> {
     public void initData(){
         ItemMainBtn item=new ItemMainBtn();
         item.text=getContext().getResources().getString(R.string.title_home);
-        item.img=R.mipmap.ic_launcher;
+        item.img=R.mipmap.ic_launcher_mlq;
         dataList.add(item);
         ItemMainBtn item1=new ItemMainBtn();
-        item1.img=R.mipmap.ic_launcher;
+        item1.img=R.mipmap.ic_launcher_mlq;
         item1.text=getContext().getResources().getString(R.string.title_notifications);
         dataList.add(item1);
         ItemMainBtn item2=new ItemMainBtn();
-        item2.img=R.mipmap.ic_launcher;
+        item2.img=R.mipmap.ic_launcher_mlq;
         item2.text=getContext().getResources().getString(R.string.title_dashboard);
         dataList.add(item2);
         ItemMainBtn item3=new ItemMainBtn();
-        item3.img=R.mipmap.ic_launcher;
+        item3.img=R.mipmap.ic_launcher_mlq;
         item3.text=getContext().getResources().getString(R.string.title_work);
         dataList.add(item3);
         ItemMainBtn item4=new ItemMainBtn();
-        item4.img=R.mipmap.ic_launcher;
+        item4.img=R.mipmap.ic_launcher_mlq;
         item4.text=getContext().getResources().getString(R.string.title_my);
         dataList.add(item4);
 

@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-
+apply plugin:'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -24,7 +23,9 @@ android {
         resConfigs "en", "zh-rCN"//, "需要支持的其他语言"
 
     }
-
+//    buildFeatures {
+//        viewBinding true
+//    }
 
 //    android.applicationVariants.all { variant ->
 //        variant.outputs.all {
@@ -121,8 +122,12 @@ dependencies {
 
     implementation project(path: ':rootlibs')
     implementation project(path: ':toolmvplibrary')
+    implementation project(path: ':mlq_course')
     implementation project(path: ':cameralib')
+    implementation project(path: ':photolib')
+    implementation project(path: ':medialib')
     if (isNeedMyKotlin.toBoolean()) {
         implementation project(path: ':mykotlin')
     }
+//    implementation 'com.github.microshow:RxFFmpeg:2.2.0'
 }

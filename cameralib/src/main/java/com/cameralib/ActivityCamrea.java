@@ -128,7 +128,6 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
                 cameraSure.setVisibility(View.GONE);
                 changeCamera.setVisibility(View.VISIBLE);
                 cameraClick.setEnabled(true);
-
                 cameraManager.startPreview();
             }
         });
@@ -150,6 +149,10 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
         //旋转图片 动作
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
+        if (!isblackCamera) {
+//            前摄像头需要镜像翻转下
+            matrix.postScale(-1, 1); // 镜像水平翻转
+        }
         // 创建新的图片
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
@@ -245,41 +248,8 @@ public class ActivityCamrea extends AppCompatActivity implements SurfaceHolder.C
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
-
     //是否使用特殊的标题栏背景颜色，android5.0以上可以设置状态栏背景色，如果不使用则使用透明色值
     protected boolean useThemestatusBarColor = false;
     //是否使用状态栏文字和图标为暗色，如果状态栏采用了白色系，则需要使状态栏和图标为暗色，android6.0以上可以设置
     protected boolean useStatusBarColor = true;
-
-    //####################################################################
-    public static String saveBitmap(Context context, Bitmap bitmap) {
-        String locationFile = "";
-        try {
-            String filePath = Environment.getExternalStorageDirectory().getPath() + "/DCIM/zcamrea/";
-            File dirFile = new File(filePath);
-            if (!dirFile.exists()) {              //如果不存在，那就建立这个文件夹
-                dirFile.mkdirs();
-            }
-            String fileName = "vf" + System.currentTimeMillis() + ".jpg";
-            locationFile = filePath + fileName;
-            File file = new File(filePath, fileName);
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            FileOutputStream fos = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            locationFile = "";
-        } catch (IOException e) {
-            e.printStackTrace();
-            locationFile = "";
-        }
-        return locationFile;
-    }
-
-
-
 }

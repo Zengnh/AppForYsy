@@ -37,7 +37,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:name">
+        tools:replace="android:name,android:roundIcon,android:theme">
 
         <!--设置比例处理-->
 
@@ -98,47 +98,24 @@
         <activity android:name=".activity.activity_banner.ActivityBanner">
 
         </activity>
-
-        <activity android:name=".activity.activity_intruct.ActivityIntruct">
-
-        </activity>
-
         <activity
-            android:name=".activity.mlqcollege.activity_mlq.ActivityMLQCollege"
+            android:name=".activity.activity_perfect.ActivityPerfect"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.activity_perfect.ActivityPerfect"
-            android:screenOrientation="portrait">
+        <activity android:name=".activity.activity_intruct.ActivityIntruct">
 
         </activity>
 
-        <activity
-            android:name=".activity.mlqcollege.activity_mlq_course_list.ActivityMLQCourseList"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".activity.mlqcollege.activity_mlq_teacher_list.ActivityMLQTeacherList"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".activity.mlqcollege.activity_mlq_location.ActivityMlqLocation"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".activity.mlqcollege.activity_course_detail.ActivityMlqCourseDetail"
-            android:screenOrientation="portrait"></activity>
-      <activity
-            android:name=".activity.mlqcollege.activity_teacher_detail.ActivityMlqTeacherDetail"
-            android:screenOrientation="portrait"></activity>
-     <activity
-            android:name=".activity.mlqcollege.activity_mlq_imgintro.ActivityMLQImagerList"
-            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".activity.activity_main.ActivityMain"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable">
+
+        </activity>
 
         <provider
             android:name=".contentprovider.ConterProviderMain"

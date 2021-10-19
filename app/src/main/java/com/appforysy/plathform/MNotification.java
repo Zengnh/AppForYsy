@@ -40,7 +40,7 @@ public class MNotification {
         // 先设定RemoteViews
 //        RemoteViews view_warn = new RemoteViews(context.getPackageName(), R.layout.notification_warn_layout);
         RemoteViews view_warn = new RemoteViews("com.workysy", R.layout.notification_layout);
-        view_warn.setImageViewResource(R.id.warn_icon, R.mipmap.ic_launcher);
+        view_warn.setImageViewResource(R.id.warn_icon, R.mipmap.ic_launcher_mlq);
         mBuilder = new Notification.Builder(context);
         mBuilder.setContent(view_warn)
                 .setWhen(System.currentTimeMillis())
@@ -49,9 +49,9 @@ public class MNotification {
                 .setPriority(Notification.PRIORITY_DEFAULT)// 设置该通知优先级
                 .setOngoing(false)// 不是正在进行的 true为正在进行 效果和.flag一样
                 .setDefaults(Notification.DEFAULT_ALL)
-                .setSmallIcon(R.mipmap.ic_launcher);
+                .setSmallIcon(R.mipmap.ic_launcher_mlq);
         Notification notify = mBuilder.build();
-        mBuilder.setSmallIcon(R.mipmap.ic_launcher);
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher_mlq);
         notify.contentView = view_warn;
         // 通知被点击后，自动消失
         notify.flags |= Notification.FLAG_AUTO_CANCEL;

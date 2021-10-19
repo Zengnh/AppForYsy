@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mlq.course">
+<!--    android:icon="@mipmap/ic_launcher_mlq"-->
+<!--    android:roundIcon="@mipmap/ic_launcher_mlq"-->
+    <application
+        android:allowBackup="true"
+
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/mlqStyle"
+        tools:replace="android:theme"
+        >
+        <activity
+            android:name=".activity_mlq.ActivityMLQCollege"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".activity_mlq_course_list.ActivityMLQCourseList"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity_mlq_teacher_list.ActivityMLQTeacherList"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity_mlq_location.ActivityMlqLocation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity_course_detail.ActivityMlqCourseDetail"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity_teacher_detail.ActivityMlqTeacherDetail"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity_mlq_imgintro.ActivityMLQImagerList"
+            android:screenOrientation="portrait"></activity>
+
+    </application>
+</manifest>

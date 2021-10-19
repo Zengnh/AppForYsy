@@ -1,8 +1,6 @@
 package com.mykotlin.activity.activity_music
 
 import android.os.Bundle
-import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.mykotlin.R
 import com.mykotlin.activity.activity_music.fragment.Fragment1234

@@ -9,8 +9,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.appforysy.R
-import com.cameralib.ActivityCamrea
 import com.appforysy.activity.activity_main.ActivityMain
 import com.appforysy.activity.activity_edt_note.ActivityNotiEdit
 import com.appforysy.activity.activity_rotation.ActivityRotation
@@ -20,16 +20,14 @@ import com.toolmvplibrary.activity_root.ItemClick
 import com.toolmvplibrary.tool_app.LogUtil
 import com.toolmvplibrary.view.DialogListener
 import com.toolmvplibrary.view.DialogStyleMy
-import kotlinx.android.synthetic.main.activity_image_main.*
 import java.util.*
-
 class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
     override fun setCutLayout(): Int {
         return R.layout.activity_image_main
     }
-
+    var recyclerViewMainFra:RecyclerView?=null
     override fun initView() {
-
+        recyclerViewMainFra=findViewById(R.id.recyclerViewMainFra)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -41,8 +39,6 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
     var dataList = ArrayList<ItemMain>()
     lateinit var adapter: AdapterHomeFra
     override fun initData() {
-
-
         if (ContextCompat.checkSelfPermission(
                 context,
                 Manifest.permission.READ_EXTERNAL_STORAGE
@@ -108,9 +104,9 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
             }
         })
 
-        recyclerViewMainFra.layoutManager =
+        recyclerViewMainFra?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-        recyclerViewMainFra.adapter = adapter
+        recyclerViewMainFra?.adapter = adapter
 
         //设置分隔线
 //        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));

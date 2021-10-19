@@ -11,12 +11,12 @@
 
     <ImageView
         android:id="@+id/changeCamera"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="45dp"
         android:layout_marginRight="16dp"
-        android:src="@mipmap/cameralib_icon_change_camera" />
+        android:src="@mipmap/camera_change" />
 
     <ImageView
         android:id="@+id/cameraClick"

@@ -79,7 +79,7 @@ public class DrawingView extends View {
     private boolean cleanView=false;
     public void cleanView() {
         cleanView=true;
-        if (mPath != null) {
+        if (mPath != null&&getWidth()>0&&getHeight()>0) {
             mBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
             mCanvas = new Canvas(mBitmap);
             invalidate();

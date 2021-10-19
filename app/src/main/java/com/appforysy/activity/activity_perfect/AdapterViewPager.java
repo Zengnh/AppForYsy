@@ -17,8 +17,11 @@ import com.appforysy.activity.activity_login.ActivityLogin;
 import com.appforysy.activity.draw_line.ActivityDrawVeiw;
 import com.cameralib.ActivityCameraDemo;
 import com.cameralib.ActivityCamrea;
-import com.cameralib.selectimg.ActivityLocalImageList;
+import com.medialib.ActivityVideoTrim;
+import com.mlq.course.activity_mlq.ActivityMLQCollege;
 import com.mykotlin.activity.activity_music.ActivityMusic;
+import com.photolib.selectpic.ActivityLocalImageList;
+import com.photolib.selectpic.ToolToSelectPic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +48,50 @@ public class AdapterViewPager extends PagerAdapter {
         for (int i = 0; i < title.length; i++) {
             List<ItemPagerContent> content = new ArrayList<>();
             if (i == 0) {
+                ItemPagerContent mlqApp = new ItemPagerContent();
+                mlqApp.icon = R.mipmap.ic_launcher_mlq;
+                mlqApp.itemName = "沐林茜学院";
+                mlqApp.nextClass = ActivityMLQCollege.class;
+                content.add(mlqApp);
+                ItemPagerContent itemCamera = new ItemPagerContent();
+                itemCamera.icon = R.mipmap.ic_lunacher_camera;
+                itemCamera.itemName = "拍照";
+                itemCamera.nextClass = ActivityCamrea.class;
+                content.add(itemCamera);
+
+                ItemPagerContent destory = new ItemPagerContent();
+                destory.icon = R.mipmap.icon_select_app;
+                destory.itemName = "选择图片/视频";
+                destory.nextClass = ActivityLocalImageList.class;
+                ToolToSelectPic.create().setLitmitPic(9);
+                content.add(destory);
+
+
+            } else if (i == 1) {
+                ItemPagerContent itemCamera = new ItemPagerContent();
+                itemCamera.icon = R.mipmap.ic_lunacher_camera;
+                itemCamera.itemName = "拍照";
+                itemCamera.nextClass = ActivityCameraDemo.class;
+                content.add(itemCamera);
+
+
+                ItemPagerContent delete = new ItemPagerContent();
+                delete.icon = R.mipmap.icon_red_delete;
+                delete.itemName = "删除";
+                content.add(delete);
+
+                ItemPagerContent edit = new ItemPagerContent();
+                edit.icon = R.mipmap.icon_red_cut;
+                edit.itemName = "编辑";
+                edit.nextClass = ActivityNotiEdit.class;
+                content.add(edit);
+
+                ItemPagerContent search = new ItemPagerContent();
+                search.icon = R.mipmap.icon_red_search;
+                search.itemName = "视频编辑";
+                search.nextClass = ActivityVideoTrim.class;
+                content.add(search);
+
                 ItemPagerContent item = new ItemPagerContent();
                 item.icon = R.mipmap.icon_red_start;
                 item.itemName = "教案";
@@ -75,35 +122,7 @@ public class AdapterViewPager extends PagerAdapter {
                 item5.itemName = "标记";
                 item5.nextClass = ActivityDrawVeiw.class;
                 content.add(item5);
-            } else if (i == 1) {
-                ItemPagerContent item5 = new ItemPagerContent();
-                item5.icon = R.mipmap.icon_red_add;
-                item5.itemName = "拍照";
-                item5.nextClass = ActivityCamrea.class;
-                content.add(item5);
 
-                ItemPagerContent destory = new ItemPagerContent();
-                destory.icon = R.mipmap.icon_red_distory;
-                destory.itemName = "文件夹";
-                destory.nextClass = ActivityLocalImageList.class;
-                content.add(destory);
-
-
-                ItemPagerContent delete = new ItemPagerContent();
-                delete.icon = R.mipmap.icon_red_delete;
-                delete.itemName = "删除";
-                content.add(delete);
-
-                ItemPagerContent edit = new ItemPagerContent();
-                edit.icon = R.mipmap.icon_red_cut;
-                edit.itemName = "编辑";
-                edit.nextClass = ActivityNotiEdit.class;
-                content.add(edit);
-
-                ItemPagerContent search = new ItemPagerContent();
-                search.icon = R.mipmap.icon_red_search;
-                search.itemName = "搜索";
-                content.add(search);
 
             } else if (i == 2) {
                 ItemPagerContent set = new ItemPagerContent();

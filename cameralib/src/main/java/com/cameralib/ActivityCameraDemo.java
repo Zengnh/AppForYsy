@@ -24,12 +24,15 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.cameralib.camera.CameraManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -69,14 +72,17 @@ public class ActivityCameraDemo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setStatusBar();
         setContentView(R.layout.activity_camera_demo);
-        initView();
         rootPath = Environment.getExternalStorageDirectory().getPath() + File.separator + "cameradir";
         File file = new File(rootPath);
         if (!file.exists()) {
             file.mkdirs();
         }
+        initView();
+        cameraManager = new CameraManager(getApplication());
         initEvent();
     }
+
+    private long timeIsCamera = 500;
 
     private void initEvent() {
 //        takePhoto.setOnClickListener(new View.OnClickListener() {
@@ -91,25 +97,26 @@ public class ActivityCameraDemo extends AppCompatActivity {
         takePhoto.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-
                 switch (motionEvent.getAction()) {
-
-
                     case MotionEvent.ACTION_DOWN:
                         touchTime = System.currentTimeMillis();
                         handlerRecord.removeMessages(0);
-                        handlerRecord.sendEmptyMessageDelayed(0, 1000);
-//                        Log.i("znh","############################");
+                        handlerRecord.sendEmptyMessageDelayed(0, timeIsCamera);
+                        Log.i("znh", "#####ActionDown");
                         break;
                     case MotionEvent.ACTION_UP:
-//                        Log.i("znh","@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                        handlerRecord.removeMessages(0);
+                        Log.i("znh", "#####ActionUP");
                         long touchTimeCount = System.currentTimeMillis() - touchTime;
-                        if (touchTimeCount < 1000) {
+                        if (touchTimeCount < timeIsCamera) {
 //                            拍照
+                            handlerRecord.removeMessages(0);
+                            progressBar.setVisibility(View.VISIBLE);
+
+
                             takePictu();
                         } else {
 //                         录屏停止
+                            handlerRecord.removeMessages(0);
                             handlerRecord.sendEmptyMessage(1);
                         }
                         break;
@@ -117,7 +124,56 @@ public class ActivityCameraDemo extends AppCompatActivity {
                 return true;
             }
         });
+
+        changeCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (camera != null) {
+                    camera.stopPreview();
+                    camera.release();
+                    camera = null;
+                }
+                isBalck = !isBalck;
+                openCamera();
+            }
+        });
+
     }
+
+    private void openCamera() {
+        int cameraid;
+        if (isBalck) {
+            cameraid = getCameraBId();
+        } else {
+            cameraid = getCameraPId();
+        }
+        camera = Camera.open(cameraid);
+        if (camera != null) {
+            if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
+                camera.setDisplayOrientation(90);
+            } else {
+                camera.setDisplayOrientation(0);
+            }
+        }
+        if (vX!=0) {
+            Camera.Parameters parameters = camera.getParameters();
+            parameters.setPreviewSize(vX, vY);
+            List<Camera.Size> vSizeList = parameters.getSupportedPictureSizes();
+            for (int num = 0; num < vSizeList.size(); num++) {
+                Camera.Size vSize = vSizeList.get(num);
+            }
+        }
+        try {
+            camera.setPreviewDisplay(surfaceView.getHolder());
+            camera.startPreview();
+        } catch (IOException e) {
+            e.printStackTrace();
+            camera.release();
+            camera = null;
+        }
+    }
+
+
 
     private Handler handlerRecord = new Handler() {
         @Override
@@ -167,10 +223,17 @@ public class ActivityCameraDemo extends AppCompatActivity {
 
     private SurfaceView surfaceView;
     private Camera camera;
+
+    private CameraManager cameraManager;
+
     private ImageView takePhoto;
     private TextView textView;
+    private ProgressBar progressBar;
+    private ImageView changeCamera;
 
     private void initView() {
+        changeCamera = findViewById(R.id.changeCamera);
+        progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.textView);
         surfaceView = findViewById(R.id.surfaceView);
         takePhoto = findViewById(R.id.takePhoto);
@@ -188,14 +251,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
             @Override
             public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
 //                    打开摄像头
-                int cameraid;
-                isBalck = true;
-                if (isBalck) {
-                    cameraid = getCameraBId();
-                } else {
-                    cameraid = getCameraPId();
-                }
-                camera = Camera.open(cameraid);
+                openCamera();
             }
 
             @Override
@@ -203,39 +259,13 @@ public class ActivityCameraDemo extends AppCompatActivity {
 //已经获得Surface的width和height，设置Camera的参数
                 vX = w;
                 vY = h;
-                Camera.Parameters parameters = camera.getParameters();
-                parameters.setPreviewSize(w, h);
-                List<Camera.Size> vSizeList = parameters.getSupportedPictureSizes();
-
-                for (int num = 0; num < vSizeList.size(); num++) {
-                    Camera.Size vSize = vSizeList.get(num);
-                }
                 if (camera != null) {
-                    if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
-                        camera.setDisplayOrientation(90);
-                    } else {
-                        camera.setDisplayOrientation(0);
+                    Camera.Parameters parameters = camera.getParameters();
+                    parameters.setPreviewSize(vX, vY);
+                    List<Camera.Size> vSizeList = parameters.getSupportedPictureSizes();
+                    for (int num = 0; num < vSizeList.size(); num++) {
+                        Camera.Size vSize = vSizeList.get(num);
                     }
-                }
-                try {
-                    camera.setPreviewDisplay(surfaceHolder);
-//                    Camera.Parameters paramets=camera.getParameters();
-//                    paramets.
-//                    camera.setDisplayOrientation(90);
-//                    camera.setParameters();
-//                    if (isBalck) {
-//                    } else {
-//                        //前置摄像头 设置左右旋转
-//                        Camera.Parameters mParameters = camera.getParameters();
-//                        mParameters.setRotation(270);
-//                        camera.setParameters(mParameters);
-//                    }
-
-                    camera.startPreview();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    camera.release();
-                    camera = null;
                 }
 
             }
@@ -280,41 +310,56 @@ public class ActivityCameraDemo extends AppCompatActivity {
         return index;
     }
 
-    private int vX, vY;
-    private boolean isBalck = true;
+    private int vX=0, vY=0;
+    private boolean isBalck = false;
 
     public void takePictu() {
-        camera.takePicture(null, null, null, new Camera.PictureCallback() {
+        Log.i("znh", "#####takePicture");
+        new Thread(new Runnable() {
             @Override
-            public void onPictureTaken(byte[] bytes, Camera camera) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                Bitmap bitmapTemp;
-                if (isBalck) {
-                    bitmapTemp = rotaingImageView(90, bitmap);//后摄像头
-                } else {
-                    bitmapTemp = rotaingImageView(-90, bitmap);//后摄像头
-                }
-                String filePath = rootPath + File.separator + System.currentTimeMillis() + ".jpg";
-                File fileImg = new File(filePath);
-                try {
-                    if (!fileImg.exists()) {
-                        fileImg.createNewFile();
-                    }
-                    FileOutputStream fos = new FileOutputStream(fileImg);
+            public void run() {
+                camera.takePicture(null, null, null, new Camera.PictureCallback() {
+                    @Override
+                    public void onPictureTaken(byte[] bytes, Camera camera) {
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        Bitmap bitmapTemp;
+                        if (isBalck) {
+                            bitmapTemp = rotaingImageView(90, bitmap);//后摄像头
+                        } else {
+                            bitmapTemp = rotaingImageView(-90, bitmap);//后摄像头
+                        }
+                        String filePath = rootPath + File.separator + System.currentTimeMillis() + ".jpg";
+                        File fileImg = new File(filePath);
+                        try {
+                            if (!fileImg.exists()) {
+                                fileImg.createNewFile();
+                            }
+                            FileOutputStream fos = new FileOutputStream(fileImg);
 //                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                    bitmapTemp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                    fos.flush();
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                ActivityCameraResult.startToResult(ActivityCameraDemo.this, filePath);
-                finish();
+                            bitmapTemp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                            fos.flush();
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ActivityCameraResult.startToResult(ActivityCameraDemo.this, filePath);
+                                finish();
+                            }
+                        });
+
+
 //                int tempx = bitmapTemp.getWidth();
 //                int tempy = bitmapTemp.getHeight();
 //                imageView.setImageBitmap(bitmapTemp);
+                    }
+                });
             }
-        });
+        }).run();
+
+
     }
 
     public Bitmap rotaingImageView(int angle, Bitmap bitmap) {

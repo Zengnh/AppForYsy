@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="video_shoot_tip">拖动选择你要发表的%d秒以内片段！</string>
+    <string name="tip_video_trim_error">裁剪失败</string>
+    <string name="video_duration_limit">不能分享超过5分钟的视频</string>
+    <string name="video_size_limit">不能分享超过1G的视频</string>
+    <string name="tip_video_too_small_limit">视频是大家认识你的重要方式，太短的视频效果会很差哦</string>
+    <string name="tip_trim_error">裁剪失败~</string>
+</resources>

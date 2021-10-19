@@ -13,15 +13,35 @@
         android:id="@+id/takePhoto"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="#ffffff"
-        android:layout_gravity="bottom|center_horizontal" />
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/cameralib_item_click_camera" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="75dp"
         android:background="#00000066"
         android:textColor="#ffffff"
-        android:textSize="16dp"
-        android:layout_height="wrap_content"/>
+        android:textSize="16dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/changeCamera"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="16dp"
+        android:src="@mipmap/camera_change" />
+
 </FrameLayout>

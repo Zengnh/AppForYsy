@@ -39,7 +39,7 @@ public class ActivityPerfect extends ActivityRoot {
     private LinearLayoutManager linearLayoutManager;
 
     private TabLayout tabayView;
-    private String[] title = {"教程", "简介", "我的"};
+    private String[] title = {"App", "Demo", "我的"};
     private AdapterViewPager adapterViewPager;
 
     List<ItemPagerContent> listData=new ArrayList<>();
