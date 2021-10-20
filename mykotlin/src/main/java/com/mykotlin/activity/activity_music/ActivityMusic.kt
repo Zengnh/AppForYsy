@@ -6,17 +6,18 @@ import com.mykotlin.R
 import com.mykotlin.activity.activity_music.fragment.Fragment1234
 import com.mykotlin.activity.activity_music.fragment.FragmentABCD
 import com.mykotlin.activity.activity_music.fragment.FragmentDoReMi
+import com.mykotlin.databinding.ActivityMusicBinding
 import com.toolmvplibrary.activity_root.ActivityRoot
-import kotlinx.android.synthetic.main.activity_music.*
-
 class ActivityMusic : ActivityRoot<PresenterMusic>() {
     override fun setPresenter(): PresenterMusic {
         return PresenterMusic()
     }
-
+    lateinit var binding: ActivityMusicBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_music)
+        binding= ActivityMusicBinding.inflate(layoutInflater)
+//        setContentView(R.layout.activity_music)
+        setContentView(binding.root)
         initView()
         initEvent()
         initData()
@@ -58,17 +59,17 @@ class ActivityMusic : ActivityRoot<PresenterMusic>() {
     private fun initView() {
         val xiaoxinxin =
             "1 1 5 5 6 6 5 -- 4 4 3 3 2 2 1 -- 5 5 4 4 3 3 2 -- 5 5 4 4 3 3 2 -- 1 1 5 5 6 6 4 -- 4 4 3 3 2 2 1 --"
-        musicContent.setText(xiaoxinxin)
+        binding.musicContent.setText(xiaoxinxin)
 //        tabayView.title
         for (i in title.indices) {
-            tabayView.addTab(tabayView.newTab())
-            tabayView.getTabAt(i)?.setText(title[i])
+            binding.tabayView.addTab(binding.tabayView.newTab())
+            binding.tabayView.getTabAt(i)?.setText(title[i])
             if (i == 2) {
-                tabayView.getTabAt(i)?.select()
+                binding.tabayView.getTabAt(i)?.select()
             }
         }
 
-        tabayView.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        binding.tabayView.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val str = tab?.text
                 if (str != null) {

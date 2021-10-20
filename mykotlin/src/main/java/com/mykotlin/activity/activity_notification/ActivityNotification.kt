@@ -1,27 +1,42 @@
 package com.mykotlin.activity.activity_notification
-
 import android.os.Bundle
-import com.mykotlin.R
-import com.mykotlin.activity.BaseActivity
-import com.mykotlin.utils.ToolKtNotiManager
-import kotlinx.android.synthetic.main.activity_kt_notification.*
+import androidx.lifecycle.ViewModelProvider
 
+import com.mykotlin.activity.BaseActivity
+import com.mykotlin.databinding.ActivityKtNotificationBinding
+import com.mykotlin.utils.ToolKtNotiManager
 class ActivityNotification :BaseActivity() {
+    private lateinit var binding:ActivityKtNotificationBinding
+
+    private lateinit var viewModel: NotificationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_kt_notification)
+        binding=ActivityKtNotificationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        viewModel= ViewModelProvider(this).get(NotificationViewModel::class.java)
+
+//        setContentView(R.layout.activity_kt_notification)
         initEvent()
+        initData()
     }
 
-    private fun initEvent() {
-        btn1.setOnClickListener {
-            ToolKtNotiManager.instance.createSimple(this)
+    private fun initData() {
+//        viewModel.text.observe(this,object:Observer<String>{
+//            override fun onChanged(t: String?) {
+////                text数据变更了
+//            }
+//        })
+    }
 
+
+    private fun initEvent() {
+        binding.btn1.setOnClickListener {
+            ToolKtNotiManager.instance.createSimple(this)
         }
-        btn2.setOnClickListener {  }
-        btn3.setOnClickListener {  }
-        btn4.setOnClickListener {  }
-        btn5.setOnClickListener {ToolKtNotiManager.instance.toSetNoti(this) }
+        binding.btn2.setOnClickListener {  }
+        binding.btn3.setOnClickListener {  }
+        binding.btn4.setOnClickListener {  }
+        binding.btn5.setOnClickListener {ToolKtNotiManager.instance.toSetNoti(this) }
     }
 }
