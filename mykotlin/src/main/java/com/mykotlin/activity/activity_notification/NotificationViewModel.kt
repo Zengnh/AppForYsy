@@ -5,5 +5,5 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class NotificationViewModel : ViewModel() {
-//    val text: LiveData<String> =MutableLiveData<String>()
+    var text=MutableLiveData<String>()
 }

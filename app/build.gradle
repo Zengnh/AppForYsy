@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-//apply plugin:'kotlin-android-extensions'
+apply plugin:'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -23,9 +23,9 @@ android {
         resConfigs "en", "zh-rCN"//, "需要支持的其他语言"
 
     }
-    buildFeatures {
-        viewBinding true
-    }
+//    buildFeatures {
+//        viewBinding true
+//    }
 
 //    android.applicationVariants.all { variant ->
 //        variant.outputs.all {

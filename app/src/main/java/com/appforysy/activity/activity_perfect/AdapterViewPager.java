@@ -20,6 +20,7 @@ import com.cameralib.ActivityCamrea;
 import com.medialib.ActivityVideoTrim;
 import com.mlq.course.activity_mlq.ActivityMLQCollege;
 import com.mykotlin.activity.activity_music.ActivityMusic;
+import com.mykotlin.activity.activity_notification.ActivityNotification;
 import com.photolib.selectpic.ActivityLocalImageList;
 import com.photolib.selectpic.ToolToSelectPic;
 
@@ -128,6 +129,7 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent set = new ItemPagerContent();
                 set.icon = R.mipmap.icon_red_set;
                 set.itemName = "设置";
+                set.nextClass= ActivityNotification.class;
                 content.add(set);
 
 //                ItemPagerContent home = new ItemPagerContent();
