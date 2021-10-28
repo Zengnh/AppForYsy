@@ -13,7 +13,9 @@
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/drawable/bg_while_line_round.xml" value="0.12777777777777777" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/drawable/btn_blue_round.xml" value="0.27395833333333336" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/drawable/btn_red_round.xml" value="0.27395833333333336" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_intruct.xml" value="0.24010416666666667" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_main_anim.xml" value="0.22916666666666666" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_mlq_college.xml" value="0.21979166666666666" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_mlq_course_detail.xml" value="0.14947916666666666" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_mlq_course_list.xml" value="0.234375" />
@@ -51,6 +53,7 @@
         <entry key="..\:/work_jsyl/code/AppForYsy/mlq_course/src/main/res/layout/item_mly_teacher.xml" value="0.28125" />
         <entry key="..\:/work_jsyl/code/AppForYsy/mlq_course/src/main/res/layout/item_mly_title.xml" value="0.28125" />
         <entry key="..\:/work_jsyl/code/AppForYsy/mlq_course/src/main/res/layout/item_mlydetail_teacher.xml" value="0.32019927536231885" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/mykotlin/src/main/res/layout/activity_bluetouch.xml" value="0.28020833333333334" />
         <entry key="..\:/work_jsyl/code/AppForYsy/photo_media/src/main/res/drawable/shape_20dp_blue.xml" value="0.3128205128205128" />
         <entry key="..\:/work_jsyl/code/AppForYsy/photo_media/src/main/res/drawable/shape_3dp_red.xml" value="0.3128205128205128" />
         <entry key="..\:/work_jsyl/code/AppForYsy/photo_media/src/main/res/drawable/shape_3dp_white.xml" value="0.3128205128205128" />

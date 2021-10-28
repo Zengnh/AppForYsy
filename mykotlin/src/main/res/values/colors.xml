@@ -9,7 +9,7 @@
     <color name="line_blue">#30067dff</color>
     <color name="color_blue">#3298FE</color>
     <color name="color_1e">#1E1E1E</color>
-
+    <color name="color_1e_bg">#991E1E1E</color>
 <!--    登录-->
     <color name="btn_enable_true">#3298FE</color>
     <color name="btn_enable_false">#323298FE</color>

@@ -14,7 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.mykotlin.R;
-import com.mykotlin.activity.activity_bubble.BluetouchActivity;
+import com.mykotlin.activity.activity_bluetouch.BluetouchActivity;
 
 public class ToolJavaNotiManager {
     private String channel_id = "channel_id";

@@ -37,8 +37,11 @@ public class ToolOkHttp {
                 .url(url)
                 .post(body)
                 .build();
+        client.retryOnConnectionFailure();
         try (Response response = client.newCall(request).execute()) {
             return response.body().string();
+        }catch (Exception e){
+            return e.getMessage().toString();
         }
     }
 

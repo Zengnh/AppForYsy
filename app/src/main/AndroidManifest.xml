@@ -77,6 +77,11 @@
             tools:ignore="Instantiatable">
 
         </activity>
+ <activity
+            android:name=".activity.activity_anim.ActivityMainAnim"
+            tools:ignore="Instantiatable">
+
+        </activity>
 
 
         <activity

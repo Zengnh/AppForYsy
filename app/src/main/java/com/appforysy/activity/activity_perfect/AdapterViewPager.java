@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.appforysy.R;
+import com.appforysy.activity.activity_anim.ActivityMainAnim;
 import com.appforysy.activity.activity_banner.ActivityBanner;
+import com.appforysy.activity.activity_detail.Activity_Detail;
 import com.appforysy.activity.activity_edt_note.ActivityNotiEdit;
 import com.appforysy.activity.activity_guide.ActivityGuide;
 import com.appforysy.activity.activity_intruct.ActivityIntruct;
@@ -19,6 +21,8 @@ import com.cameralib.ActivityCameraDemo;
 import com.cameralib.ActivityCamrea;
 import com.medialib.ActivityVideoTrim;
 import com.mlq.course.activity_mlq.ActivityMLQCollege;
+import com.mykotlin.activity.activity_bluetouch.ActivityBluetooth;
+import com.mykotlin.activity.activity_bluetouch.BluetouchActivity;
 import com.mykotlin.activity.activity_music.ActivityMusic;
 import com.mykotlin.activity.activity_notification.ActivityNotification;
 import com.photolib.selectpic.ActivityLocalImageList;
@@ -129,7 +133,7 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent set = new ItemPagerContent();
                 set.icon = R.mipmap.icon_red_set;
                 set.itemName = "设置";
-                set.nextClass= ActivityNotification.class;
+                set.nextClass = ActivityNotification.class;
                 content.add(set);
 
 //                ItemPagerContent home = new ItemPagerContent();
@@ -140,11 +144,13 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent safe = new ItemPagerContent();
                 safe.icon = R.mipmap.icon_red_save;
                 safe.itemName = "安全";
+                safe.nextClass = ActivityMainAnim.class;
                 content.add(safe);
+
                 ItemPagerContent wifi = new ItemPagerContent();
                 wifi.icon = R.mipmap.icon_red_wifi;
-                wifi.itemName = "WIFI";
-
+                wifi.itemName = "WIFI_SOCKET";
+                wifi.nextClass = Activity_Detail.class;
                 content.add(wifi);
 
                 ItemPagerContent voice = new ItemPagerContent();
@@ -159,16 +165,23 @@ public class AdapterViewPager extends PagerAdapter {
                 help.nextClass = ActivityGuide.class;
                 content.add(help);
 
+                ItemPagerContent left = new ItemPagerContent();
+                left.icon = R.mipmap.icon_red_toleft;
+                left.itemName = "转向";
+                left.nextClass = ActivityBluetooth.class;
+
+                ItemPagerContent star = new ItemPagerContent();
+                star.icon = R.mipmap.icon_red_start;
+                star.itemName = "星星";
+                star.nextClass = BluetouchActivity.class;
+                content.add(star);
+                content.add(left);
             } else {
                 ItemPagerContent star = new ItemPagerContent();
                 star.icon = R.mipmap.icon_red_start;
                 star.itemName = "星星";
                 content.add(star);
-                ItemPagerContent left = new ItemPagerContent();
-                left.icon = R.mipmap.icon_red_toleft;
-                left.itemName = "转向";
 
-                content.add(left);
             }
             listContent.add(content);
         }

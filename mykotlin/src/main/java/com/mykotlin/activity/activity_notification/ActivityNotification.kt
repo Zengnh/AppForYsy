@@ -1,6 +1,10 @@
 package com.mykotlin.activity.activity_notification
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.animation.DecelerateInterpolator
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mykotlin.R
@@ -21,9 +25,11 @@ class ActivityNotification :BaseActivity() {
         viewModel= ViewModelProvider(this).get(NotificationViewModel::class.java)
 
 //        setContentView(R.layout.activity_kt_notification)
+
         initEvent()
         initData()
     }
+
 
     private fun initData() {
         viewModel.text.observe(this,object: Observer<String> {
@@ -44,8 +50,12 @@ class ActivityNotification :BaseActivity() {
 
             viewModel.text.value="2222"
         }
-        binding.btn3.setOnClickListener {  }
-        binding.btn4.setOnClickListener {  }
+        binding.openLeftlayout.setOnClickListener {
+
+            binding.drawerlayout.openDrawer(binding.leftLayout)
+        }
+        binding.drawerlayout.setScrimColor(0x660000ff)
+        binding.btn4.setOnClickListener {   }
         binding.btn5.setOnClickListener {ToolKtNotiManager.instance.toSetNoti(this) }
     }
 }
