@@ -126,6 +126,7 @@ dependencies {
     implementation project(path: ':cameralib')
     implementation project(path: ':photolib')
     implementation project(path: ':medialib')
+    implementation project(path: ':zxinglib')
     if (isNeedMyKotlin.toBoolean()) {
         implementation project(path: ':mykotlin')
     }

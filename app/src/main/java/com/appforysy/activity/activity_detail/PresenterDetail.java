@@ -27,7 +27,8 @@ public class PresenterDetail extends RootPresenter {
             public void run() {
                 if (socket != null && socket.isConnected()) {
                     try {
-                      out.println(str.getBytes("GBK"));
+//                      out.println(str.getBytes("GBK"));
+                      out.println(str);
 
 //                        String line = in.readLine();
 //                        Log.i("znh", "得到数据：" + line);

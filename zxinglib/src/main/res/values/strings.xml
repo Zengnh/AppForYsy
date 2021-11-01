@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="viewfinderview_status_text1" translatable="false">将二维码/条码放入框内,即可自动扫描</string>
+    <string name="viewfinderview_status_text2" translatable="false">即可自动扫描</string>
+
+    <string name="app_name">zxing</string>
+    <string name="button_ok" translatable="false">我知道了</string>
+    <string name="msg_camera_framework_bug" translatable="false">err</string>
+    <string name="myIdcard">我的名片</string>
+</resources>

@@ -27,6 +27,7 @@ import com.mykotlin.activity.activity_music.ActivityMusic;
 import com.mykotlin.activity.activity_notification.ActivityNotification;
 import com.photolib.selectpic.ActivityLocalImageList;
 import com.photolib.selectpic.ToolToSelectPic;
+import com.zxinglib.ActivityZXingMain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +79,11 @@ public class AdapterViewPager extends PagerAdapter {
                 itemCamera.itemName = "拍照";
                 itemCamera.nextClass = ActivityCameraDemo.class;
                 content.add(itemCamera);
+                ItemPagerContent itemCameraScreen = new ItemPagerContent();
+                itemCameraScreen.icon = R.mipmap.ic_lunacher_camera;
+                itemCameraScreen.itemName = "Screen";
+                itemCameraScreen.nextClass = ActivityZXingMain.class;
+                content.add(itemCameraScreen);
 
 
                 ItemPagerContent delete = new ItemPagerContent();

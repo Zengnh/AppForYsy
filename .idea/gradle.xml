@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/photolib" />
             <option value="$PROJECT_DIR$/rootlibs" />
             <option value="$PROJECT_DIR$/toolmvplibrary" />
+            <option value="$PROJECT_DIR$/zxinglib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
