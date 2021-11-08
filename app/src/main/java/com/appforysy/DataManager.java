@@ -16,7 +16,7 @@ public class DataManager implements RootModel {
                 ToolThreadPool.getInstance().exeRunable(new Runnable() {
                     @Override
                     public void run() {
-                        ToolOkHttp okManager=new ToolOkHttp();
+                        ToolOkHttp okManager=ToolOkHttp.getInstance();
                         try {
                           String result=okManager.post("http://192.168.3.100:10000","110");
 //                          String result=okManager.post("http://oies-api.jsyledu.cc:8099/oies/api/v1/student/goods/list","");
@@ -24,7 +24,6 @@ public class DataManager implements RootModel {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-
                                     callBack.result(name+"-----"+pwd);
                                 }
                             },2000);

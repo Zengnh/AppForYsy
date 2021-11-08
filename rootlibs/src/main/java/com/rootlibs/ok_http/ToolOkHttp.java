@@ -25,29 +25,31 @@ import okhttp3.Response;
 //https://github.com/square/okhttp
 //implementation("com.squareup.okhttp3:okhttp:4.8.1")
 public class ToolOkHttp {
+    private OkHttpClient okHttpClient;
+
+    private ToolOkHttp() {
+//        okHttpClient = new OkHttpClient();
+        okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(15000, TimeUnit.MINUTES)
+                .build();
+    }
+
+    private static ToolOkHttp instance;
+
+    public static ToolOkHttp getInstance() {
+        if (instance == null) {
+            synchronized (ToolOkHttp.class) {
+                if (instance == null) {
+                    instance = new ToolOkHttp();
+                }
+            }
+        }
+        return instance;
+    }
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    private OkHttpClient client = new OkHttpClient();
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public String post(String url, String json) throws IOException {
-        RequestBody body = RequestBody.create(json, JSON);
-        Request request = new Request.Builder()
-                .url(url)
-                .post(body)
-                .build();
-        client.retryOnConnectionFailure();
-        try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
-        }catch (Exception e){
-            return e.getMessage().toString();
-        }
-    }
-
-    public void reqStart(PackSend send) {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        RequestBody body = null;
+    public void reqStart(PackSend send, InterFaceOkHttp interFace) {
 
         MultipartBody.Builder builder = new MultipartBody.Builder();
         builder.setType(MultipartBody.FORM);
@@ -68,9 +70,7 @@ public class ToolOkHttp {
                 }
             }
         }
-//        LogUtil.i("UP file (" + send.url+ " )" + map.toString());
-//        String sign="";
-        body = builder.build();
+        RequestBody body = builder.build();
         Request request = new Request.Builder()
                 .url(send.url)
                 .addHeader("token", send.token)
@@ -84,28 +84,38 @@ public class ToolOkHttp {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(okhttp3.Call call, IOException e) {
-//                pDown.code = -1;
-//                pDown.errStr = ApplicationWork.netNotUser;
-//                handler.sendEmptyMessage(0);
+                interFace.result(-1, e.getMessage());
+                Log.i("znh","#req onFailure="+e.getMessage());
             }
 
             @Override
             public void onResponse(okhttp3.Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    String string = response.body().string();
-//                    pDown.fitParent(string);
-//                    handler.sendEmptyMessage(0);
-//                    LogUtil.i("znh", "http result(" + packHttpUp.getUrl() + ")  " + string);
+                    String content = response.body().string();
+                    Log.i("znh","#req srcc="+content);
+                    interFace.result(0, content);
                 } else {
-//                    pDown.code = -1;
-//                    pDown.errStr = ApplicationWork.netdataerr;
-//                    LogUtil.i("znh", " 链接异常： " + response.message());
-//                    handler.sendEmptyMessage(0);
+                    Log.i("znh","#req err="+response.code());
+                    interFace.result(response.code(), response.message());
                 }
             }
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public String post(String url, String json) throws IOException {
+        RequestBody body = RequestBody.create(json, JSON);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        okHttpClient.retryOnConnectionFailure();
+        try (Response response = okHttpClient.newCall(request).execute()) {
+            return response.body().string();
+        } catch (Exception e) {
+            return e.getMessage().toString();
+        }
+    }
 
     public void initHttp() {
         //  构建okHttpClient，相当于请求的客户端，Builder设计模式

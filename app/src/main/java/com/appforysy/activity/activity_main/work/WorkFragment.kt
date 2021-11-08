@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.*
 import android.view.LayoutInflater
@@ -243,5 +244,54 @@ class WorkFragment : Fragment() {
         textviewline.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG)
         textviewline.setText("shshhshhshs")
 
+    }
+    fun mianShow(){
+        val content = "getString(R.string.protocolAgree_info)getString(R.string.protocolAgree_info)getString(R.string.protocolAgree_info)"
+
+        var sprint = SpannableString(content)
+
+        sprint.setSpan(object : ClickableSpan() {
+            override fun onClick(view: View) {
+
+            }
+            override fun updateDrawState(ds: TextPaint) {
+//                super.updateDrawState(ds)
+                ds.setUnderlineText(false);
+            }
+        }, 18, 24, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+
+        sprint.setSpan(
+            ForegroundColorSpan(resources.getColor(R.color.color_1e)),
+            18,
+            24,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        sprint.setSpan(object : ClickableSpan() {
+            override fun onClick(view: View) {
+            }
+            override fun updateDrawState(ds: TextPaint) {
+//                super.updateDrawState(ds)
+                ds.setUnderlineText(false);
+            }
+        }, 25, 33, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+
+        sprint.setSpan(
+            ForegroundColorSpan(resources.getColor(R.color.color_1e)),
+            25,
+            33,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        ) // 设置前景色为洋红色
+
+
+        // 在使用SpannableString对象时要注意
+        // Spanned.SPAN_EXCLUSIVE_EXCLUSIVE等的作用：
+        // 用来标识在 Span 范围内的文本前后输入新的字符时是否把它们也应用这个效果。分别有
+        // Spanned.SPAN_EXCLUSIVE_EXCLUSIVE(前后都不包括)、Spanned.SPAN_INCLUSIVE_EXCLUSIVE(前面包括，后面不包括)、Spanned.SPAN_EXCLUSIVE_INCLUSIVE(前面不包括，后面包括)、Spanned.SPAN_INCLUSIVE_INCLUSIVE(前后都包括)。
+
+        //下划线处理文字
+//        textInfo.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG)
+        textview.setMovementMethod(LinkMovementMethod.getInstance())
+        textview.setText(sprint)
     }
 }
