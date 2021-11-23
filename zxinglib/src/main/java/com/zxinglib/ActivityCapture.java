@@ -191,7 +191,6 @@ public final class ActivityCapture extends AppCompatActivity implements SurfaceH
     private boolean isOpen = false;
     private Camera camera;
     private Camera.Parameters params;
-
     //开闪光灯
     private void openLight() {
         try {
@@ -205,7 +204,6 @@ public final class ActivityCapture extends AppCompatActivity implements SurfaceH
             e.printStackTrace();
         }
     }
-
     //关闪光灯
     private void closeLight() {
         if (params != null) {
@@ -214,15 +212,12 @@ public final class ActivityCapture extends AppCompatActivity implements SurfaceH
         }
         isOpen = false;
     }
-
     public static void ToCapture(Fragment act,int reqCode) {
         Intent intent = new Intent(act.getContext(), ActivityCapture.class);
-//        intent.putExtra("type", type);
         act.startActivityForResult(intent, reqCode);
     }
     public static void ToCapture(Activity act, String type, int reqCode) {
         Intent intent = new Intent(act, ActivityCapture.class);
-//        intent.putExtra("type", type);
         act.startActivityForResult(intent, reqCode);
     }
 
@@ -315,8 +310,7 @@ public final class ActivityCapture extends AppCompatActivity implements SurfaceH
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width,
-                               int height) {
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
     }
 
