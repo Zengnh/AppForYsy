@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Bluelight Filter</string>
+
+    <string name="notificationbar">Notification Bar</string>
+    <string name="notificationbarOff">OFF</string>
+    <string name="notificationbarOn">ON</string>
+    <string name="intensity">Intensity</string>
+    <string name="screenDim">Screen Dim</string>
+    <string name="colorTemp">Color Temperature</string>
+</resources>

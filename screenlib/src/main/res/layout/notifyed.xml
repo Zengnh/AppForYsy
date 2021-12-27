@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/icon_lunacher"
+            android:layout_width="@dimen/notificationWH"
+            android:layout_height="@dimen/notificationWH"
+            android:background="@mipmap/ic_launcher" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/key_item1"
+            android:layout_width="@dimen/notificationWH"
+            android:layout_height="@dimen/notificationWH"
+            android:background="@mipmap/ic_color_0_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/key_item2"
+            android:layout_width="@dimen/notificationWH"
+            android:layout_height="@dimen/notificationWH"
+            android:background="@mipmap/ic_color_1_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/key_item3"
+            android:layout_width="@dimen/notificationWH"
+            android:layout_height="@dimen/notificationWH"
+            android:background="@mipmap/ic_color_2_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/key_item4"
+            android:layout_width="@dimen/notificationWH"
+            android:layout_height="@dimen/notificationWH"
+            android:background="@mipmap/ic_color_3_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/key_item5"
+            android:layout_width="@dimen/notificationWH"
+            android:layout_height="@dimen/notificationWH"
+            android:background="@mipmap/ic_color_4_normal" />
+    </LinearLayout>
+</LinearLayout>

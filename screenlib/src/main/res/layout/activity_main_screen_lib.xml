@@ -1,0 +1,414 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f4f4">
+
+    <!--setOverScrollMode (int mode)-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:background="#3b404a">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/app_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+                <CheckBox
+                    android:id="@+id/cb_open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/cb_bg"
+                    android:button="@null"
+                    android:checked="true" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/bg_row"
+                android:orientation="vertical"
+                android:padding="@dimen/rowpind">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tx0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colorTemp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_content" />
+
+                    <TextView
+                        android:id="@+id/color_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="3500k"
+                        android:textColor="@color/text_value"
+                        android:textSize="@dimen/text_content_value" />
+                </LinearLayout>
+
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb0"
+                            android:layout_width="@dimen/itemWH"
+                            android:layout_height="@dimen/itemWH"
+                            android:layout_margin="@dimen/itemWHMarg"
+                            android:background="@drawable/rg_item_0"
+                            android:button="@null"
+                            android:checked="true" />
+
+                        <RadioButton
+                            android:id="@+id/rb1"
+                            android:layout_width="@dimen/itemWH"
+                            android:layout_height="@dimen/itemWH"
+                            android:layout_margin="@dimen/itemWHMarg"
+                            android:background="@drawable/rg_item_1"
+                            android:button="@null" />
+
+                        <RadioButton
+                            android:id="@+id/rb2"
+                            android:layout_width="@dimen/itemWH"
+                            android:layout_height="@dimen/itemWH"
+                            android:layout_margin="@dimen/itemWHMarg"
+                            android:background="@drawable/rg_item_2"
+                            android:button="@null" />
+
+                        <RadioButton
+                            android:id="@+id/rb3"
+                            android:layout_width="@dimen/itemWH"
+                            android:layout_height="@dimen/itemWH"
+                            android:layout_margin="@dimen/itemWHMarg"
+                            android:background="@drawable/rg_item_3"
+                            android:button="@null" />
+
+                        <RadioButton
+                            android:id="@+id/rb4"
+                            android:layout_width="@dimen/itemWH"
+                            android:layout_height="@dimen/itemWH"
+                            android:layout_margin="@dimen/itemWHMarg"
+                            android:background="@drawable/rg_item_4"
+                            android:button="@null" />
+
+                        <RadioButton
+                            android:id="@+id/rb5"
+                            android:layout_width="@dimen/itemWH"
+                            android:layout_height="@dimen/itemWH"
+                            android:layout_margin="@dimen/itemWHMarg"
+                            android:background="@drawable/rg_item_5"
+                            android:button="@null" />
+                    </RadioGroup>
+                </HorizontalScrollView>
+                <!--alpha-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/intensity"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_content" />
+
+                    <TextView
+                        android:id="@+id/alph_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="35%"
+                        android:textColor="@color/text_value"
+                        android:textSize="@dimen/text_content_value" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@mipmap/icon_intensity" />
+
+                    <SeekBar
+                        android:id="@+id/alphaControl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:maxHeight="4dp"
+                        android:minHeight="4dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:progressDrawable="@drawable/bg_seekbar_progress_green_bleak"
+                        android:thumb="@mipmap/control_to_pressed" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/bg_row"
+                android:orientation="vertical"
+                android:padding="@dimen/rowpind"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手动调节"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_content" />
+                <!--red-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/redLabel"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Red"
+                        android:textColor="@android:color/black" />
+
+                    <SeekBar
+                        android:id="@+id/redControl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="255"
+                        android:maxHeight="4dp"
+                        android:minHeight="4dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:progressDrawable="@drawable/bg_seekbar_progress_red"
+                        android:thumb="@mipmap/control_to_pressed" />
+
+                </LinearLayout>
+                <!--green-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/greenLabel"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Green"
+                        android:textColor="@android:color/black" />
+
+                    <SeekBar
+                        android:id="@+id/greenControl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:max="255"
+                        android:maxHeight="4dp"
+                        android:minHeight="4dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:progressDrawable="@drawable/bg_seekbar_progress_green"
+                        android:thumb="@mipmap/control_to_pressed" />
+                </LinearLayout>
+                <!--blue-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/blueLabel"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Blue"
+                        android:textColor="@android:color/black" />
+
+                    <SeekBar
+                        android:id="@+id/blueControl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:max="180"
+                        android:maxHeight="4dp"
+                        android:minHeight="4dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:progressDrawable="@drawable/bg_seekbar_progress_green_blue"
+                        android:thumb="@mipmap/control_to_pressed" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/bg_row"
+                android:orientation="vertical"
+                android:padding="@dimen/rowpind">
+                <!--alpha-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/screenDim"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_content" />
+
+                    <TextView
+                        android:id="@+id/black_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="35%"
+                        android:textColor="@color/text_value"
+                        android:textSize="@dimen/text_content_value" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@mipmap/icon_dim" />
+
+                    <SeekBar
+                        android:id="@+id/blackControl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:maxHeight="4dp"
+                        android:minHeight="4dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:progressDrawable="@drawable/bg_seekbar_progress_green_bleak"
+                        android:thumb="@mipmap/control_to_pressed" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/bg_row"
+                android:padding="@dimen/rowpind">
+
+                <TextView
+                    android:id="@+id/notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/notificationbar"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_content" />
+
+                <TextView
+                    android:id="@+id/openNotification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/notification"
+                    android:text="@string/notificationbarOff"
+                    android:textColor="@color/text_value"
+                    android:textSize="@dimen/text_content_value" />
+
+                <CheckBox
+                    android:id="@+id/cbOpenTop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/cb_bg"
+                    android:button="@null" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/listener_av_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/admob_banner_ad_unit_id" />
+</RelativeLayout>

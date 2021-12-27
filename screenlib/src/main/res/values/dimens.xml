@@ -1,0 +1,13 @@
+<resources>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="itemWH">60dp</dimen>
+    <dimen name="itemWHMarg">10dp</dimen>
+    <dimen name="text_content">14sp</dimen>
+    <dimen name="text_content_value">28sp</dimen>
+    <dimen name="rowpind">20dp</dimen>
+    <dimen name="notificationWH">40dp</dimen>
+
+</resources>

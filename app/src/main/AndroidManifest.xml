@@ -24,7 +24,7 @@
 
     <!--    android:resizeableActivity="true"//支持分配功能-->
     <!--    android:configChanges="orientation|screenSize|screenLayout"-->
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <application
         android:name=".YsyApplication"
         android:allowBackup="true"

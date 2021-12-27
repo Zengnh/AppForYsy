@@ -1,5 +1,6 @@
 package com.appforysy.activity.activity_perfect;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import com.appforysy.activity.activity_login.ActivityLogin;
 import com.appforysy.activity.draw_line.ActivityDrawVeiw;
 import com.cameralib.ActivityCameraDemo;
 import com.cameralib.ActivityCamrea;
+import com.cutpic.LibActivityCupPic;
+import com.makebook.ActivityBook;
 import com.medialib.ActivityVideoTrim;
 import com.mlq.course.activity_mlq.ActivityMLQCollege;
 import com.mykotlin.activity.activity_bluetouch.ActivityBluetooth;
@@ -27,6 +30,7 @@ import com.mykotlin.activity.activity_music.ActivityMusic;
 import com.mykotlin.activity.activity_notification.ActivityNotification;
 import com.photolib.selectpic.ActivityLocalImageList;
 import com.photolib.selectpic.ToolToSelectPic;
+import com.screenlib.activity.ScreenLibMainActivity;
 import com.zxinglib.ActivityZXingMain;
 
 import java.util.ArrayList;
@@ -135,6 +139,21 @@ public class AdapterViewPager extends PagerAdapter {
                 content.add(item5);
 
 
+
+                ItemPagerContent item6 = new ItemPagerContent();
+                item6.icon = R.mipmap.icon_red_flag;
+                item6.itemName = "翻书";
+                item6.nextClass = ActivityBook.class;
+                content.add(item6);
+
+                
+                ItemPagerContent itemScreen = new ItemPagerContent();
+                itemScreen.icon = R.mipmap.icon_red_flag;
+                itemScreen.itemName = "护眼模式";
+                itemScreen.nextClass = ScreenLibMainActivity.class;
+                content.add(itemScreen);
+
+
             } else if (i == 2) {
                 ItemPagerContent set = new ItemPagerContent();
                 set.icon = R.mipmap.icon_red_set;
@@ -175,13 +194,21 @@ public class AdapterViewPager extends PagerAdapter {
                 left.icon = R.mipmap.icon_red_toleft;
                 left.itemName = "转向";
                 left.nextClass = ActivityBluetooth.class;
-
+                content.add(left);
                 ItemPagerContent star = new ItemPagerContent();
                 star.icon = R.mipmap.icon_red_start;
                 star.itemName = "星星";
                 star.nextClass = BluetouchActivity.class;
                 content.add(star);
-                content.add(left);
+
+
+                ItemPagerContent CutPic = new ItemPagerContent();
+                CutPic.icon = R.mipmap.icon_red_start;
+                CutPic.itemName = "cut pic";
+                CutPic.nextClass = LibActivityCupPic.class;
+                content.add(CutPic);
+
+
             } else {
                 ItemPagerContent star = new ItemPagerContent();
                 star.icon = R.mipmap.icon_red_start;

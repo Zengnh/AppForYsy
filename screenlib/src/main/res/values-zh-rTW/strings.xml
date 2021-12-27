@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Bluelight Filter</string>
+
+    <string name="notificationbar">通知栏</string>
+    <string name="notificationbarOff">关闭</string>
+    <string name="notificationbarOn">打开</string>
+    <string name="intensity">强度</string>
+    <string name="screenDim">屏幕暗度调节</string>
+    <string name="colorTemp">色温</string>
+</resources>

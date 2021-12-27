@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin:'kotlin-android-extensions'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -127,6 +127,9 @@ dependencies {
     implementation project(path: ':photolib')
     implementation project(path: ':medialib')
     implementation project(path: ':zxinglib')
+    implementation project(path: ':cutPic')
+    implementation project(path: ':makebook')
+    implementation project(path: ':screenlib')
     if (isNeedMyKotlin.toBoolean()) {
         implementation project(path: ':mykotlin')
     }

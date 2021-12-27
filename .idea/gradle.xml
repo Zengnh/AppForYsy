@@ -13,11 +13,14 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cameralib" />
+            <option value="$PROJECT_DIR$/cutPic" />
+            <option value="$PROJECT_DIR$/makebook" />
             <option value="$PROJECT_DIR$/medialib" />
             <option value="$PROJECT_DIR$/mlq_course" />
             <option value="$PROJECT_DIR$/mykotlin" />
             <option value="$PROJECT_DIR$/photolib" />
             <option value="$PROJECT_DIR$/rootlibs" />
+            <option value="$PROJECT_DIR$/screenlib" />
             <option value="$PROJECT_DIR$/toolmvplibrary" />
             <option value="$PROJECT_DIR$/zxinglib" />
           </set>

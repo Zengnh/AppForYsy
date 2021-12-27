@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Bluelight Filter</string>
+
+    <string name="notificationbar">Notification Bar</string>
+    <string name="notificationbarOff">OFF</string>
+    <string name="notificationbarOn">ON</string>
+    <string name="intensity">Intensity</string>
+    <string name="screenDim">Screen Dim</string>
+    <string name="colorTemp">Color Temperature</string>
+
+
+    <string name="admob_banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="adsizes_adunitid">/6499/example/APIDemo/AdSizes</string>
+</resources>

@@ -33,7 +33,7 @@ class ActivityMain : ActivityRootInit<PresenterMain>(),
     }
 
     override fun setCutLayout(): Int {
-        return R.layout.activity_main
+        return R.layout.activity_main_screen_lib
     }
 
     lateinit var adapter: AdapterBtnItem

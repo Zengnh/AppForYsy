@@ -36,6 +36,8 @@
         <entry key="..\:/work_jsyl/code/AppForYsy/cameralib/src/main/res/layout/activity_camera_result.xml" value="0.2984375" />
         <entry key="..\:/work_jsyl/code/AppForYsy/cameralib/src/main/res/layout/activity_load_location_image.xml" value="0.1859375" />
         <entry key="..\:/work_jsyl/code/AppForYsy/cameralib/src/main/res/layout/cameralib_activity_camera.xml" value="0.21927083333333333" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/cutPic/src/main/res/layout/lib_activity_cut_pic.xml" value="0.2140625" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/makebook/src/main/res/layout/activity_book.xml" value="0.22291666666666668" />
         <entry key="..\:/work_jsyl/code/AppForYsy/medialib/src/main/res/layout/activity_video_trim.xml" value="0.23697916666666666" />
         <entry key="..\:/work_jsyl/code/AppForYsy/medialib/src/main/res/layout/item_video_trim_thumb_layout.xml" value="0.24635416666666668" />
         <entry key="..\:/work_jsyl/code/AppForYsy/medialib/src/main/res/layout/view_video_trim.xml" value="0.24635416666666668" />
@@ -69,6 +71,10 @@
         <entry key="..\:/work_jsyl/code/AppForYsy/photolib/src/main/res/layout/item_select_image_ed.xml" value="0.24635416666666668" />
         <entry key="..\:/work_jsyl/code/AppForYsy/photolib/src/main/res/layout/item_select_image_list.xml" value="0.24635416666666668" />
         <entry key="..\:/work_jsyl/code/AppForYsy/photolib/src/main/res/layout/item_select_img_pager.xml" value="0.24635416666666668" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/activity_main.xml" value="0.21979166666666666" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/activityopenstate.xml" value="0.21979166666666666" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/notifyed.xml" value="0.20520833333333333" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/poplayout.xml" value="0.21979166666666666" />
         <entry key="..\:/work_jsyl/code/AppForYsy/zxinglib/src/main/res/drawable/fillet_black_aaf_radius6.xml" value="0.2171875" />
         <entry key="..\:/work_jsyl/code/AppForYsy/zxinglib/src/main/res/layout/acitivity_zxing_main.xml" value="0.2677083333333333" />
         <entry key="..\:/work_jsyl/code/AppForYsy/zxinglib/src/main/res/layout/capture.xml" value="0.20104166666666667" />

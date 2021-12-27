@@ -74,16 +74,23 @@ public class ActivityVideoTrim extends AppCompatActivity implements VideoTrimVie
     }
 
     public ImageVideoBean getVideo() {
-        String path = Environment.getExternalStorageDirectory() + File.separator + "abc.mp4";
-        ImageVideoBean mv = new ImageVideoBean();
-        //            mVideo.setPath("file:///android_asset/abc.mp4");
-        mv.setPath(path);
-        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-        mmr.setDataSource(path);
-        String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION); // 播放时长单位为毫秒
+        try {
+            String path = Environment.getExternalStorageDirectory() + File.separator + "abc.mp4";
+            ImageVideoBean mv = new ImageVideoBean();
+            //            mVideo.setPath("file:///android_asset/abc.mp4");
+            mv.setPath(path);
+            MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+            mmr.setDataSource(path);
+            String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION); // 播放时长单位为毫秒
 
-        mv.setDuration(Long.parseLong(duration));
-        return mv;
+            mv.setDuration(Long.parseLong(duration));
+
+            return mv;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
     protected void initViews(Bundle savedInstanceState) {
