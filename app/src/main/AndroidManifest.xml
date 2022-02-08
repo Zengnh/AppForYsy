@@ -22,9 +22,16 @@
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+
+
+
     <!--    android:resizeableActivity="true"//支持分配功能-->
     <!--    android:configChanges="orientation|screenSize|screenLayout"-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+<!--    鼠标接入会出现页面重新加载，在Activity 中加入&#45;&#45;解决-->
+<!--    android:configChanges="keyboard|navigation|keyboardHidden" -->
+
     <application
         android:name=".YsyApplication"
         android:allowBackup="true"
@@ -71,6 +78,9 @@
         <activity android:name=".activity.draw_line.ActivityDrawVeiw">
 
         </activity>
+
+
+
 
         <activity
             android:name=".activity.activity_loading.ActivityLoading"
