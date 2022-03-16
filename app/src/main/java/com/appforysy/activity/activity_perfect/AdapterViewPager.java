@@ -17,6 +17,7 @@ import com.appforysy.activity.activity_edt_note.ActivityNotiEdit;
 import com.appforysy.activity.activity_guide.ActivityGuide;
 import com.appforysy.activity.activity_intruct.ActivityIntruct;
 import com.appforysy.activity.activity_login.ActivityLogin;
+import com.appforysy.activity.activity_snow.ActivitySnow;
 import com.appforysy.activity.draw_line.ActivityDrawVeiw;
 import com.cameralib.ActivityCameraDemo;
 import com.cameralib.ActivityCamrea;
@@ -75,6 +76,14 @@ public class AdapterViewPager extends PagerAdapter {
                 destory.nextClass = ActivityLocalImageList.class;
                 ToolToSelectPic.create().setLitmitPic(9);
                 content.add(destory);
+
+
+                ItemPagerContent downSnow = new ItemPagerContent();
+                downSnow.icon = R.mipmap.icon_select_app;
+                downSnow.itemName = "下雪";
+                downSnow.nextClass = ActivitySnow.class;
+                content.add(downSnow);
+
 
 
             } else if (i == 1) {

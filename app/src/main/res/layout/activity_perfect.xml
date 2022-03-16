@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/bgCom"
     android:orientation="vertical">
+
+
     <!--    协调布局-->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -29,6 +31,7 @@
             app:tabSelectedTextColor="@color/colorPrimary"
             app:tabTextColor="@color/content13" />
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

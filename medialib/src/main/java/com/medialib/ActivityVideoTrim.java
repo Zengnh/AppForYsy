@@ -82,9 +82,7 @@ public class ActivityVideoTrim extends AppCompatActivity implements VideoTrimVie
             MediaMetadataRetriever mmr = new MediaMetadataRetriever();
             mmr.setDataSource(path);
             String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION); // 播放时长单位为毫秒
-
             mv.setDuration(Long.parseLong(duration));
-
             return mv;
         }catch (Exception e){
             e.printStackTrace();

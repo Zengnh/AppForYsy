@@ -126,6 +126,8 @@
         </activity>
 
 
+        <activity android:name=".activity.activity_snow.ActivitySnow"/>
+
         <activity
             android:name=".activity.activity_main.ActivityMain"
             tools:ignore="Instantiatable">

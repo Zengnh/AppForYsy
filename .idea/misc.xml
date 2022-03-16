@@ -23,6 +23,8 @@
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_mlq_location_detail.xml" value="0.13645833333333332" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_mlq_teacher_detail.xml" value="0.33697916666666666" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_mlq_teacher_list.xml" value="0.234375" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_perfect.xml" value="0.325" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_snowview.xml" value="0.325" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/item_mlq_intro.xml" value="0.2578125" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/item_mlq_intro_img.xml" value="0.2557291666666667" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/item_mly_course.xml" value="0.19427083333333334" />
@@ -75,6 +77,7 @@
         <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/activityopenstate.xml" value="0.21979166666666666" />
         <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/notifyed.xml" value="0.20520833333333333" />
         <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/poplayout.xml" value="0.21979166666666666" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/toolmvplibrary/src/main/res/drawable/share_loading_black70.xml" value="0.3537037037037037" />
         <entry key="..\:/work_jsyl/code/AppForYsy/zxinglib/src/main/res/drawable/fillet_black_aaf_radius6.xml" value="0.2171875" />
         <entry key="..\:/work_jsyl/code/AppForYsy/zxinglib/src/main/res/layout/acitivity_zxing_main.xml" value="0.2677083333333333" />
         <entry key="..\:/work_jsyl/code/AppForYsy/zxinglib/src/main/res/layout/capture.xml" value="0.20104166666666667" />

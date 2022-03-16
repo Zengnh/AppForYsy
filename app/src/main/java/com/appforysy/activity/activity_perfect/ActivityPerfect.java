@@ -11,6 +11,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.appforysy.R;
 import com.google.android.material.tabs.TabLayout;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+import com.toolmvplibrary.view.snowview.SnowUtils;
+import com.toolmvplibrary.view.snowview.SnowView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,7 @@ public class ActivityPerfect extends ActivityRoot {
     List<ItemPagerContent> listData=new ArrayList<>();
     private RecyclerView bannerRecycler;
     private AdapterMainBanner adapter;
+
     private void initView() {
 
         tabayView = findViewById(R.id.tabayView);
