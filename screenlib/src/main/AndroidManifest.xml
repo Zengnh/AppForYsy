@@ -31,5 +31,12 @@
             </intent-filter>
 
         </receiver>
+        <service android:name="com.screenlib.MainServiceBook" />
+        <receiver android:name=".broadcast.ButtonBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.zeng.receiver" />
+            </intent-filter>
+
+        </receiver>
     </application>
 </manifest>

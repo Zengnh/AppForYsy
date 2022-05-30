@@ -24,9 +24,6 @@ import com.screenlib.notification.MyNotification;
 import com.screenlib.utils.SharedMemory;
 import com.screenlib.utils.UtilsService;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * This class has the controls to set the color of the filter
  *

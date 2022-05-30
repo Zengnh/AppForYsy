@@ -9,8 +9,6 @@
         <entry key="..\:/mygitproject/AppForYsy/mykotlin/src/main/res/layout/activity_music.xml" value="0.2046875" />
         <entry key="..\:/mygitproject/AppForYsy/mykotlin/src/main/res/layout/fragment_music1234.xml" value="0.23697916666666666" />
         <entry key="..\:/mygitproject/AppForYsy/mykotlin/src/main/res/layout/item_kotlin_music_value.xml" value="0.25625" />
-        <entry key="..\:/tesgit/AppForYsy/makebook/src/main/res/layout/activity_book.xml" value="0.30344202898550726" />
-        <entry key="..\:/tesgit/AppForYsy/makebook/src/main/res/layout/bookactiity_main.xml" value="0.15208333333333332" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/drawable/bg_gray_intro_round.xml" value="0.2786458333333333" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/drawable/bg_while_line_round.xml" value="0.12777777777777777" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/drawable/btn_blue_round.xml" value="0.27395833333333336" />
@@ -27,6 +25,7 @@
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_mlq_teacher_list.xml" value="0.234375" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_perfect.xml" value="0.325" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/activity_snowview.xml" value="0.325" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/item_layout_main_banner_btn.xml" value="0.21041666666666667" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/item_mlq_intro.xml" value="0.2578125" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/item_mlq_intro_img.xml" value="0.2557291666666667" />
         <entry key="..\:/work_jsyl/code/AppForYsy/app/src/main/res/layout/item_mly_course.xml" value="0.19427083333333334" />
@@ -75,10 +74,13 @@
         <entry key="..\:/work_jsyl/code/AppForYsy/photolib/src/main/res/layout/item_select_image_ed.xml" value="0.24635416666666668" />
         <entry key="..\:/work_jsyl/code/AppForYsy/photolib/src/main/res/layout/item_select_image_list.xml" value="0.24635416666666668" />
         <entry key="..\:/work_jsyl/code/AppForYsy/photolib/src/main/res/layout/item_select_img_pager.xml" value="0.24635416666666668" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/drawable/rg_item_2.xml" value="0.23645833333333333" />
         <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/activity_main.xml" value="0.21979166666666666" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/activity_main_screen_lib.xml" value="0.21041666666666667" />
         <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/activityopenstate.xml" value="0.21979166666666666" />
         <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/notifyed.xml" value="0.20520833333333333" />
         <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/poplayout.xml" value="0.21979166666666666" />
+        <entry key="..\:/work_jsyl/code/AppForYsy/screenlib/src/main/res/layout/topmakelineview.xml" value="0.2203125" />
         <entry key="..\:/work_jsyl/code/AppForYsy/toolmvplibrary/src/main/res/drawable/share_loading_black70.xml" value="0.3537037037037037" />
         <entry key="..\:/work_jsyl/code/AppForYsy/zxinglib/src/main/res/drawable/fillet_black_aaf_radius6.xml" value="0.2171875" />
         <entry key="..\:/work_jsyl/code/AppForYsy/zxinglib/src/main/res/layout/acitivity_zxing_main.xml" value="0.2677083333333333" />

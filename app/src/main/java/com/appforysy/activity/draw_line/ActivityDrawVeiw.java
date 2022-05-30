@@ -30,7 +30,7 @@ import java.util.List;
 
 public class ActivityDrawVeiw extends ActivityRoot {
 
-    private DrawingView dv;
+    private DrawingView drawView;
     private FloatingActionButton buttonDrawable;
 
     private Handler handler = new Handler() {
@@ -102,16 +102,16 @@ public class ActivityDrawVeiw extends ActivityRoot {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (dataList.get(position).flog == 1) {
-                    dv.cleanView();
+                    drawView.cleanView();
                     showToast("清空绘制");
                 } else if (dataList.get(position).flog == 2) {
 //                    禁止绘制
                     showToast("禁止绘制");
-                    dv.setVisibility(View.GONE);
+                    drawView.setVisibility(View.GONE);
                 } else if (dataList.get(position).flog == 3) {
 //                    可以绘制
                     showToast("可以绘制");
-                    dv.setVisibility(View.VISIBLE);
+                    drawView.setVisibility(View.VISIBLE);
                 } else if (dataList.get(position).flog == 5) {
 //                    上一张
                     showImage(true);
@@ -161,7 +161,7 @@ public class ActivityDrawVeiw extends ActivityRoot {
 
     private void initView() {
         drawableRoot = findViewById(R.id.drawableRoot);
-        dv = findViewById(R.id.drawLineView);
+        drawView = findViewById(R.id.drawLineView);
         gridViewEidt = findViewById(R.id.gridViewEidt);
         buttonDrawable = findViewById(R.id.buttonDrawable);
         zoomImage = findViewById(R.id.zoomImage);
@@ -206,7 +206,7 @@ public class ActivityDrawVeiw extends ActivityRoot {
                 cutPosImage = iamgeList.size() - 1;
             }
         }
-        dv.cleanView();
+        drawView.cleanView();
 //        zoomImage.setImageResource(R.mipmap.image_course_3);
         zoomImage.setImageResource(iamgeList.get(cutPosImage));
     }

@@ -1,5 +1,6 @@
 package com.appforysy.activity.activity_perfect;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -7,15 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-
 import com.appforysy.R;
-import com.appforysy.activity.draw_line.ItemEdit;
 import com.google.android.material.tabs.TabLayout;
+import com.rootlibs.downloader.InterListener;
+import com.rootlibs.downloader.ResultDownLoader;
+import com.screenlib.MainServiceBook;
 import com.toolmvplibrary.activity_root.ActivityRoot;
-import com.toolmvplibrary.view.snowview.SnowUtils;
-import com.toolmvplibrary.view.snowview.SnowView;
-import com.zxinglib.ClassFile;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,9 +47,24 @@ public class ActivityPerfect extends ActivityRoot {
     private String[] title = {"App", "Demo", "我的"};
     private AdapterViewPager adapterViewPager;
 
-    List<ItemPagerContent> listData=new ArrayList<>();
+    List<ItemPagerContent> listData = new ArrayList<>();
     private RecyclerView bannerRecycler;
     private AdapterMainBanner adapter;
+
+
+    private InterListener listener = new InterListener() {
+        @Override
+        public void resultFinish(ResultDownLoader succ) {
+            if (MainServiceBook.STATE == MainServiceBook.ACTIVE) {
+                Intent i = new Intent(ActivityPerfect.this, MainServiceBook.class);
+                stopService(i);
+            } else {
+                Intent i = new Intent(ActivityPerfect.this, MainServiceBook.class);
+                startService(i);
+            }
+
+        }
+    };
 
     private void initView() {
 
@@ -67,22 +80,22 @@ public class ActivityPerfect extends ActivityRoot {
         viewPager.setAdapter(adapterViewPager);
 //####################################################################################
         listData.clear();
-        ItemPagerContent bean=new ItemPagerContent();
-        bean.icon=R.mipmap.image_banner_heard;
+        ItemPagerContent bean = new ItemPagerContent();
+        bean.icon = R.mipmap.image_banner_heard;
         listData.add(bean);
 
 
-        ItemPagerContent bean2=new ItemPagerContent();
-        bean2.icon=R.mipmap.image_banner_flor;
+        ItemPagerContent bean2 = new ItemPagerContent();
+        bean2.icon = R.mipmap.image_banner_flor;
         listData.add(bean2);
 
-        ItemPagerContent bean3=new ItemPagerContent();
-        bean3.icon=R.mipmap.image_banner_user;
+        ItemPagerContent bean3 = new ItemPagerContent();
+        bean3.icon = R.mipmap.image_banner_user;
         listData.add(bean3);
 
         bannerRecycler = findViewById(R.id.imageBanner);
-        linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        adapter=new AdapterMainBanner(listData);
+        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        adapter = new AdapterMainBanner(listData, listener);
         bannerRecycler.setLayoutManager(linearLayoutManager);
         bannerRecycler.setAdapter(adapter);
 ////        左右滑动会有磁吸效果。上线就无效
