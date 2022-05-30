@@ -23,6 +23,7 @@ import com.cameralib.ActivityCameraDemo;
 import com.cameralib.ActivityCamrea;
 import com.cutpic.LibActivityCupPic;
 import com.makebook.ActivityBook;
+import com.makebook.book_second.FakeActivity;
 import com.medialib.ActivityVideoTrim;
 import com.mlq.course.activity_mlq.ActivityMLQCollege;
 import com.mykotlin.activity.activity_bluetouch.ActivityBluetooth;
@@ -152,6 +153,7 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent item6 = new ItemPagerContent();
                 item6.icon = R.mipmap.icon_red_flag;
                 item6.itemName = "翻书";
+//                item6.nextClass = FakeActivity.class;
                 item6.nextClass = ActivityBook.class;
                 content.add(item6);
 
