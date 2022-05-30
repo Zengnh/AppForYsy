@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.appforysy.R;
+import com.appforysy.activity.draw_line.ItemEdit;
 import com.google.android.material.tabs.TabLayout;
 import com.toolmvplibrary.activity_root.ActivityRoot;
 import com.toolmvplibrary.view.snowview.SnowUtils;
 import com.toolmvplibrary.view.snowview.SnowView;
+import com.zxinglib.ClassFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,10 @@ public class ActivityPerfect extends ActivityRoot {
     }
 
     private void initData() {
-
+//        ItemEdit obj=new ItemEdit();
+//
+//        ClassFile bean=new ClassFile();
+//        bean.setFils(obj);
     }
 
     private void initEvent() {
