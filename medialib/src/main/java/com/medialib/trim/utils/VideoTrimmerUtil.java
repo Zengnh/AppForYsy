@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -334,4 +335,47 @@ public class VideoTrimmerUtil {
         return retStr;
     }
 
+
+    public static void pushLiveVideo(){
+       String liveAddr="ffmpeg -re -i {input-source} -vcodec libx264 -vprofile baseline -acodec aac -ar 44100 -strict -2 -ac 1 -f flv -s 1280x720 -q 10 rtmp://localhost:1935/live/test\n";
+        String liveAddr2="ffmpeg -i {input-source} -f flv -r 25 -s 1280*720 -an rtmp://localhost:1935/live/test";
+        String liveAddr3="ffmpeg -re -i demo.wmv -f flv rtmp://127.0.0.1:1935/live/123";
+        String live4="ffmpeg -f dshow -i video='USB2.0 PC CAMERA' -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv rtmp://127.0.0.1:1935/live/123";
+    }
+    public void camera(){
+//        Camera.Parameters parameters = camera.getParameters();
+//        //对拍照参数进行设置
+//        for (Camera.Size size : parameters.getSupportedPictureSizes()) {
+//            LogUtils.d(size.width + "  " + size.height);
+//        }
+//        注意这段打印出来的宽高，后来设置Camera拍摄的图片大小配置必须是里面的一组，否则无法获取Camera的回调数据，这个很关键
+    }
+
+    public static void pushVideo(String locadPath,String tagPath){
+//        String cmd=  "ffmpeg -re -i /Users/jack/test.mp4 -vcodec libx264 -acodec aac -f flv rtmp://localhost:1935/rtmplive/home";
+        locadPath=Environment.getExternalStorageDirectory().getPath() + File.separator + "cameradir/abcd.mp4";
+        tagPath="rtmp://192.168.2.160:1935/live/address";
+//        String cmd = String.format("ffmpeg -y -i %s -f mp4 -preset superfast %s",
+        String cmd = String.format("ffmpeg -re -i %s -vcodec libx264 -acodec aac -f flv %s",locadPath, tagPath);
+        String[] commands = cmd.split(" ");
+        int res = RxFFmpegInvoke.getInstance().runCommand(commands, new RxFFmpegInvoke.IFFmpegListener() {
+            @Override
+            public void onFinish() {
+                Log.i("znh","push onFinish onFinish");
+            }
+            @Override
+            public void onProgress(int progress, long progressTime) {
+//                Log.i(TAG, "视频格式转换结果:" + res + " / " + csource.exists() + " / " + csource.getAbsolutePath());
+                Log.i("znh","push start"+progress);
+            }
+            @Override
+            public void onCancel() {
+                Log.i("znh","push onCancel");
+            }
+            @Override
+            public void onError(String message) {
+                Log.i("znh","push onCancel"+message);
+            }
+        });
+    }
 }

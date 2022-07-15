@@ -2,6 +2,8 @@ package com.appforysy.activity.activity_perfect;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import com.appforysy.R;
 import com.google.android.material.tabs.TabLayout;
+import com.medialib.trim.utils.VideoTrimmerUtil;
 import com.rootlibs.downloader.InterListener;
 import com.rootlibs.downloader.ResultDownLoader;
 import com.screenlib.MainServiceBook;
@@ -37,7 +40,12 @@ public class ActivityPerfect extends ActivityRoot {
     }
 
     private void initEvent() {
-
+        pushVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                VideoTrimmerUtil.pushVideo("","");
+            }
+        });
     }
 
     private ViewPager viewPager;
@@ -65,9 +73,10 @@ public class ActivityPerfect extends ActivityRoot {
 
         }
     };
-
+    private ImageView pushVideo;
     private void initView() {
 
+        pushVideo = findViewById(R.id.pushVideo);
         tabayView = findViewById(R.id.tabayView);
         viewPager = findViewById(R.id.viewPager);
 

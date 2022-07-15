@@ -37,11 +37,11 @@ import com.cameralib.camera.CameraManager;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 public class ActivityCameraDemo extends AppCompatActivity {
     //***************************************************************************************************
@@ -88,8 +88,10 @@ public class ActivityCameraDemo extends AppCompatActivity {
 //        takePhoto.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                takePhoto.setVisibility(View.GONE);
-//                takePictu();
+////                takePhoto.setVisibility(View.GONE);
+////                takePictu();
+//                Toast.makeText(ActivityCameraDemo.this,"开始",Toast.LENGTH_SHORT).show();
+//
 //                startRecord();
 //            }
 //        });
@@ -111,8 +113,6 @@ public class ActivityCameraDemo extends AppCompatActivity {
 //                            拍照
                             handlerRecord.removeMessages(0);
                             progressBar.setVisibility(View.VISIBLE);
-
-
                             takePictu();
                         } else {
 //                         录屏停止
@@ -140,6 +140,17 @@ public class ActivityCameraDemo extends AppCompatActivity {
 
     }
 
+    private void initCameraSize() {
+        cameraSizeList.clear();
+        Camera.Parameters parameters = camera.getParameters();
+        //对拍照参数进行设置
+        for (Camera.Size size : parameters.getSupportedPictureSizes()) {
+            cameraSizeList.add(size);
+        }
+    }
+
+    private List<Camera.Size> cameraSizeList = new ArrayList<>();
+
     private void openCamera() {
         int cameraid;
         if (isBalck) {
@@ -148,6 +159,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
             cameraid = getCameraPId();
         }
         camera = Camera.open(cameraid);
+        initCameraSize();
         if (camera != null) {
             if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
                 camera.setDisplayOrientation(90);
@@ -155,7 +167,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
                 camera.setDisplayOrientation(0);
             }
         }
-        if (vX!=0) {
+        if (vX != 0) {
             Camera.Parameters parameters = camera.getParameters();
             parameters.setPreviewSize(vX, vY);
             List<Camera.Size> vSizeList = parameters.getSupportedPictureSizes();
@@ -174,7 +186,6 @@ public class ActivityCameraDemo extends AppCompatActivity {
     }
 
 
-
     private Handler handlerRecord = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -182,6 +193,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
             if (msg.what == 1) {
                 stopRecord();
             } else if (msg.what == 0) {
+                Log.i("znh", "#####startrecord");
                 startRecord();
             }
         }
@@ -240,9 +252,9 @@ public class ActivityCameraDemo extends AppCompatActivity {
 //        takePhoto.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                takePhoto.setVisibility(View.GONE);
-//                takePictu();
-//                startRecord();
+////                takePhoto.setVisibility(View.GONE);
+////                takePictu();
+////                startRecord();
 //            }
 //        });
 
@@ -282,6 +294,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
         sH.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
+
     public int getCameraBId() {
         int index = 0;
         int numCame = Camera.getNumberOfCameras();
@@ -310,7 +323,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
         return index;
     }
 
-    private int vX=0, vY=0;
+    private int vX = 0, vY = 0;
     private boolean isBalck = false;
 
     public void takePictu() {
@@ -398,7 +411,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
     }
 
     private Timer timerTask;
-    private int recoreMaxTime = 100000;
+    private int recoreMaxTime = 1000000;
 
     public void startRecord() {
 //        camera.lock();
@@ -450,6 +463,12 @@ public class ActivityCameraDemo extends AppCompatActivity {
         }
 //        mediarecorder.setVideoSize(640,480);
 //        mMediaRecorder.setVideoSize((int)tempX, (int)tempY);
+
+        for (Camera.Size size:cameraSizeList) {
+//            mMediaRecorder.setVideoSize(1920, 1080);//video 大小必须要在此范围内，size。否则会出错。
+        }
+
+
         mMediaRecorder.setVideoSize(1920, 1080);
         //设置编码比特率,不设置会使视频图像模糊
 //        mediarecorder.setVideoEncodingBitRate(5*1024*1024);  //清晰     512*1024(不清楚)
@@ -463,6 +482,7 @@ public class ActivityCameraDemo extends AppCompatActivity {
         mMediaRecorder.setPreviewDisplay(surfaceView.getHolder().getSurface());
         // 设置视频文件输出的路径
         videoPath = rootPath + File.separator + System.currentTimeMillis() + ".mp4";
+//        videoPath = "rtmp://192.168.2.160:1935/live/phone";
         mMediaRecorder.setOutputFile(videoPath);
         try {
             // 准备录制
@@ -478,14 +498,23 @@ public class ActivityCameraDemo extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            Log.i("znh", "---video---" + countTime);
                             textView.setText(countTime + "");
+
                         }
                     });
                 }
             };
             timerTask.schedule(timeRecord, 0, 1000);
+//
         } catch (Exception e) {
             e.printStackTrace();
+            if (timerTask != null) {
+                timerTask.cancel();
+                timerTask = null;
+            }
+
+            Log.i("znh", "#####recordErr:" + e.getMessage());
         }
     }
 
@@ -498,4 +527,5 @@ public class ActivityCameraDemo extends AppCompatActivity {
             stopRecord();
         }
     };
+
 }
