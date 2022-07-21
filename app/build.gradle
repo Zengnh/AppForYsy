@@ -17,7 +17,7 @@ android {
 
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
-            abiFilters "armeabi-v7a"
+            abiFilters "armeabi-v7a","arm64-v8a"
         }
         multiDexEnabled true
         resConfigs "en", "zh-rCN"//, "需要支持的其他语言"
@@ -87,7 +87,10 @@ android {
             dirs project(':rootlibs').file('libs')
         }
     }
-
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'META-INF/native-image/**'
+    }
 
 }
 

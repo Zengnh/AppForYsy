@@ -21,9 +21,9 @@ import com.appforysy.activity.activity_snow.ActivitySnow;
 import com.appforysy.activity.draw_line.ActivityDrawVeiw;
 import com.cameralib.ActivityCameraDemo;
 import com.cameralib.ActivityCamrea;
+import com.cameralib.RecordActivity;
 import com.cutpic.LibActivityCupPic;
 import com.makebook.ActivityBook;
-import com.makebook.book_second.FakeActivity;
 import com.medialib.ActivityVideoTrim;
 import com.mlq.course.activity_mlq.ActivityMLQCollege;
 import com.mykotlin.activity.activity_bluetouch.ActivityBluetooth;
@@ -84,6 +84,12 @@ public class AdapterViewPager extends PagerAdapter {
                 downSnow.itemName = "下雪";
                 downSnow.nextClass = ActivitySnow.class;
                 content.add(downSnow);
+
+                ItemPagerContent recordVideo = new ItemPagerContent();
+                recordVideo.icon = R.mipmap.icon_select_app;
+                recordVideo.itemName = "录像trmp";
+                recordVideo.nextClass = RecordActivity.class;
+                content.add(recordVideo);
 
 
 

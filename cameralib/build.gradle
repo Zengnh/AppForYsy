@@ -7,10 +7,13 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        ndk {
+            abiFilters "armeabi-v7a","arm64-v8a"
+        }
     }
 
     buildTypes {
@@ -29,6 +32,10 @@ android {
     lintOptions {
         abortOnError false
     }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'META-INF/native-image/**'
+    }
 }
 
 dependencies {
@@ -42,4 +49,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 //    implementation 'com.google.android.exoplayer:exoplayer:2.x.x'
+
+//视频推流，跟视频拉流。录像
+//    https://github.com/bytedeco/javacv
+//    https://blog.csdn.net/Zophar_Development/article/details/105200904
+      implementation group: 'org.bytedeco', name: 'javacv-platform', version: '1.5.7'
+//     报ios-x86 错误，需要将
+//    packagingOptions {
+//        exclude 'META-INF/proguard/androidx-annotations.pro'
+//        exclude 'META-INF/native-image/**'
+//    } 放到主app 中
+//    或者将Execution failed for task ‘:app:mergeDebugJavaResource’'META-INF/library_release.kotlin_module' 列出的 meta-inf、xxx 全部列咋iexclude 中
+
+
 }

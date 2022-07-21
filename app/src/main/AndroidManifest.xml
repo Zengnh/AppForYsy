@@ -30,6 +30,10 @@
     <!--    鼠标接入会出现页面重新加载，在Activity 中加入&#45;&#45;解决-->
     <!--    android:configChanges="keyboard|navigation|keyboardHidden" -->
 
+    <!-- 录音权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+
     <application
         android:name=".YsyApplication"
         android:allowBackup="true"
