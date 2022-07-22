@@ -65,6 +65,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.ImageFormat;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.media.AudioFormat;
@@ -121,8 +122,8 @@ public class RecordActivity extends Activity implements OnClickListener {
     FFmpegFrameFilter filter;
 
     private int sampleAudioRateInHz = 44100;
-    private int imageWidth = 320;
-    private int imageHeight = 240;
+    private int imageWidth = 1280;
+    private int imageHeight = 720;
     private int frameRate = 30;
 
     /* audio data getting thread */
@@ -137,17 +138,11 @@ public class RecordActivity extends Activity implements OnClickListener {
 
     private Frame yuvImage = null;
 
-    /* layout setting */
-    private final int bg_screen_bx = 232;
-    private final int bg_screen_by = 128;
-    private final int bg_screen_width = 700;
-    private final int bg_screen_height = 500;
-    private final int bg_width = 1123;
-    private final int bg_height = 715;
-    private final int live_width = 640;
-    private final int live_height = 480;
+    private final int live_width = 1280;
+    private final int live_height = 720;
+
     private int screenWidth, screenHeight;
-    private Button btnRecorderControl;
+    private Button btnRecorderControl, btnBack;
 
     /* The number of seconds in the continuous record loop (or 0 to disable loop). */
     final int RECORD_LENGTH = 0;
@@ -159,7 +154,8 @@ public class RecordActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setContentView(R.layout.layout_push_record_activity);
         initLayout();
         requestPermission();
     }
@@ -173,40 +169,21 @@ public class RecordActivity extends Activity implements OnClickListener {
 //                Log.i(TAG,"用户申请过权限，但是被拒绝了（不是彻底决绝）");
 //               申请权限
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 1);
-
             } else {
 //                Log.i(TAG,"申请过权限，但是被用户彻底决绝了或是手机不允许有此权限（依然可以在此再申请权限）");
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 1);
-
             }
         }
     }
-//    //   kotlin写法：
-//    private void requestPermission() {
-//        if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-////            Log.i("yk", "没有权限，去申请")
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)) {
-////               申请权限
-//                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
-//
-//            } else {
-////              申请过权限，但是用户彻底决绝了或是手机不允许拥有此权限，执行相应的操作：
-////                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
-//            }
-//        }
-//    }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         recording = false;
-
         if (cameraView != null) {
             cameraView.stopPreview();
         }
-
         if (cameraDevice != null) {
             cameraDevice.stopPreview();
             cameraDevice.release();
@@ -214,6 +191,7 @@ public class RecordActivity extends Activity implements OnClickListener {
         }
     }
 
+    LinearLayout camreaRootLayout;
 
     private void initLayout() {
 
@@ -221,40 +199,39 @@ public class RecordActivity extends Activity implements OnClickListener {
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         screenWidth = display.getWidth();
         screenHeight = display.getHeight();
-        RelativeLayout.LayoutParams layoutParam = null;
-        LayoutInflater myInflate = null;
-        myInflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        RelativeLayout topLayout = new RelativeLayout(this);
-        setContentView(topLayout);
-
-        LinearLayout preViewLayout = (LinearLayout) myInflate.inflate(R.layout.layout_push_record_activity, null);
-        layoutParam = new RelativeLayout.LayoutParams(screenWidth, screenHeight);
-        topLayout.addView(preViewLayout, layoutParam);
 
         /* add control button: start and stop */
-        btnRecorderControl = (Button) findViewById(R.id.recorder_control);
+        btnRecorderControl = findViewById(R.id.recorder_control);
+        camreaRootLayout = findViewById(R.id.camreaRootLayout);
+        btnBack = findViewById(R.id.btnBack);
         btnRecorderControl.setText("Start");
         btnRecorderControl.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
 
-        /* add camera view */
-        int display_width_d = (int) (1.0 * bg_screen_width * screenWidth / bg_width);
-        int display_height_d = (int) (1.0 * bg_screen_height * screenHeight / bg_height);
-        int prev_rw, prev_rh;
-        if (1.0 * display_width_d / display_height_d > 1.0 * live_width / live_height) {
-            prev_rh = display_height_d;
-            prev_rw = (int) (1.0 * display_height_d * live_width / live_height);
-        } else {
-            prev_rw = display_width_d;
-            prev_rh = (int) (1.0 * display_width_d * live_height / live_width);
-        }
-        layoutParam = new RelativeLayout.LayoutParams(prev_rw, prev_rh);
-        layoutParam.topMargin = (int) (1.0 * bg_screen_by * screenHeight / bg_height);
-        layoutParam.leftMargin = (int) (1.0 * bg_screen_bx * screenWidth / bg_width);
 
-        cameraDevice = Camera.open();
+        int prev_rh = screenWidth / (live_width / live_height);
+        LinearLayout.LayoutParams layoutParam = new LinearLayout.LayoutParams(screenWidth, prev_rh);
+        layoutParam.topMargin = 100;
+
+//        cameraDevice = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
+        cameraDevice = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
+
+        cameraDevice.setDisplayOrientation(90);
+        Camera.Parameters mParameters = cameraDevice.getParameters();
+        //设置将保存的图片旋转90°（竖着拍摄的时候）
+        mParameters.setRotation(90);
+        mParameters.setPreviewSize(imageWidth, imageHeight);
+        mParameters.setPictureSize(imageWidth, imageHeight);
+//        mParameters.setPictureSize(4608, 3456);
+        mParameters.setPictureFormat(ImageFormat.JPEG);
+        mParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+//        mParameters.set(ImageFormat.YUV_444_888);
+        cameraDevice.setParameters(mParameters);
+
+
         Log.i(LOG_TAG, "cameara open");
         cameraView = new CameraView(this, cameraDevice);
-        topLayout.addView(cameraView, layoutParam);
+        camreaRootLayout.addView(cameraView, layoutParam);
         Log.i(LOG_TAG, "cameara preview start: OK");
     }
 
@@ -265,7 +242,7 @@ public class RecordActivity extends Activity implements OnClickListener {
 
         Log.w(LOG_TAG, "init recorder");
 
-        Log.i(LOG_TAG, "ffmpeg_url: " + ffmpeg_link);
+        Log.i(LOG_TAG, "ffmpeg_url: " + ffmpeg_link + "   w=" + imageWidth + "   h=" + imageHeight);
         recorder = new FFmpegFrameRecorder(ffmpeg_link, imageWidth, imageHeight, 1);
         recorder.setFormat("flv");
         recorder.setSampleRate(sampleAudioRateInHz);
@@ -274,8 +251,8 @@ public class RecordActivity extends Activity implements OnClickListener {
 
         // The filterString  is any ffmpeg filter.
         // Here is the link for a list: https://ffmpeg.org/ffmpeg-filters.html
-//        filterString = "transpose=2,crop=w=200:h=200:x=0:y=0";
-        filterString = "transpose=2,crop=w=" + imageWidth + ":h=" + imageHeight + ":x=0:y=0";
+        filterString = "transpose=2,crop=w=200:h=200:x=0:y=0";
+//        filterString = "transpose=2,crop=w=" + imageWidth + ":h=" + imageHeight + ":x=0:y=0";
         filter = new FFmpegFrameFilter(filterString, imageWidth, imageHeight);
 
         //default format on android
@@ -293,9 +270,7 @@ public class RecordActivity extends Activity implements OnClickListener {
             yuvImage = new Frame(imageWidth, imageHeight, Frame.DEPTH_UBYTE, 2);
             Log.i(LOG_TAG, "create yuvImage");
         }
-
         Log.i(LOG_TAG, "recorder initialize success");
-
         audioRecordRunnable = new AudioRecordRunnable();
         audioThread = new Thread(audioRecordRunnable);
         runAudioThread = true;
@@ -423,8 +398,7 @@ public class RecordActivity extends Activity implements OnClickListener {
                 ShortBuffer audioData;
                 int bufferReadResult;
 
-                bufferSize = AudioRecord.getMinBufferSize(sampleAudioRateInHz,
-                        AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+                bufferSize = AudioRecord.getMinBufferSize(sampleAudioRateInHz, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
 
                 if (audioRecord == null) {
 //                    audioRecord = new audiorecord(MediaRecorder.AudioSource.mic, msamplerate,
@@ -505,6 +479,7 @@ public class RecordActivity extends Activity implements OnClickListener {
             mHolder.addCallback(CameraView.this);
             mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
             mCamera.setPreviewCallback(CameraView.this);
+
         }
 
         @Override
@@ -533,6 +508,12 @@ public class RecordActivity extends Activity implements OnClickListener {
 
             // Pick the first preview size that is equal or bigger, or pick the last (biggest) option if we cannot
             // reach the initial settings of imageWidth/imageHeight.
+
+            for (Camera.Size item : sizes) {
+                Log.v(LOG_TAG, "camera size list resolution: " + item.width + " x " + item.height);
+            }
+
+
             for (int i = 0; i < sizes.size(); i++) {
                 if ((sizes.get(i).width >= imageWidth && sizes.get(i).height >= imageHeight) || i == sizes.size() - 1) {
                     imageWidth = sizes.get(i).width;
@@ -558,6 +539,10 @@ public class RecordActivity extends Activity implements OnClickListener {
             } catch (Exception e) {
                 Log.e(LOG_TAG, "Could not set preview display in surfaceChanged");
             }
+
+            LinearLayout.LayoutParams layoutParam = (LinearLayout.LayoutParams) cameraView.getLayoutParams();
+            layoutParam.height = screenWidth / (imageWidth / imageHeight);
+            cameraView.setLayoutParams(layoutParam);
         }
 
         @Override
@@ -632,15 +617,23 @@ public class RecordActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (!recording) {
-            startRecording();
-            Log.w(LOG_TAG, "Start Button Pushed");
-            btnRecorderControl.setText("Stop");
-        } else {
-            // This will trigger the audio recording loop to stop and then set isRecorderStart = false;
+        if (v.getId() == R.id.btnBack) {
             stopRecording();
-            Log.w(LOG_TAG, "Stop Button Pushed");
-            btnRecorderControl.setText("Start");
+            Log.w(LOG_TAG, "back Button Pushed");
+            finish();
+        } else if (v.getId() == R.id.recorder_control) {
+            if (!recording) {
+                startRecording();
+                Log.w(LOG_TAG, "Start Button Pushed");
+                btnRecorderControl.setText("Stop");
+            } else {
+                // This will trigger the audio recording loop to stop and then set isRecorderStart = false;
+                stopRecording();
+                Log.w(LOG_TAG, "Stop Button Pushed");
+                btnRecorderControl.setText("Start");
+            }
         }
+
+
     }
 }
