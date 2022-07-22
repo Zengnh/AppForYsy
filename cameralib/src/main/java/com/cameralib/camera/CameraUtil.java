@@ -23,12 +23,12 @@ public class CameraUtil {
      * 闪光灯开启
      */
     public static final int FLASH_ON = 2;
- 
+
     private CameraUtil() {
     }
- 
+
     private static final Object o = new Object();
- 
+
     public static CameraUtil getInstance() {
         if (mInstance == null) {
             synchronized (o) {
@@ -39,14 +39,27 @@ public class CameraUtil {
         }
         return mInstance;
     }
- 
+
     private Camera mCamera;
- 
+
+    /**
+     * 默认开启后摄像头
+     *
+     * @return
+     */
     public Camera openCamera() {
         // 0 表示开启后置相机
         return openCamera(0);
     }
- 
+
+
+    /**
+     * 开启摄像头
+     * Camera.CameraInfo.CAMERA_FACING_BACK
+     * Camera.CameraInfo.CAMERA_FACING_FRONT
+     *
+     * @return
+     */
     public Camera openCamera(int id) {
         if (mCamera == null) {
             mCamera = Camera.open(id);
@@ -54,24 +67,39 @@ public class CameraUtil {
         setProperty();
         return mCamera;
     }
- 
+
+    private Camera.Size cutCameraSize;
+
     /**
      * 相机属性设置
      */
     private void setProperty() {
+        cutCameraSize = mCamera.new Size(1280, 720);
         //设置相机预览页面旋转90°，（默认是横屏）
         mCamera.setDisplayOrientation(90);
         mParameters = mCamera.getParameters();
         //设置将保存的图片旋转90°（竖着拍摄的时候）
+
+        List<Camera.Size> previewSize = getPreviewSizeList();
+//        计算最大视频比例
+        for (Camera.Size size : previewSize) {
+            if (cutCameraSize.width < size.width) {
+                cutCameraSize.width = size.width;
+                cutCameraSize.height = size.height;
+            }
+        }
         mParameters.setRotation(90);
-        mParameters.setPreviewSize(1920, 1080);
-        mParameters.setPictureSize(1920, 1080);
+        mParameters.setPreviewSize(cutCameraSize.width, cutCameraSize.height);
+        mParameters.setPictureSize(cutCameraSize.width, cutCameraSize.height);
+//        mParameters.setPreviewSize(1920, 1080);
+//        mParameters.setPictureSize(1920, 1080);
 //        mParameters.setPictureSize(4608, 3456);
         mParameters.setPictureFormat(ImageFormat.JPEG);
         mParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
 //        mParameters.set(ImageFormat.YUV_444_888);
         mCamera.setParameters(mParameters);
     }
+
     /**
      * 选装图片的角度
      */
@@ -83,9 +111,9 @@ public class CameraUtil {
             mParameters.setRotation(degree);
             mCamera.setParameters(mParameters);
         }
- 
+
     }
- 
+
     /**
      * 获取支持的预览分辨率
      */
@@ -95,7 +123,7 @@ public class CameraUtil {
         }
         return mCamera.getParameters().getSupportedPreviewSizes();
     }
- 
+
     /**
      * 获取保存图片支持的分辨率
      */
@@ -105,7 +133,7 @@ public class CameraUtil {
         }
         return mCamera.getParameters().getSupportedPictureSizes();
     }
- 
+
     /**
      * 设置闪光灯模式
      */
@@ -127,7 +155,7 @@ public class CameraUtil {
         }
         mCamera.setParameters(mParameters);
     }
- 
+
     /**
      * 释放相机资源
      */
@@ -141,14 +169,16 @@ public class CameraUtil {
             isRelease = true;
         }
     }
+
     /**
      * 是否旋转图片 true 选装
      */
     private boolean isRelease = false;
- 
+
     public boolean getIsRelease() {
         return isRelease;
     }
+
     /**
      * 设置保存图片的分辨率
      */

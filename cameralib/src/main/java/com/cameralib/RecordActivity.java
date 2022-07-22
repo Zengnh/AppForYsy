@@ -106,8 +106,8 @@ public class RecordActivity extends Activity implements OnClickListener {
     private final static String CLASS_LABEL = "RecordActivity";
     private final static String LOG_TAG = CLASS_LABEL + "Log";
 
-    //    private String ffmpeg_link = "/mnt/sdcard/streamVideo.flv";
-    private String ffmpeg_link = "rtmp://192.168.2.160:1935/live/address";
+        private String ffmpeg_link = "/mnt/sdcard/streamVideo.flv";
+//    private String ffmpeg_link = "rtmp://192.168.2.160:1935/live/address";
 
     long startTime = 0;
     boolean recording = false;
@@ -239,8 +239,6 @@ public class RecordActivity extends Activity implements OnClickListener {
     // initialize ffmpeg_recorder
     //---------------------------------------
     private void initRecorder() {
-
-        Log.w(LOG_TAG, "init recorder");
 
         Log.i(LOG_TAG, "ffmpeg_url: " + ffmpeg_link + "   w=" + imageWidth + "   h=" + imageHeight);
         recorder = new FFmpegFrameRecorder(ffmpeg_link, imageWidth, imageHeight, 1);
