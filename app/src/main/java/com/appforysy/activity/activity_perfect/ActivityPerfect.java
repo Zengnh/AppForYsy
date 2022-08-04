@@ -1,6 +1,7 @@
 package com.appforysy.activity.activity_perfect;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -30,6 +31,11 @@ public class ActivityPerfect extends ActivityRoot {
         initView();
         initEvent();
         initData();
+    }
+    protected Typeface tfRegular;//定义字体
+    {
+        tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NEUTRALGROTESK-BOLD.ttf");//初始化字体
+//        textView.setTypeface(tfRegular);
     }
 
     private void initData() {
