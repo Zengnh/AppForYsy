@@ -16,6 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.medialib.trim.utils.VideoTrimmerUtil;
 import com.rootlibs.downloader.InterListener;
 import com.rootlibs.downloader.ResultDownLoader;
+import com.rootlibs.retrofitpack.ToolDemo;
 import com.screenlib.MainServiceBook;
 import com.toolmvplibrary.activity_root.ActivityRoot;
 import java.util.ArrayList;
@@ -31,10 +32,13 @@ public class ActivityPerfect extends ActivityRoot {
         initView();
         initEvent();
         initData();
+
+        ToolDemo deom=new ToolDemo();
+        deom.test();
     }
-    protected Typeface tfRegular;//定义字体
+//    protected Typeface tfRegular;//定义字体
     {
-        tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NEUTRALGROTESK-BOLD.ttf");//初始化字体
+//        tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NEUTRALGROTESK-BOLD.ttf");//初始化字体
 //        textView.setTypeface(tfRegular);
     }
 

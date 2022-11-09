@@ -47,6 +47,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name,android:roundIcon,android:theme">
+<!--        tools:replace="android:name,android:roundIcon,android:theme">-->
 
         <!--设置比例处理-->
 

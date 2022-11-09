@@ -4,11 +4,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "com.appforysy"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -92,6 +91,8 @@ android {
         exclude 'META-INF/native-image/**'
     }
 
+
+
 }
 
 dependencies {
@@ -133,6 +134,7 @@ dependencies {
     implementation project(path: ':cutPic')
     implementation project(path: ':makebook')
     implementation project(path: ':screenlib')
+    implementation project(path: ':baiduproject')
     if (isNeedMyKotlin.toBoolean()) {
         implementation project(path: ':mykotlin')
     }

@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/baiduproject" />
             <option value="$PROJECT_DIR$/cameralib" />
             <option value="$PROJECT_DIR$/cutPic" />
             <option value="$PROJECT_DIR$/makebook" />
@@ -25,7 +26,6 @@
             <option value="$PROJECT_DIR$/zxinglib" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
