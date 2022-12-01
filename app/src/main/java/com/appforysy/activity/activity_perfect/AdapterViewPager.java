@@ -19,6 +19,7 @@ import com.appforysy.activity.activity_intruct.ActivityIntruct;
 import com.appforysy.activity.activity_login.ActivityLogin;
 import com.appforysy.activity.activity_snow.ActivitySnow;
 import com.appforysy.activity.draw_line.ActivityDrawVeiw;
+import com.baiduproject.BaiduManMainActivity;
 import com.cameralib.ActivityCameraDemo;
 import com.cameralib.ActivityCamrea;
 import com.cameralib.RecordActivity;
@@ -91,7 +92,11 @@ public class AdapterViewPager extends PagerAdapter {
                 recordVideo.nextClass = RecordActivity.class;
                 content.add(recordVideo);
 
-
+                ItemPagerContent videoBaidu = new ItemPagerContent();
+                videoBaidu.icon = R.mipmap.icon_select_app;
+                videoBaidu.itemName = "百度人体分析";
+                videoBaidu.nextClass = BaiduManMainActivity.class;
+                content.add(videoBaidu);
 
             } else if (i == 1) {
                 ItemPagerContent itemCamera = new ItemPagerContent();

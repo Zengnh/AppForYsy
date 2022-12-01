@@ -4,7 +4,6 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
 
     defaultConfig {
         minSdkVersion 21
@@ -80,9 +79,8 @@ dependencies {
 //##################################retrofit###########################
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'//Retrofit依赖
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'//可选依赖，解析json字符所用
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
 //            <uses-permission android:name="android.permission.INTERNET" />
-//    Gson：
-    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
 //    Jackson：
     implementation 'com.squareup.retrofit2:converter-jackson:2.0.2'
 
