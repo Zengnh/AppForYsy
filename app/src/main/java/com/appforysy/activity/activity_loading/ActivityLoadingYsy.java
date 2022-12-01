@@ -1,26 +1,18 @@
 package com.appforysy.activity.activity_loading;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.appforysy.activity.activity_guide.ActivityGuide;
-import com.appforysy.activity.activity_login.ActivityLogin;
-import com.appforysy.activity.activity_main.ActivityMain;
-import com.cutpic.cropwindow.handle.Handle;
-import com.toolmvplibrary.activity_root.ActivityRootInit;
-
 import com.appforysy.R;
-import com.toolmvplibrary.tool_app.ToolPreferences;
+import com.appforysy.activity.activity_login.ActivityLogin;
+import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.toolmvplibrary.tool_premission.ToolAppPremission;
 import com.toolmvplibrary.view.DialogListener;
 import com.toolmvplibrary.view.DialogStyleMy;
 
-public class ActivityLoading extends ActivityRootInit<PresenternLoading> implements InterLoading {
+public class ActivityLoadingYsy extends ActivityRootInit<PresenternLoading> implements InterLoading {
     @Override
     protected PresenternLoading setPresenter() {
         return new PresenternLoading();
@@ -28,7 +20,7 @@ public class ActivityLoading extends ActivityRootInit<PresenternLoading> impleme
 
     @Override
     public int setCutLayout() {
-        return R.layout.activity_loading;
+        return R.layout.activity_loading_ysy;
     }
 
     @Override
@@ -58,38 +50,33 @@ public class ActivityLoading extends ActivityRootInit<PresenternLoading> impleme
     }
 
     public void initPremissNext() {
-        handler.sendEmptyMessageDelayed(0, 2000);
+        presenter.checkVersion();
     }
 
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-            String toGuide = ToolPreferences.getString(ActivityLoading.this, "loading");
-            if (TextUtils.isEmpty(toGuide)) {
-                toGuide();
-                ToolPreferences.setString(ActivityLoading.this, "loading","1");
-            } else {
-                toLogin();
-            }
-        }
-    };
-
+    private DialogStyleMy dialog;
     @Override
     public void checkV() {
+        TextView txtView = new TextView(this);
+        txtView.setText("版本更新");
+         dialog = new DialogStyleMy(this, txtView, "确定",
+                "取消", new DialogListener() {
+            @Override
+            public void click(String str) {
+                dialog.dismiss();
+                Intent intent = new Intent(ActivityLoadingYsy.this, ActivityLogin.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
 
     }
 
     @Override
     public void toLogin() {
-        Intent intent = new Intent(this, ActivityMain.class);
+        Intent intent = new Intent(this, ActivityLogin.class);
         startActivity(intent);
-        finish();
-    }
-
-    public void toGuide() {
-        Intent intent = new Intent(this, ActivityGuide.class);
-        startActivity(intent);
-        finish();
     }
 }

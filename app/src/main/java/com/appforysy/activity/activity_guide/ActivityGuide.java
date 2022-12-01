@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.appforysy.R;
 import com.appforysy.activity.activity_img_main.ActivityImageMain;
+import com.appforysy.activity.activity_main.ActivityMain;
 import com.toolmvplibrary.activity_root.ActivityRootInit;
 import com.toolmvplibrary.activity_root.RootPresenter;
 
@@ -149,7 +150,7 @@ public class ActivityGuide extends ActivityRootInit {
 
     private void playFinish() {
 //        Intent intent=new Intent(this,MainActivity.class);
-        Intent intent = new Intent(this, ActivityImageMain.class);
+        Intent intent = new Intent(this, ActivityMain.class);
         startActivity(intent);
         finish();
     }

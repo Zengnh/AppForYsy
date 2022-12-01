@@ -1,63 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#3298FE">
-
-
-    <LinearLayout
-        android:id="@+id/centerContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
-
-    </LinearLayout>
-
-
-    <!--TOCHANGE-->
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/logoImg"
-        android:layout_width="162dp"
-        android:layout_height="88dp"
-        android:layout_above="@id/centerContent"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="16dp"
-        android:background="@mipmap/img_login_logo"
-        android:scaleType="centerCrop" />
-
-
-
-
-    <LinearLayout
-        android:id="@+id/layout_version"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/centerContent"
-        android:layout_marginTop="20dp"
-        android:gravity="right"
-        android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:visibility="gone">
-
-        <ProgressBar
-            android:id="@+id/progress"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:max="100"
-            android:progressDrawable="@drawable/player_pb_change" />
-
-        <TextView
-            android:id="@+id/setTextProgre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/color_fff"
-            android:textSize="12dp" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/image_login" />
 
 
 </RelativeLayout>

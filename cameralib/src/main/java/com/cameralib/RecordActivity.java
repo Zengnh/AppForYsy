@@ -120,27 +120,19 @@ public class RecordActivity extends Activity implements OnClickListener {
     private boolean addFilter = true;
     private String filterString = "";
     FFmpegFrameFilter filter;
-
     private int sampleAudioRateInHz = 44100;
     private int imageWidth = 1280;
     private int imageHeight = 720;
     private int frameRate = 30;
-
     /* audio data getting thread */
     private AudioRecord audioRecord;
     private AudioRecordRunnable audioRecordRunnable;
     private Thread audioThread;
     volatile boolean runAudioThread = true;
-
     /* video data getting thread */
     private Camera cameraDevice;
     private CameraView cameraView;
-
     private Frame yuvImage = null;
-
-    private final int live_width = 1280;
-    private final int live_height = 720;
-
     private int screenWidth, screenHeight;
     private Button btnRecorderControl, btnBack;
 
@@ -209,7 +201,7 @@ public class RecordActivity extends Activity implements OnClickListener {
         btnBack.setOnClickListener(this);
 
 
-        int prev_rh = screenWidth / (live_width / live_height);
+        int prev_rh = screenWidth / (imageWidth / imageHeight);
         LinearLayout.LayoutParams layoutParam = new LinearLayout.LayoutParams(screenWidth, prev_rh);
         layoutParam.topMargin = 100;
 
@@ -217,16 +209,7 @@ public class RecordActivity extends Activity implements OnClickListener {
         cameraDevice = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
 
         cameraDevice.setDisplayOrientation(90);
-        Camera.Parameters mParameters = cameraDevice.getParameters();
-        //设置将保存的图片旋转90°（竖着拍摄的时候）
-        mParameters.setRotation(90);
-        mParameters.setPreviewSize(imageWidth, imageHeight);
-        mParameters.setPictureSize(imageWidth, imageHeight);
-//        mParameters.setPictureSize(4608, 3456);
-        mParameters.setPictureFormat(ImageFormat.JPEG);
-        mParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-//        mParameters.set(ImageFormat.YUV_444_888);
-        cameraDevice.setParameters(mParameters);
+
 
 
         Log.i(LOG_TAG, "cameara open");
@@ -250,7 +233,6 @@ public class RecordActivity extends Activity implements OnClickListener {
         // The filterString  is any ffmpeg filter.
         // Here is the link for a list: https://ffmpeg.org/ffmpeg-filters.html
         filterString = "transpose=2,crop=w=200:h=200:x=0:y=0";
-//        filterString = "transpose=2,crop=w=" + imageWidth + ":h=" + imageHeight + ":x=0:y=0";
         filter = new FFmpegFrameFilter(filterString, imageWidth, imageHeight);
 
         //default format on android
@@ -520,7 +502,18 @@ public class RecordActivity extends Activity implements OnClickListener {
                     break;
                 }
             }
+
+
+
+            //设置将保存的图片旋转90°（竖着拍摄的时候）
+            camParams.setRotation(90);
             camParams.setPreviewSize(imageWidth, imageHeight);
+            camParams.setPictureSize(imageWidth, imageHeight);
+//        mParameters.setPictureSize(4608, 3456);
+            camParams.setPictureFormat(ImageFormat.JPEG);
+            camParams.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+//        mParameters.set(ImageFormat.YUV_444_888);
+
 
             Log.v(LOG_TAG, "Setting imageWidth: " + imageWidth + " imageHeight: " + imageHeight + " frameRate: " + frameRate);
 

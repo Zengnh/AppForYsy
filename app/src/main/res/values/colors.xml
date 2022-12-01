@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+
     <color name="colorPrimary">#ff0000</color>
 <!--    顶部状态栏目、-->
     <color name="colorPrimaryDark">#eeeeee</color>
@@ -43,5 +46,6 @@
     <color name="content15">#d9d6d6</color>
     <color name="content16">#461a1a</color>
 
+    <color name="blue_m_t">#FCC328</color>
 
 </resources>

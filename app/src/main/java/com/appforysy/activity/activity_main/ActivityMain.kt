@@ -9,10 +9,11 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.appforysy.R
 import com.appforysy.activity.activity_main.dashboard.DashboardFragment
-import com.appforysy.activity.activity_main.home.HomeFragment
+import com.appforysy.activity.activity_main.home.HomeFragmentJava
 import com.appforysy.activity.activity_main.imgcard.FragmentImgCard
 import com.appforysy.activity.activity_main.notifications.NotificationsFragment
 import com.appforysy.service.ServiceMain
@@ -24,28 +25,25 @@ import com.workysy.activity.activity_main.notifications.WorkFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class ActivityMain : ActivityRootInit<PresenterMain>(),
-    InterUiMain {
-
-
+class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
     override fun setPresenter(): PresenterMain {
         return PresenterMain()
     }
 
     override fun setCutLayout(): Int {
-        return R.layout.activity_main_screen_lib
+        return R.layout.activity_main
+//        return R.layout.activity_main_screen_lib
     }
 
     lateinit var adapter: AdapterBtnItem
     override fun initView() {
-
         var lan = ToolPreferences.getString(this, "lan");
         if (!TextUtils.isEmpty(lan)) {
             ToolLanguage.changeAppLanguage(context, lan)
         }
 //        YsyApplication.changeAppLanguage(getResources(),"zh");
         presenter.initData();
-        adapter =AdapterBtnItem(presenter.getBtnData())
+        adapter = AdapterBtnItem(presenter.getBtnData())
         nav_view.adapter = adapter
         nav_view.numColumns = adapter.count
 
@@ -58,9 +56,9 @@ class ActivityMain : ActivityRootInit<PresenterMain>(),
             ) {
                 adapter.setItemClick(position);
                 if (position == 0) {
-                    chagneFragmen(FragmentImgCard());
+                    chagneFragmen(HomeFragmentJava());
                 } else if (position == 1) {
-                    chagneFragmen(HomeFragment());
+                    chagneFragmen(FragmentImgCard());
                 } else if (position == 2) {
                     chagneFragmen(WorkFragment());
                 } else if (position == 3) {
@@ -83,9 +81,8 @@ class ActivityMain : ActivityRootInit<PresenterMain>(),
 
     override fun initData() {
         bindServiceMain();
-        chagneFragmen(FragmentImgCard());
+        chagneFragmen(HomeFragmentJava());
     }
-
 
     override fun reflushBtn() {
         nav_view.numColumns = adapter.count

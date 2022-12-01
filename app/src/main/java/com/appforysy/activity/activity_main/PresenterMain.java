@@ -1,5 +1,6 @@
 package com.appforysy.activity.activity_main;
 
+import com.appforysy.utils.ItemInfo;
 import com.toolmvplibrary.activity_root.RootPresenter;
 import com.appforysy.ModelCom;
 import com.appforysy.R;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PresenterMain extends RootPresenter<InterUiMain, ModelCom> {
-   private List<ItemMainBtn> dataList=new ArrayList<>();
+   private List<ItemInfo> dataList=new ArrayList<>();
 
     @Override
     public ModelCom createModel() {
@@ -18,31 +19,45 @@ public class PresenterMain extends RootPresenter<InterUiMain, ModelCom> {
     }
 
     public void initData(){
-        ItemMainBtn item=new ItemMainBtn();
+        ItemInfo item=new ItemInfo();
         item.text=getContext().getResources().getString(R.string.title_home);
         item.img=R.mipmap.ic_launcher_mlq;
+        item.imgSel=R.mipmap.home_select;
+        item.imgNor=R.mipmap.home_unselect;
         dataList.add(item);
-        ItemMainBtn item1=new ItemMainBtn();
+
+        ItemInfo item1=new ItemInfo();
         item1.img=R.mipmap.ic_launcher_mlq;
         item1.text=getContext().getResources().getString(R.string.title_notifications);
+        item1.imgSel=R.mipmap.cat_select;
+        item1.imgNor=R.mipmap.cat_unselect;
         dataList.add(item1);
-        ItemMainBtn item2=new ItemMainBtn();
+        ItemInfo item2=new ItemInfo();
         item2.img=R.mipmap.ic_launcher_mlq;
         item2.text=getContext().getResources().getString(R.string.title_dashboard);
+        item2.imgSel=R.mipmap.order_select;
+        item2.imgNor=R.mipmap.order_unselect;
+
         dataList.add(item2);
-        ItemMainBtn item3=new ItemMainBtn();
+        ItemInfo item3=new ItemInfo();
         item3.img=R.mipmap.ic_launcher_mlq;
         item3.text=getContext().getResources().getString(R.string.title_work);
+        item3.imgSel=R.mipmap.msg_sel;
+        item3.imgNor=R.mipmap.msg_nor;
         dataList.add(item3);
-        ItemMainBtn item4=new ItemMainBtn();
+
+        ItemInfo item4=new ItemInfo();
         item4.img=R.mipmap.ic_launcher_mlq;
         item4.text=getContext().getResources().getString(R.string.title_my);
+
+        item4.imgSel=R.mipmap.my_select;
+        item4.imgNor=R.mipmap.my_unselect;
         dataList.add(item4);
 
     }
 
     @Nullable
-    public List<ItemMainBtn> getBtnData() {
+    public List<ItemInfo> getBtnData() {
         return dataList;
     }
 

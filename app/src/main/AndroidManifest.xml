@@ -47,6 +47,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name,android:roundIcon,android:theme">
+<!--        tools:replace="android:name,android:roundIcon,android:theme">-->
 
         <!--设置比例处理-->
 
@@ -86,6 +87,11 @@
             android:name=".activity.activity_loading.ActivityLoading"
             tools:ignore="Instantiatable">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name=".activity.activity_anim.ActivityMainAnim"
@@ -113,13 +119,11 @@
         <activity android:name=".activity.activity_banner.ActivityBanner">
 
         </activity>
+        <activity android:name=".activity.activity_shuerte.ActiviyShuErTe"/>
         <activity
             android:name=".activity.activity_perfect.ActivityPerfect"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".activity.activity_intruct.ActivityIntruct">
 
@@ -133,6 +137,8 @@
             tools:ignore="Instantiatable">
 
         </activity>
+
+        <activity android:name=".activity.activity_loading.ActivityLoadingYsy"/>
 
         <provider
             android:name=".contentprovider.ConterProviderMain"

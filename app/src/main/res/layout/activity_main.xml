@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_line_focu_false">
@@ -19,13 +18,10 @@
     <!--        app:layout_constraintRight_toRightOf="parent"-->
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-
-
-
     <GridView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/design_main_item_hight"
         android:layout_alignParentBottom="true"
         android:background="#fff"
         android:numColumns="5" />

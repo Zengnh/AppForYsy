@@ -5,4 +5,5 @@
 
     <dimen name="design_fab_image_size">35dp</dimen>
     <dimen name="design_fab_size_normal">50dp</dimen>
+    <dimen name="design_main_item_hight">55dp</dimen>
 </resources>

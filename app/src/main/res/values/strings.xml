@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">完美天使</string>
 
-    <string name="title_home">类型一</string>
-    <string name="title_dashboard">类型二</string>
-    <string name="title_notifications">类型三</string>
-    <string name="title_work">自定义视图</string>
-    <string name="title_my">我的</string>
+    <string name="title_home">专注力</string>
+    <string name="title_dashboard">学习</string>
+    <string name="title_notifications">啥呀</string>
+    <string name="title_work">动画</string>
+    <string name="title_my">绘本</string>
 
 
     <string name="inputphone">请输入帐号</string>

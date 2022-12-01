@@ -1,6 +1,5 @@
 package com.appforysy.activity.activity_main;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appforysy.R;
+import com.appforysy.utils.ItemInfo;
 
 import java.util.List;
 
 public class AdapterBtnItem extends BaseAdapter {
-    private List<ItemMainBtn> dataList;
+    private List<ItemInfo> dataList;
 
-    public AdapterBtnItem(List<ItemMainBtn> dataList) {
+    public AdapterBtnItem(List<ItemInfo> dataList) {
         this.dataList = dataList;
     }
 
@@ -46,9 +46,11 @@ public class AdapterBtnItem extends BaseAdapter {
         }
         holder.itemText.setText(dataList.get(position).text);
         if (cutSelectPos == position) {
-            holder.itemText.setTextColor(Color.RED);
+            holder.itemText.setTextColor(convertView.getContext().getResources().getColor(R.color.blue_m_t));
+            holder.mainItemImage.setImageResource(dataList.get(position).imgSel);
         } else {
-            holder.itemText.setTextColor(Color.BLACK);
+            holder.itemText.setTextColor(convertView.getContext().getResources().getColor(R.color.color_999));
+            holder.mainItemImage.setImageResource(dataList.get(position).imgNor);
         }
         return convertView;
     }
@@ -62,10 +64,10 @@ public class AdapterBtnItem extends BaseAdapter {
 
     class Holder {
         private TextView itemText;
-
+        private ImageView mainItemImage;
         public Holder(View view) {
             itemText = view.findViewById(R.id.itemText);
-
+            mainItemImage=view.findViewById(R.id.mainItemImage);
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.mykotlin.activity
 
 
-class ActivityMain {
+class ActivityMyKotlinMain {
     open class Animal {
         open fun shout() = println("animal is shout")//定义成员函数
     }
