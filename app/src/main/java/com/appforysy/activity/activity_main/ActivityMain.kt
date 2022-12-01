@@ -37,10 +37,12 @@ class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
 
     lateinit var adapter: AdapterBtnItem
     override fun initView() {
-        var lan = ToolPreferences.getString(this, "lan");
-        if (!TextUtils.isEmpty(lan)) {
-            ToolLanguage.changeAppLanguage(context, lan)
-        }
+//        变更系统语言
+//        var lan = ToolPreferences.getString(this, "lan");
+//        if (!TextUtils.isEmpty(lan)) {
+//            ToolLanguage.changeAppLanguage(context, lan)
+//        }
+
 //        YsyApplication.changeAppLanguage(getResources(),"zh");
         presenter.initData();
         adapter = AdapterBtnItem(presenter.getBtnData())
