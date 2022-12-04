@@ -19,10 +19,7 @@ import com.appforysy.activity.activity_main.notifications.NotificationsFragment
 import com.appforysy.service.ServiceMain
 import com.toolmvplibrary.activity_root.ActivityRootInit
 import com.toolmvplibrary.tool_app.LogUtil
-import com.toolmvplibrary.tool_app.ToolLanguage
-import com.toolmvplibrary.tool_app.ToolPreferences
 import com.workysy.activity.activity_main.notifications.WorkFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
@@ -35,6 +32,7 @@ class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
 //        return R.layout.activity_main_screen_lib
     }
 
+    lateinit var nav_view: GridView
     lateinit var adapter: AdapterBtnItem
     override fun initView() {
 //        变更系统语言
@@ -42,7 +40,7 @@ class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
 //        if (!TextUtils.isEmpty(lan)) {
 //            ToolLanguage.changeAppLanguage(context, lan)
 //        }
-
+        nav_view = findViewById(R.id.nav_view)
 //        YsyApplication.changeAppLanguage(getResources(),"zh");
         presenter.initData();
         adapter = AdapterBtnItem(presenter.getBtnData())

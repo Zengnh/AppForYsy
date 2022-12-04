@@ -1,146 +1,65 @@
-apply plugin: 'com.android.application'
-//apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
 android {
-    compileSdkVersion 29
+    namespace 'com.appforysy'
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.appforysy"
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdk 23
+        targetSdk 32
+        versionCode 10000
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        ndk {
-            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
-            abiFilters "armeabi-v7a","arm64-v8a"
-        }
-        multiDexEnabled true
-        resConfigs "en", "zh-rCN"//, "需要支持的其他语言"
-
     }
-//    buildFeatures {
-//        viewBinding true
-//    }
-
-//    android.applicationVariants.all { variant ->
-//        variant.outputs.all {
-////            -${}
-////            def date = new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08"))
-//            if (variant.buildType.name.equals('debug')) {
-//                outputFileName = "ysy-${versionCode}-${versionName}-debug.apk"
-//            }
-//            if (variant.buildType.name.equals('release')) {
-//                outputFileName = "ysy-${versionCode}-${versionName}-release.apk"
-//            }
-//        }
-//    }
-
-    signingConfigs {
-        release {
-            storeFile file('ysykey.jks')
-            storePassword "qwe123"
-            keyAlias "ysy_comp"
-            keyPassword "qwe123"
-        }
-    }
-
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-
-        debug {
-            signingConfig signingConfigs.release
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-
     }
-
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
-
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = '1.8'
     }
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
-
-    repositories {
-//        引用的model包含aar
-        flatDir {
-            dirs project(':rootlibs').file('libs')
-        }
-    }
-    packagingOptions {
-        exclude 'META-INF/proguard/androidx-annotations.pro'
-        exclude 'META-INF/native-image/**'
-    }
-
-
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.0"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'com.google.android.material:material:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation project(path: ':rootlibs')
+    implementation project(path: ':toolmvplibrary')
+
+
+//    -----------------
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'androidx.navigation:navigation-fragment:2.3.0'
-    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment:2.5.2'
+    implementation 'androidx.navigation:navigation-ui:2.5.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
 
-
-//    ##################################################################
-    //---huawei-----------------------
-    implementation 'com.huawei.agconnect:agconnect-core:1.3.1.300'
-    implementation 'com.huawei.hms:push:5.0.1.300'
-    implementation 'com.kbeanie:multipicker:1.6@aar'
-    //-----------------
-    implementation files('libs/MiPush_SDK_Client_3_6_19.jar')
 
     //异常监控
-    implementation 'com.tencent.bugly:crashreport:2.2.0'
+    implementation 'com.tencent.bugly:crashreport:4.1.9'
 
 //广告
     implementation 'com.youth.banner:banner:2.1.0'
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
-
-    implementation project(path: ':rootlibs')
-    implementation project(path: ':toolmvplibrary')
-    implementation project(path: ':mlq_course')
-    implementation project(path: ':cameralib')
-    implementation project(path: ':photolib')
-    implementation project(path: ':medialib')
-    implementation project(path: ':zxinglib')
-    implementation project(path: ':cutPic')
-    implementation project(path: ':makebook')
-    implementation project(path: ':screenlib')
-    implementation project(path: ':baiduproject')
-    if (isNeedMyKotlin.toBoolean()) {
-        implementation project(path: ':mykotlin')
-    }
-//    implementation 'com.github.microshow:RxFFmpeg:2.2.0'
 }

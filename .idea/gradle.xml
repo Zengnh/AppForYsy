@@ -7,23 +7,12 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/baiduproject" />
-            <option value="$PROJECT_DIR$/cameralib" />
-            <option value="$PROJECT_DIR$/cutPic" />
-            <option value="$PROJECT_DIR$/makebook" />
-            <option value="$PROJECT_DIR$/medialib" />
-            <option value="$PROJECT_DIR$/mlq_course" />
-            <option value="$PROJECT_DIR$/mykotlin" />
-            <option value="$PROJECT_DIR$/photolib" />
             <option value="$PROJECT_DIR$/rootlibs" />
-            <option value="$PROJECT_DIR$/screenlib" />
             <option value="$PROJECT_DIR$/toolmvplibrary" />
-            <option value="$PROJECT_DIR$/zxinglib" />
           </set>
         </option>
       </GradleProjectSettings>

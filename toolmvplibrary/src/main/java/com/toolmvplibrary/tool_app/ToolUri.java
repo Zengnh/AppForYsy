@@ -33,6 +33,7 @@ public class ToolUri {
         return filePath;
     }
 
+    @SuppressLint("Range")
     private static String getRealPathFromUri_Api11To18(Context context, Uri uri) {
         String filePath = null;
         String[] projection = {MediaStore.Images.Media.DATA};

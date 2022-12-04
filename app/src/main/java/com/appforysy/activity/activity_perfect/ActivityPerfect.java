@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import com.appforysy.R;
 import com.google.android.material.tabs.TabLayout;
-import com.medialib.trim.utils.VideoTrimmerUtil;
 import com.rootlibs.downloader.InterListener;
 import com.rootlibs.downloader.ResultDownLoader;
 import com.rootlibs.retrofitpack.ToolDemo;
-import com.screenlib.MainServiceBook;
 import com.toolmvplibrary.activity_root.ActivityRoot;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +51,7 @@ public class ActivityPerfect extends ActivityRoot {
         pushVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                VideoTrimmerUtil.pushVideo("","");
+//                VideoTrimmerUtil.pushVideo("","");
             }
         });
     }
@@ -73,13 +71,13 @@ public class ActivityPerfect extends ActivityRoot {
     private InterListener listener = new InterListener() {
         @Override
         public void resultFinish(ResultDownLoader succ) {
-            if (MainServiceBook.STATE == MainServiceBook.ACTIVE) {
-                Intent i = new Intent(ActivityPerfect.this, MainServiceBook.class);
-                stopService(i);
-            } else {
-                Intent i = new Intent(ActivityPerfect.this, MainServiceBook.class);
-                startService(i);
-            }
+//            if (MainServiceBook.STATE == MainServiceBook.ACTIVE) {
+//                Intent i = new Intent(ActivityPerfect.this, MainServiceBook.class);
+//                stopService(i);
+//            } else {
+//                Intent i = new Intent(ActivityPerfect.this, MainServiceBook.class);
+//                startService(i);
+//            }
 
         }
     };

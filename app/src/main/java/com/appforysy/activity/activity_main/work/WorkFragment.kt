@@ -261,7 +261,7 @@ class WorkFragment : Fragment() {
         }, 18, 24, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
 
         sprint.setSpan(
-            ForegroundColorSpan(resources.getColor(R.color.color_1e)),
+            ForegroundColorSpan(resources.getColor(R.color.color_1e,null)),
             18,
             24,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE

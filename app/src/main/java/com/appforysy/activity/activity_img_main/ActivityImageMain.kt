@@ -79,7 +79,7 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
 
         dataList.add(ItemMain(R.mipmap.image_noti_head, ActivityNotiEdit::class.java))
         dataList.add(ItemMain(R.mipmap.image_time_info, ActivityTimeNote::class.java))
-        dataList.add(ItemMain(3, R.mipmap.image_camer, com.cameralib.ActivityCamrea::class.java))
+//        dataList.add(ItemMain(3, R.mipmap.image_camer, com.cameralib.ActivityCamrea::class.java))
         dataList.add(ItemMain(R.mipmap.image_main_img, ActivityMain::class.java))
         dataList.add(ItemMain(R.mipmap.image_rotation, ActivityRotation::class.java))
         dataList.add(ItemMain(5, R.mipmap.image_all_image))

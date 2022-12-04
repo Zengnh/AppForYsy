@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.appforysy">
-
+    xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <!-- android 9.0上使用前台服务，需要添加权限-->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -19,7 +17,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!--语言变更权限-->
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
 
@@ -31,26 +30,23 @@
     <!--    android:configChanges="keyboard|navigation|keyboardHidden" -->
 
     <!-- 录音权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--    <uses-permission android:name="android.permission.RECORD_AUDIO" />-->
 
 
     <application
         android:name=".YsyApplication"
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:largeHeap="true"
-        android:networkSecurityConfig="@xml/network_config"
-        android:requestLegacyExternalStorage="true"
-        android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:networkSecurityConfig="@xml/network_config"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:replace="android:name,android:roundIcon,android:theme">
-<!--        tools:replace="android:name,android:roundIcon,android:theme">-->
-
-        <!--设置比例处理-->
-
+        android:theme="@style/Theme.ZnhProject"
+        tools:targetApi="31"
+        tools:replace="android:name,android:roundIcon,android:theme"
+        >
         <meta-data
             android:name="android.max_aspect"
             android:value="2.3" />
@@ -66,11 +62,20 @@
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
+        <activity
+            android:name=".activity.activity_loading.ActivityLoading"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-        <!--        android:requestLegacyExternalStorage="true"//android 10 需要此权限，否则某些机型有读写权限但是读取文件还会报无权限&ndash;&gt;-->
-        <!--        android:networkSecurityConfig="@xml/network_config"//http 能访问-->
-        <!--        android:largeHeap="true"//申请大内存-->
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
 
         <activity
             android:name=".activity.activity_guide.ActivityGuide"
@@ -79,18 +84,6 @@
         </activity>
 
         <activity android:name=".activity.draw_line.ActivityDrawVeiw">
-
-        </activity>
-
-
-        <activity
-            android:name=".activity.activity_loading.ActivityLoading"
-            tools:ignore="Instantiatable">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -172,7 +165,8 @@
             tools:ignore="Instantiatable" />
 
         <service android:name=".service.ServiceMain" />
-        <receiver android:name=".broadcast.MyBroadcast">
+        <receiver android:name=".broadcast.MyBroadcast"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.abd" />
             </intent-filter>
@@ -183,31 +177,15 @@
 
         </receiver>
 
-        <activity
-            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat" />
-
-        <!--        <activity-->
-        <!--            android:name=".MultiPickerShareActivity"-->
-        <!--            android:screenOrientation="portrait">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.SEND"/>-->
-        <!--                &lt;!&ndash; Configure specific file types that you want to handle &ndash;&gt;-->
-        <!--                &lt;!&ndash; <data android:mimeType="video/*" &ndash;&gt;-->
-        <!--                <data android:mimeType="*/*"/>-->
-        <!--                <category android:name="android.intent.category.DEFAULT" />-->
-        <!--                <category android:name="android.intent.category.OPENABLE" />-->
-        <!--            </intent-filter>-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.SEND_MULTIPLE"/>-->
-        <!--                &lt;!&ndash; Configure specific file types that you want to handle &ndash;&gt;-->
-        <!--                &lt;!&ndash; <data android:mimeType="image/*" &ndash;&gt;-->
-        <!--                <data android:mimeType="*/*"/>-->
-        <!--                <category android:name="android.intent.category.DEFAULT" />-->
-        <!--                <category android:name="android.intent.category.OPENABLE" />-->
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
-
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

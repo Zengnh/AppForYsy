@@ -3,9 +3,9 @@ package com.appforysy.activity.activity_detail;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.photolib.ToolThreadPool;
 import com.toolmvplibrary.activity_root.RootModel;
 import com.toolmvplibrary.activity_root.RootPresenter;
+import com.toolmvplibrary.tool_app.ToolThreadPool;
 
 import java.io.BufferedReader;
 import java.io.IOException;

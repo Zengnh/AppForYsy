@@ -69,28 +69,28 @@ public class ActivityDrawVeiw extends ActivityRoot {
             dataList.add(item);
         }
 
-        dataList.get(6).icon = R.mipmap.icon_red_cut;
+        dataList.get(6).icon = R.mipmap.ic_launcher;
         dataList.get(6).flog = 4;
-        dataList.get(2).icon = R.mipmap.icon_red_delete;
+        dataList.get(2).icon = R.mipmap.ic_launcher;
         dataList.get(2).flog = 1;
-        dataList.get(4).icon = R.mipmap.icon_red_distory;
+        dataList.get(4).icon = R.mipmap.ic_launcher;
 
 
-        dataList.get(7).icon = R.mipmap.icon_red_no;
+        dataList.get(7).icon = R.mipmap.ic_launcher;
         dataList.get(7).flog = 2;
         dataList.get(7).itemName = "禁止顶层绘制";
 
-        dataList.get(5).icon = R.mipmap.icon_red_write;
+        dataList.get(5).icon = R.mipmap.ic_launcher;
         dataList.get(5).flog = 3;
         dataList.get(5).itemName = "可以绘制";
 
 
         dataList.get(1).flog = 6;
         dataList.get(1).itemName = "下一张";
-        dataList.get(1).icon = R.mipmap.icon_red_toright;
+        dataList.get(1).icon = R.mipmap.ic_launcher;
         dataList.get(0).flog = 5;
         dataList.get(0).itemName = "上一张";
-        dataList.get(0).icon = R.mipmap.icon_red_toleft;
+        dataList.get(0).icon = R.mipmap.ic_launcher;
 
         adapter = new AdapterEditGrid(dataList);
         gridViewEidt.setAdapter(adapter);

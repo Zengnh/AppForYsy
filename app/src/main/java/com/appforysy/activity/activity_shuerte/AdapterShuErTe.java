@@ -48,7 +48,7 @@ public class AdapterShuErTe extends BaseAdapter {
         }
         ItemInfo info=data.get(position);
         if(info.type==1){
-            holder.itemSETContent.setTextColor(convertView.getContext().getResources().getColor(R.color.blue));
+            holder.itemSETContent.setTextColor(convertView.getContext().getResources().getColor(R.color.color_blue));
         }else{
             holder.itemSETContent.setTextColor(convertView.getContext().getResources().getColor(R.color.color_1e));
         }

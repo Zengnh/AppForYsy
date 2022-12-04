@@ -9,9 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.appforysy.activity.activity_guide.ActivityGuide;
-import com.appforysy.activity.activity_login.ActivityLogin;
 import com.appforysy.activity.activity_main.ActivityMain;
-import com.cutpic.cropwindow.handle.Handle;
 import com.toolmvplibrary.activity_root.ActivityRootInit;
 
 import com.appforysy.R;

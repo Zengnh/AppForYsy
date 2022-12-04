@@ -1,14 +1,22 @@
-include ':mykotlin'
-rootProject.name='AppForYsy'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+rootProject.name = "ZnhProject"
 include ':app'
 include ':rootlibs'
 include ':toolmvplibrary'
-include ':cameralib'
-include ':mlq_course'
-include ':photolib'
-include ':medialib'
-include ':zxinglib'
-include ':cutPic'
-include ':makebook'
-include ':screenlib'
-include ':baiduproject'
