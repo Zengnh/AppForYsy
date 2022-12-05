@@ -60,13 +60,30 @@ public class ToolSoundPool {
                 }
             }
         });
-        voiceId = soundPool.load(context, R.raw.beep, 1);
+        readyGO = soundPool.load(context, R.raw.ready_go, 1);
+        voiceId = soundPool.load(context, R.raw.di, 1);
+        succInfo = soundPool.load(context, R.raw.answer_right, 1);
+        errorIno = soundPool.load(context, R.raw.answer_wrong, 1);
     }
 
     private final int voiceId;
+    private final int succInfo;
+    private final int errorIno;
+    private final int readyGO;
 
-    public void play() {
+    public void playDi() {
         soundPool.play(voiceId, 1, 1, 1, 0, 1);
     }
 
+    public void playRight() {
+        soundPool.play(succInfo, 1, 1, 1, 0, 1);
+    }
+
+    public void playErr() {
+        soundPool.play(errorIno, 1, 1, 1, 0, 1);
+    }
+
+    public void playReadyGo() {
+        soundPool.play(readyGO, 1, 1, 1, 0, 1);
+    }
 }

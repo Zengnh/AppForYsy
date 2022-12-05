@@ -7,6 +7,7 @@ package com.toolmvplibrary.tool_app;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
+import android.util.Log;
 
 public class ToolScreenDensity {
 
@@ -27,6 +28,7 @@ public class ToolScreenDensity {
     }
 
     private int viewHight;
+    private int viewWidth;
     private Activity act;
 
     /**
@@ -73,6 +75,25 @@ public class ToolScreenDensity {
             Rect r = new Rect();
             act.getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
             viewHight = r.bottom - r.top;
+        }
+    }
+
+    public int getRootViewWidth(Activity act) {
+        if (viewWidth == 0) {
+            if (act != null) {
+                viewWidth = act.getWindowManager().getDefaultDisplay().getWidth();
+            }
+        }
+        return viewWidth;
+    }
+
+    public void setRootViewWidth(Activity act) {
+        if (act != null) {
+            Rect r = new Rect();
+            act.getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
+            viewWidth = r.right - r.left;
+            int scW = act.getWindowManager().getDefaultDisplay().getWidth();
+            Log.i("znh", viewHight + "  " + scW);
         }
     }
 

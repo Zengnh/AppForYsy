@@ -41,15 +41,19 @@ public class HomeFragmentJava extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        List<String> imageList = new ArrayList();
-        imageList.add("https://img2.baidu.com/it/u=3834190161,2920449096&fm=253&fmt=auto&app=138&f=JPEG?w=900&h=375");
-        imageList.add("https://img2.baidu.com/it/u=1440508587,223818294&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=188");
-        mainBannerYsy.setLoopTime(3000);
+        List<Integer> imageList = new ArrayList();
+        imageList.add(R.mipmap.banner_no1);
+        imageList.add(R.mipmap.banner_no2);
+        imageList.add(R.mipmap.banner_no3);
+        imageList.add(R.mipmap.banner_no4);
+        imageList.add(R.mipmap.banner_no5);
+        imageList.add(R.mipmap.banner_no6);
+         mainBannerYsy.setLoopTime(3000);
 
-        mainBannerYsy.setAdapter(new BannerImageAdapter<String>(imageList) {
+        mainBannerYsy.setAdapter(new BannerImageAdapter<Integer>(imageList) {
 
             @Override
-            public void onBindView(BannerImageHolder holder, String data, int position, int size) {
+            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
 
                 ToolGlide.loadImge(holder.imageView.getContext(), data, holder.imageView);
 

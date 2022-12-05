@@ -14,6 +14,7 @@ import com.toolmvplibrary.activity_root.ActivityRootInit;
 
 import com.appforysy.R;
 import com.toolmvplibrary.tool_app.ToolPreferences;
+import com.toolmvplibrary.tool_app.ToolScreenDensity;
 import com.toolmvplibrary.tool_premission.ToolAppPremission;
 import com.toolmvplibrary.view.DialogListener;
 import com.toolmvplibrary.view.DialogStyleMy;
@@ -32,6 +33,13 @@ public class ActivityLoading extends ActivityRootInit<PresenternLoading> impleme
     @Override
     public void initView() {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ToolScreenDensity.getInstance().setRootViewWidth(this);
+        ToolScreenDensity.getInstance().setRootViewHight(this);
     }
 
     @Override

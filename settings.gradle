@@ -16,7 +16,7 @@ dependencyResolutionManagement {
         maven { url "https://jitpack.io" }
     }
 }
-rootProject.name = "ZnhProject"
+rootProject.name = "AppForYsy"
 include ':app'
 include ':rootlibs'
 include ':toolmvplibrary'

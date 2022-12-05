@@ -13,6 +13,7 @@ public class ItemInfo {
     public int img;
     public String text;
     public int type;
+
     public int imgSel;
     public int imgNor;
     public String remark;

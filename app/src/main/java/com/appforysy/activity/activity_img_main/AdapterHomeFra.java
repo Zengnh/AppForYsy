@@ -1,5 +1,6 @@
 package com.appforysy.activity.activity_img_main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +33,7 @@ public class AdapterHomeFra extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         HolderMain hd = (HolderMain) holder;
         hd.setData(holder.itemView.getContext(), dataList.get(position).icon);
         hd.imageView.setOnClickListener(new View.OnClickListener() {

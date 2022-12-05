@@ -6,5 +6,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:src="@mipmap/will_to_do"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
