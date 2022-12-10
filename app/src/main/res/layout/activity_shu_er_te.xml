@@ -7,7 +7,7 @@
 
     <include layout="@layout/layout_title" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -22,7 +22,7 @@
             android:id="@+id/gridViewSET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="25dp"
             android:gravity="center"
             android:horizontalSpacing="1dp"
@@ -30,7 +30,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
 
             <CheckBox
                 android:id="@+id/cbStartTime"
@@ -61,6 +62,6 @@
                 android:layout_alignParentBottom="true"
                 android:src="@mipmap/pk_reload" />
         </RelativeLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

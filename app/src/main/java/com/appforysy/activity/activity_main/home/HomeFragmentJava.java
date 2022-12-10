@@ -1,9 +1,11 @@
 package com.appforysy.activity.activity_main.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,9 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appforysy.R;
+import com.appforysy.activity.activity_img_main.ActivityImageMain;
+import com.appforysy.activity.activity_cut_image.ActivityCutImage;
 import com.appforysy.activity.activity_perfect.ActivityPerfect;
 import com.appforysy.activity.activity_shuerte.ActiviyShuErTe;
-import com.appforysy.utils.ItemInfo;
+import com.appforysy.activity.draw_line.ActivityDrawVeiw;
+import com.toolmvplibrary.activity_root.ItemInfo;
 import com.rootlibs.loadimg.ToolGlide;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
@@ -31,16 +36,18 @@ public class HomeFragmentJava extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         mainBannerYsy = root.findViewById(R.id.mainBannerYsy);
         recyclerViewMainFra = root.findViewById(R.id.recyclerViewMainFra);
+        imageEdit = root.findViewById(R.id.imageEdit);
         return root;
     }
 
+    private ImageView imageEdit;
     private Banner mainBannerYsy;
     private RecyclerView recyclerViewMainFra;
     private AdapterMainFra adapterMainFra;
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         List<Integer> imageList = new ArrayList();
         imageList.add(R.mipmap.banner_no1);
         imageList.add(R.mipmap.banner_no2);
@@ -48,7 +55,7 @@ public class HomeFragmentJava extends Fragment {
         imageList.add(R.mipmap.banner_no4);
         imageList.add(R.mipmap.banner_no5);
         imageList.add(R.mipmap.banner_no6);
-         mainBannerYsy.setLoopTime(3000);
+        mainBannerYsy.setLoopTime(3000);
 
         mainBannerYsy.setAdapter(new BannerImageAdapter<Integer>(imageList) {
 
@@ -65,6 +72,15 @@ public class HomeFragmentJava extends Fragment {
         adapterMainFra = new AdapterMainFra(initListData());
         recyclerViewMainFra.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerViewMainFra.setAdapter(adapterMainFra);
+
+//        ---------------------
+        imageEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ActivityPerfect.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public List<ItemInfo> initListData() {
@@ -75,9 +91,19 @@ public class HomeFragmentJava extends Fragment {
         shuerte.remark = "舒尔特方格，画一张有25个小方格的表格，将1~25的数字顺序打乱，填在表格里面，然后以最快的速度从1数到25，要边读边指出，一人指读一人帮忙计时";
         shuerte.nextClass = ActiviyShuErTe.class;
         itemList.add(shuerte);
-        ItemInfo info2 = new ItemInfo(R.mipmap.ic_launcher,"Demo", "半成品入口");
-        info2.setNextClass(ActivityPerfect.class);
+
+        ItemInfo info2 = new ItemInfo(R.mipmap.image_icon_all, "展示图片", "图片展示页面");
+        info2.setNextClass(ActivityImageMain.class);
         itemList.add(info2);
+
+        ItemInfo changeImage = new ItemInfo(R.mipmap.icon_cutimage, "拼图游戏", "图片展示页面");
+        changeImage.setNextClass(ActivityCutImage.class);
+        itemList.add(changeImage);
+
+        ItemInfo drawerImage = new ItemInfo(R.mipmap.icon_drawer, "神兽绘本", "绘画工具");
+        drawerImage.setNextClass(ActivityDrawVeiw.class);
+        itemList.add(drawerImage);
+
         return itemList;
     }
 

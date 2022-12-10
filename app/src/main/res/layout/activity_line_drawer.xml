@@ -4,55 +4,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/drawableRoot"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <include layout="@layout/layout_title" />
 
-
-        <com.toolmvplibrary.view.zoom_img.PhotoView
-            android:id="@+id/zoomImage"
+        <RelativeLayout
+            android:id="@+id/drawableRoot"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
 
+            <com.toolmvplibrary.view.zoom_img.PhotoView
+                android:id="@+id/zoomImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-        <com.appforysy.activity.draw_line.DrawingView
-            android:id="@+id/drawLineView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </RelativeLayout>
-
+            <com.appforysy.activity.draw_line.DrawingView
+                android:id="@+id/drawLineView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </LinearLayout>
     <!-- <dimen name="design_fab_size_normal">50dp</dimen>-->
     <!-- <dimen name ="design_fab_image_size">45dp</dimen>-->
 
-    <GridView
-        android:id="@+id/gridViewEidt"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentRight="true"
+
+    <LinearLayout
+        android:id="@+id/editLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/editOutHight"
         android:layout_alignParentBottom="true"
-        android:layout_margin="25dp"
-        android:horizontalSpacing="5dp"
-        android:numColumns="3"
-        android:verticalSpacing="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/buttonDrawable"
+            android:layout_width="@dimen/editOutHight"
+            android:layout_height="@dimen/editOutHight"
+            android:alpha="0.5"
+            android:background="@drawable/fill_shape_org_35"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/more_icon" />
+
+        <GridView
+            android:id="@+id/gridViewEidt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editOutHight"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/fill_shape_blue_5"
+            android:horizontalSpacing="5dp"
+            android:verticalSpacing="5dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_above="@id/editLayout"
+        android:layout_width="@dimen/editOutHight"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="5dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0px"
+        android:cacheColorHint="@android:color/transparent"
+        android:background="@drawable/fill_shape_blue_5"
         android:visibility="gone" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/buttonDrawable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="25dp"
-        android:alpha="0.5"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ico_round_add"
-        app:backgroundTint="@color/content11"
-        app:backgroundTintMode="src_in"
-        app:borderWidth="0dp"
-        app:elevation="5dp"
-        app:fabSize="normal"
-        app:pressedTranslationZ="5dp"
-        app:rippleColor="#cccccc" />
 </RelativeLayout>

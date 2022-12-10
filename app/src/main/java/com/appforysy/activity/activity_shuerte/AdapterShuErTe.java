@@ -4,13 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appforysy.R;
-import com.appforysy.activity.activity_main.AdapterBtnItem;
-import com.appforysy.utils.ItemInfo;
+import com.toolmvplibrary.activity_root.ItemInfo;
 
 import java.util.List;
 

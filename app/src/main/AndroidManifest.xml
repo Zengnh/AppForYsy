@@ -118,7 +118,7 @@
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".activity.activity_intruct.ActivityIntruct">
+        <activity android:name=".activity.activity_cut_image.ActivityCutImage">
 
         </activity>
 

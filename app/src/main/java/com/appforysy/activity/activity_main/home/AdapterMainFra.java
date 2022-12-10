@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appforysy.R;
-import com.appforysy.utils.ItemInfo;
+import com.toolmvplibrary.activity_root.ItemInfo;
 import com.rootlibs.loadimg.ToolGlide;
 
 import java.util.List;

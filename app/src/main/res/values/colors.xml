@@ -53,5 +53,6 @@
     <color name="content16">#461a1a</color>
     <color name="content17">#c3ebeb</color>
     <color name="blue_m_t">#FCC328</color>
-
+    <color name="alph30_blue">#30067dff</color>
+    <color name="alph30_while">#30000000</color>
 </resources>

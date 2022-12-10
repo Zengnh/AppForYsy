@@ -1,8 +1,6 @@
 package com.appforysy.activity.activity_shuerte;
 
-import android.provider.SyncStateContract;
-
-import com.appforysy.utils.ItemInfo;
+import com.toolmvplibrary.activity_root.ItemInfo;
 import com.toolmvplibrary.activity_root.RootModel;
 import com.toolmvplibrary.activity_root.RootPresenter;
 

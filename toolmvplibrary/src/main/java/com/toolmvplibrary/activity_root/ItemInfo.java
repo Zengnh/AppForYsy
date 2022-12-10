@@ -1,4 +1,4 @@
-package com.appforysy.utils;
+package com.toolmvplibrary.activity_root;
 
 public class ItemInfo {
     public ItemInfo() {

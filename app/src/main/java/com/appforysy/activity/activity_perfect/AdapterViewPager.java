@@ -1,6 +1,5 @@
 package com.appforysy.activity.activity_perfect;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +7,10 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
+
 import com.appforysy.R;
-import com.appforysy.activity.activity_banner.ActivityBanner;
-import com.appforysy.activity.activity_detail.Activity_Detail;
-import com.appforysy.activity.activity_edt_note.ActivityNotiEdit;
-import com.appforysy.activity.activity_guide.ActivityGuide;
-import com.appforysy.activity.activity_intruct.ActivityIntruct;
-import com.appforysy.activity.activity_login.ActivityLogin;
-import com.appforysy.activity.draw_line.ActivityDrawVeiw;
+import com.appforysy.activity.activity_cut_image.ActivityCutImage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +36,12 @@ public class AdapterViewPager extends PagerAdapter {
         for (int i = 0; i < title.length; i++) {
             List<ItemPagerContent> content = new ArrayList<>();
             if (i == 0) {
+                ItemPagerContent mlqApp = new ItemPagerContent();
+                mlqApp.icon = R.mipmap.icon_demo;
+                mlqApp.itemName = "滑动特效";
+                mlqApp.nextClass = ActivityCutImage.class;
+                content.add(mlqApp);
+
 //                ItemPagerContent mlqApp = new ItemPagerContent();
 //                mlqApp.icon = R.mipmap.ic_launcher_mlq;
 //                mlqApp.itemName = "沐林茜学院";
@@ -148,7 +149,7 @@ public class AdapterViewPager extends PagerAdapter {
 //                item6.nextClass = ActivityBook.class;
 //                content.add(item6);
 
-                
+
 //                ItemPagerContent itemScreen = new ItemPagerContent();
 //                itemScreen.icon = R.mipmap.icon_red_flag;
 //                itemScreen.itemName = "护眼模式";
@@ -209,7 +210,6 @@ public class AdapterViewPager extends PagerAdapter {
 //                CutPic.itemName = "cut pic";
 //                CutPic.nextClass = LibActivityCupPic.class;
 //                content.add(CutPic);
-
 
             } else {
                 ItemPagerContent star = new ItemPagerContent();

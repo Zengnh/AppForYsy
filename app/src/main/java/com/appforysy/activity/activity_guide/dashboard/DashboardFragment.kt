@@ -1,4 +1,4 @@
-package com.appforysy.activity.activity_main.dashboard
+package com.appforysy.activity.activity_guide.dashboard
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter

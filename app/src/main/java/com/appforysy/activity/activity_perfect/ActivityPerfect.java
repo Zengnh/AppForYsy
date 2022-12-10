@@ -5,18 +5,22 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+
 import com.appforysy.R;
+import com.appforysy.utils.ToolTitleLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.rootlibs.downloader.InterListener;
 import com.rootlibs.downloader.ResultDownLoader;
 import com.rootlibs.retrofitpack.ToolDemo;
 import com.toolmvplibrary.activity_root.ActivityRoot;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,16 +35,18 @@ public class ActivityPerfect extends ActivityRoot {
         initEvent();
         initData();
 
-        ToolDemo deom=new ToolDemo();
+        ToolDemo deom = new ToolDemo();
         deom.test();
     }
-//    protected Typeface tfRegular;//定义字体
+
+    //    protected Typeface tfRegular;//定义字体
     {
 //        tfRegular = Typeface.createFromAsset(getAssets(), "fonts/NEUTRALGROTESK-BOLD.ttf");//初始化字体
 //        textView.setTypeface(tfRegular);
     }
 
     private void initData() {
+        toolTitleLayout.setTitle("样品");
 //        ItemEdit obj=new ItemEdit();
 //
 //        ClassFile bean=new ClassFile();
@@ -48,12 +54,7 @@ public class ActivityPerfect extends ActivityRoot {
     }
 
     private void initEvent() {
-        pushVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                VideoTrimmerUtil.pushVideo("","");
-            }
-        });
+
     }
 
     private ViewPager viewPager;
@@ -81,10 +82,12 @@ public class ActivityPerfect extends ActivityRoot {
 
         }
     };
-    private ImageView pushVideo;
-    private void initView() {
 
-        pushVideo = findViewById(R.id.pushVideo);
+    ToolTitleLayout toolTitleLayout;
+
+    private void initView() {
+        toolTitleLayout = new ToolTitleLayout(this);
+
         tabayView = findViewById(R.id.tabayView);
         viewPager = findViewById(R.id.viewPager);
 

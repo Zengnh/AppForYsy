@@ -5,16 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
-import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.appforysy.R
-import com.appforysy.activity.activity_main.dashboard.DashboardFragment
+import com.appforysy.activity.activity_guide.dashboard.DashboardFragment
 import com.appforysy.activity.activity_main.home.HomeFragmentJava
 import com.appforysy.activity.activity_main.imgcard.FragmentImgCard
+import com.appforysy.activity.activity_main.student.StudentFragmentJava
 import com.appforysy.activity.activity_main.notifications.NotificationsFragment
 import com.appforysy.service.ServiceMain
 import com.toolmvplibrary.activity_root.ActivityRootInit
@@ -58,11 +58,12 @@ class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
                 if (position == 0) {
                     chagneFragmen(HomeFragmentJava());
                 } else if (position == 1) {
-                    chagneFragmen(FragmentImgCard());
+                    chagneFragmen(StudentFragmentJava());
+//                    chagneFragmen(FragmentImgCard());
                 } else if (position == 2) {
                     chagneFragmen(WorkFragment());
                 } else if (position == 3) {
-                    chagneFragmen(DashboardFragment());
+                    chagneFragmen(FragmentImgCard());
                 } else if (position == 4) {
                     chagneFragmen(NotificationsFragment());
                 } else if (position == 5) {

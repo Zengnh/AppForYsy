@@ -56,7 +56,16 @@ public class DrawingView extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStrokeWidth(4);
+        mPaint.setStrokeWidth(pintCutSize);
+    }
+
+    private int pintCutSize = 4;
+    public int getPaintSize(){
+        return pintCutSize;
+    }
+    public void setPaintSize(int size) {
+        pintCutSize = size;
+        mPaint.setStrokeWidth(pintCutSize);
     }
 
     @Override
@@ -76,10 +85,11 @@ public class DrawingView extends View {
         canvas.drawPath(circlePath, circlePaint);
     }
 
-    private boolean cleanView=false;
+    private boolean cleanView = false;
+
     public void cleanView() {
-        cleanView=true;
-        if (mPath != null&&getWidth()>0&&getHeight()>0) {
+        cleanView = true;
+        if (mPath != null && getWidth() > 0 && getHeight() > 0) {
             mBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
             mCanvas = new Canvas(mBitmap);
             invalidate();

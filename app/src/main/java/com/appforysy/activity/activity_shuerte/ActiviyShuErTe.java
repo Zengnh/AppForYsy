@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appforysy.R;
-import com.appforysy.utils.ItemInfo;
+import com.toolmvplibrary.activity_root.ItemInfo;
 import com.toolmvplibrary.activity_root.ActivityRoot;
 import com.toolmvplibrary.activity_root.InterCallBack;
 import com.toolmvplibrary.tool_app.ToolScreenDensity;

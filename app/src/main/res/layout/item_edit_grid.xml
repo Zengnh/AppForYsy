@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/editOutHight"
     android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/itemImage"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:scaleType="centerCrop" />
-
-
+    <TextView
+        android:id="@+id/itemContnt"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/fill_shape_black_35"
+        android:textColor="@color/white"
+        android:textSize="10dp" />
 </LinearLayout>

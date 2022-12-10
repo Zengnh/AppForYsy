@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appforysy.R;
-import com.appforysy.utils.ItemInfo;
+import com.toolmvplibrary.activity_root.ItemInfo;
 
 import java.util.List;
 

@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -11,23 +12,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.appforysy.R
-import com.appforysy.activity.activity_main.ActivityMain
 import com.appforysy.activity.activity_edt_note.ActivityNotiEdit
+import com.appforysy.activity.activity_main.ActivityMain
 import com.appforysy.activity.activity_rotation.ActivityRotation
 import com.appforysy.activity.activity_time_note.ActivityTimeNote
+import com.appforysy.utils.ToolTitleLayout
 import com.toolmvplibrary.activity_root.ActivityRootInit
 import com.toolmvplibrary.activity_root.ItemClick
 import com.toolmvplibrary.tool_app.LogUtil
 import com.toolmvplibrary.view.DialogListener
 import com.toolmvplibrary.view.DialogStyleMy
 import java.util.*
+
 class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
     override fun setCutLayout(): Int {
         return R.layout.activity_image_main
     }
     var recyclerViewMainFra:RecyclerView?=null
+
+    var toolTitleLayout:ToolTitleLayout?=null
     override fun initView() {
+        toolTitleLayout = ToolTitleLayout(this)
         recyclerViewMainFra=findViewById(R.id.recyclerViewMainFra)
+
+        initEvent()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -35,7 +43,9 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
         LogUtil.i("znh_configchagne","@@@@@@@@@"+newConfig.orientation)
     }
 
+    fun initEvent(){
 
+    }
     var dataList = ArrayList<ItemMain>()
     lateinit var adapter: AdapterHomeFra
     override fun initData() {
@@ -109,7 +119,8 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
         recyclerViewMainFra?.adapter = adapter
 
         //设置分隔线
-//        recyclerView.addItemDecoration( new DividerGridItemDecoration(this ));
+//        recyclerView.addItemDecoration( new DividerGridItemDecoration(this));
+        //每一页都有磁吸效果
         val pagerSnapHelper = PagerSnapHelper()
         pagerSnapHelper.attachToRecyclerView(recyclerViewMainFra)
     }

@@ -5,15 +5,80 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.youth.banner.Banner
-        android:id="@+id/mainBannerYsy"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.youth.banner.Banner
+            android:id="@+id/mainBannerYsy"
+            android:layout_width="match_parent"
+            android:layout_height="165dp" />
+
+        <LinearLayout
+            android:id="@+id/searchlayout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/fill_shape_line_35"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="7dp"
+                android:src="@mipmap/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="搜索"
+
+                android:textColor="@color/color_1e"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingTop="13dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="1px"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="常用"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_1e"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:id="@+id/imageEdit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/order_selectother" />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMainFra"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp" />
-
+        android:layout_height="wrap_content" />
 </LinearLayout>
+
+

@@ -1,4 +1,4 @@
-package com.appforysy.activity.activity_intruct;
+package com.appforysy.activity.activity_main.student;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +23,6 @@ public class AdapterIntructRecycler extends RecyclerView.Adapter<AdapterIntructR
         for (int i = 0; i < 10; i++) {
             listData.add("说明文档：" + i);
         }
-
     }
 
     @NonNull
@@ -38,9 +37,9 @@ public class AdapterIntructRecycler extends RecyclerView.Adapter<AdapterIntructR
     public void onBindViewHolder(HolderView holder, int position) {
         holder.textcontent.setText(listData.get(position));
         if (position % 2 == 0) {
-            holder.view.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.line_blue));
+            holder.view.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.alph30_blue));
         } else {
-            holder.view.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.color_fff));
+            holder.view.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.alph30_while));
         }
     }
 
