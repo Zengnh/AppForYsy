@@ -237,7 +237,7 @@ public class ActivityDrawVeiw extends ActivityRoot {
             seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
+                    drawLineShow.setPaintSize(i);
                 }
 
                 @Override
@@ -250,15 +250,16 @@ public class ActivityDrawVeiw extends ActivityRoot {
 
                 }
             });
-            dialogSelectSize = new DialogStyleMy(this, view, "取消", "确定", new DialogListener() {
+            dialogSelectSize = new DialogStyleMy(this, view, "确定", "取消", new DialogListener() {
                 @Override
                 public void click(String str) {
-                    dialog.dismiss();
+                    dialogSelectSize.dismiss();
                     if (str.equals("确定")) {
                         drawView.setPaintSize(drawLineShow.getPaintSize());
                     }
                 }
             });
+            dialogSelectSize.setTitle("绘笔大小");
         }
         seekBar.setProgress(drawLineShow.getPaintSize());
         dialogSelectSize.show();
