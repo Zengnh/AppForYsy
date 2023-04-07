@@ -24,6 +24,7 @@
         android:layout_height="@dimen/design_main_item_hight"
         android:layout_alignParentBottom="true"
         android:background="#fff"
+        android:visibility="gone"
         android:numColumns="5" />
 
     <LinearLayout
