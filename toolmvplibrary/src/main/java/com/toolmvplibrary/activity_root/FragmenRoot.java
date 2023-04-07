@@ -14,6 +14,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -28,13 +29,23 @@ public abstract class FragmenRoot<P extends RootPresenter> extends Fragment impl
     protected P presenter;
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         presenter = createPresenter();
         if (presenter != null) {
             presenter.attUIView(this);
         }
     }
+
+//    @Deprecated
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        presenter = createPresenter();
+//        if (presenter != null) {
+//            presenter.attUIView(this);
+//        }
+//    }
 
 
     @Override

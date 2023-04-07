@@ -11,16 +11,10 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.appforysy.R
-import com.appforysy.activity.activity_guide.dashboard.DashboardFragment
 import com.appforysy.activity.activity_main.home.HomeFragmentJava
-import com.appforysy.activity.activity_main.imgcard.FragmentImgCard
-import com.appforysy.activity.activity_main.student.StudentFragmentJava
-import com.appforysy.activity.activity_main.notifications.NotificationsFragment
 import com.appforysy.service.ServiceMain
 import com.toolmvplibrary.activity_root.ActivityRootInit
 import com.toolmvplibrary.tool_app.LogUtil
-import com.workysy.activity.activity_main.notifications.WorkFragment
-
 
 class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
     override fun setPresenter(): PresenterMain {
@@ -54,21 +48,25 @@ class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
                 position: Int,
                 id: Long
             ) {
-                adapter.setItemClick(position);
-                if (position == 0) {
-                    chagneFragmen(HomeFragmentJava());
-                } else if (position == 1) {
-                    chagneFragmen(StudentFragmentJava());
-//                    chagneFragmen(FragmentImgCard());
-                } else if (position == 2) {
-                    chagneFragmen(WorkFragment());
-                } else if (position == 3) {
-                    chagneFragmen(FragmentImgCard());
-                } else if (position == 4) {
-                    chagneFragmen(NotificationsFragment());
-                } else if (position == 5) {
-
+                if (adapter.cutSelect != position) {
+                    adapter.setItemClick(position);
+                    chagneFragmen(adapter.getItem(position).fra);
                 }
+//                adapter.setItemClick(position);
+//                if (position == 0) {
+//                    chagneFragmen(HomeFragmentJava());
+//                } else if (position == 1) {
+//                    chagneFragmen(StudentFragmentJava());
+////                    chagneFragmen(FragmentImgCard());
+//                } else if (position == 2) {
+//                    chagneFragmen(FragmentImgCard());
+//                } else if (position == 3) {
+//                    chagneFragmen(WorkFragment());
+//                } else if (position == 4) {
+//                    chagneFragmen(NotificationsFragment());
+//                } else if (position == 5) {
+//
+//                }
             }
         });
     }

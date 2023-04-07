@@ -44,7 +44,6 @@
         android:networkSecurityConfig="@xml/network_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZnhProject"
-        tools:targetApi="31"
         tools:replace="android:name,android:roundIcon,android:theme"
         >
         <meta-data
@@ -83,7 +82,7 @@
 
         </activity>
 
-        <activity android:name=".activity.draw_line.ActivityDrawVeiw">
+        <activity android:name=".activity.draw_image_view.ActivityDrawVeiw">
 
         </activity>
         <activity
@@ -112,13 +111,13 @@
         <activity android:name=".activity.activity_banner.ActivityBanner">
 
         </activity>
-        <activity android:name=".activity.activity_shuerte.ActiviyShuErTe"/>
+        <activity android:name=".activity.activity_game.fragment.game_shuerte.FragmentShuErTe"/>
         <activity
             android:name=".activity.activity_perfect.ActivityPerfect"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".activity.activity_cut_image.ActivityCutImage">
+        <activity android:name=".activity.activity_game.ActivityGame">
 
         </activity>
 

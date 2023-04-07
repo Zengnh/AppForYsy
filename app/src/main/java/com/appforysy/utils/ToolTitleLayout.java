@@ -1,12 +1,15 @@
 package com.appforysy.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.appforysy.R;
@@ -47,46 +50,45 @@ import com.toolmvplibrary.activity_root.ComListener;
 //-------------------------
 
 //    layout_title.xml 为准
-public class ToolTitleLayout {
-
-    public ToolTitleLayout(Activity activity) {
-        initView(activity);
-    }
-
-    public ToolTitleLayout(Fragment activity) {
-        initView(activity.getActivity());
-    }
-
+public class ToolTitleLayout extends LinearLayout{
     private ImageView tLayoutBack;
+    private ImageView imgRightImg;
     private TextView tLayoutTitle;
-    private Activity activityRoot;
+
     private LinearLayout title_layout_root;
 
-    public void initView(Activity view) {
-        activityRoot = view;
-        tLayoutBack = view.findViewById(R.id.tLayoutBack);
-        title_layout_root = view.findViewById(R.id.title_layout_root);
-        tLayoutTitle = view.findViewById(R.id.tLayoutTitle);
-        tLayoutBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null) {
-                    listener.click(tLayoutBack);
-                } else {
-                    activityRoot.finish();
-                }
-            }
-        });
+    public ToolTitleLayout(Context context) {
+        super(context,null);
     }
 
-    private ComListener<View> listener;
-
-    public void setBackClick(ComListener<View> listener) {
-        this.listener = listener;
+    public ToolTitleLayout(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        inflate(context,R.layout.layout_title,this);
+        initView();
     }
 
-    public void setTitle(String title) {
+    public void initView() {
+        imgRightImg = findViewById(R.id.imgRightImg);
+        tLayoutBack = findViewById(R.id.tLayoutBack);
+        title_layout_root = findViewById(R.id.title_layout_root);
+        tLayoutTitle = findViewById(R.id.tLayoutTitle);
+    }
+    public ImageView setBackClick(OnClickListener clickListener) {
+        tLayoutBack.setVisibility(View.VISIBLE);
+        tLayoutBack.setOnClickListener(clickListener);
+        return tLayoutBack;
+    }
+
+    public TextView setTitle(String title) {
+        tLayoutTitle.setVisibility(View.VISIBLE);
         tLayoutTitle.setText(title);
+        return tLayoutTitle;
+    }
+    public ImageView setRightBtn(int imgRes, View.OnClickListener clickk){
+        imgRightImg.setVisibility(View.VISIBLE);
+        imgRightImg.setImageResource(imgRes);
+        imgRightImg.setOnClickListener(clickk);
+        return imgRightImg;
     }
 
     public void hitBack() {

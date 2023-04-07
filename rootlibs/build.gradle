@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 //    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -52,7 +53,7 @@ dependencies {
 
 
     implementation 'com.liulishuo.filedownloader:library:1.7.7'
-    implementation 'org.greenrobot:eventbus:3.3.1'
+//    implementation 'org.greenrobot:eventbus:3.3.1'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
 
     implementation 'com.github.bumptech.glide:glide:4.14.2'

@@ -9,12 +9,14 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -25,6 +27,36 @@ import okhttp3.Response;
 //https://github.com/square/okhttp
 //implementation("com.squareup.okhttp3:okhttp:4.8.1")
 public class ToolOkHttp {
+
+//    --------------------------------------------------------------------
+//    body 类型有哪些？
+    public void infoBody(){
+//        多重body，既可加键值对，也可以加文件内容；
+        File file=new File("");
+        MultipartBody.Builder multipartBuilder=new MultipartBody.Builder();
+        multipartBuilder.setType(MultipartBody.FORM);
+        MediaType MEDIATYPEFILE=MediaType.parse("file/*");
+        MediaType MEDIATYPEPNG=MediaType.parse("image/png");
+        RequestBody fileBody=RequestBody.create(MEDIATYPEFILE,file);
+        multipartBuilder.addFormDataPart("file",file.getName(),fileBody);
+
+        MultipartBody multipartBody=multipartBuilder.build();
+
+
+
+
+//        字符串body
+        RequestBody body = RequestBody.create("{上传内容}", JSON);
+
+//      表单
+        FormBody fBody=new FormBody.Builder().add("key","value").build();
+
+//        直接上传文件
+        RequestBody bodyImg=RequestBody.create(MEDIATYPEPNG,file);
+
+    }
+
+
     private OkHttpClient okHttpClient;
 
     private ToolOkHttp() {

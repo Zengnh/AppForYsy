@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content4"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <GridView
+            android:id="@+id/gridViewSET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:horizontalSpacing="1dp"
+            android:verticalSpacing="1dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true">
+
+            <CheckBox
+                android:id="@+id/cbStartTime"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ch_my_open_ice"
+                android:button="@null"
+                android:checked="false" />
+
+            <TextView
+                android:id="@+id/timeCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toRightOf="@id/cbStartTime"
+                android:text=""
+                android:textColor="@color/color_blue"
+                android:textSize="13dp" />
+
+            <ImageView
+                android:id="@+id/reLoadCutLevel"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/pk_reload" />
+
+            <LinearLayout
+                android:id="@+id/level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/timeCount"
+                android:layout_toLeftOf="@id/reLoadCutLevel"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/textLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="3"
+                    android:textSize="14dp" />
+
+                <SeekBar
+                    android:id="@+id/seekBarPingTu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="7" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

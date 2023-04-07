@@ -88,4 +88,6 @@ dependencies {
 //广告
     implementation 'com.youth.banner:banner:2.1.0'
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation 'org.greenrobot:eventbus:3.3.1'
 }

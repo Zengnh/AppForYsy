@@ -277,9 +277,14 @@ public abstract class ActivityRoot<P extends RootPresenter> extends AppCompatAct
             return super.dispatchTouchEvent(ev);
         }
         // 必不可少，否则所有的组件都不会有TouchEvent了
-        if (getWindow().superDispatchTouchEvent(ev)) {
-            return true;
+        try {
+            if (getWindow() != null && getWindow().superDispatchTouchEvent(ev)) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         return onTouchEvent(ev);
     }
 

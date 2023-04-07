@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appforysy.R;
+import com.appforysy.activity.activity_game.ActivityGame;
 import com.toolmvplibrary.activity_root.ItemInfo;
 import com.rootlibs.loadimg.ToolGlide;
 
@@ -40,8 +41,12 @@ public class AdapterMainFra extends RecyclerView.Adapter<AdapterMainFra.MainHold
             @Override
             public void onClick(View v) {
                 if (info.nextClass != null) {
-                    Intent itnent = new Intent(holder.itemContent.getContext(), info.nextClass);
-                    holder.itemContent.getContext().startActivity(itnent);
+                    if (info.type == 0) {
+                        Intent itnent = new Intent(holder.itemContent.getContext(), info.nextClass);
+                        holder.itemContent.getContext().startActivity(itnent);
+                    } else if (info.type == 1) {
+                        ActivityGame.startActivityGame(holder.itemContent.getContext(), info.attribute, info.text);
+                    }
                 }
             }
         });

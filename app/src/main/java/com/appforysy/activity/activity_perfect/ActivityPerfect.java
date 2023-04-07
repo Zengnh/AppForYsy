@@ -47,6 +47,12 @@ public class ActivityPerfect extends ActivityRoot {
 
     private void initData() {
         toolTitleLayout.setTitle("样品");
+        toolTitleLayout.setBackClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 //        ItemEdit obj=new ItemEdit();
 //
 //        ClassFile bean=new ClassFile();
@@ -86,7 +92,7 @@ public class ActivityPerfect extends ActivityRoot {
     ToolTitleLayout toolTitleLayout;
 
     private void initView() {
-        toolTitleLayout = new ToolTitleLayout(this);
+        toolTitleLayout = findViewById(R.id.titleLayout);
 
         tabayView = findViewById(R.id.tabayView);
         viewPager = findViewById(R.id.viewPager);

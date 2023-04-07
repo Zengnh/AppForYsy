@@ -14,7 +14,7 @@
         android:textColor="@color/color_666"
         android:textSize="10dp" />
 
-    <com.appforysy.activity.draw_line.DrawingView
+    <com.appforysy.activity.draw_image_view.DrawingView
         android:id="@+id/drawLineShow"
         android:layout_width="match_parent"
         android:layout_height="150dp"

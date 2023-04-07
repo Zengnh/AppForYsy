@@ -7,4 +7,7 @@
     <dimen name="design_fab_size_normal">50dp</dimen>
     <dimen name="design_main_item_hight">55dp</dimen>
     <dimen name="editOutHight">40dp</dimen>
+    <dimen name="editOutHightTop">42dp</dimen>
+    <dimen name="drawerTitleBtn">28dp</dimen>
+    <dimen name="sizeStep">15dp</dimen>
 </resources>

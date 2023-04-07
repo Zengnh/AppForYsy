@@ -56,9 +56,9 @@ public class ActivityLoading extends ActivityRootInit<PresenternLoading> impleme
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 111) {
             if (ToolAppPremission.hasCamerPremission(this)) {
-                finish();
-            } else {
                 initPremissNext();
+            } else {
+                finish();
             }
         }
     }
@@ -74,7 +74,7 @@ public class ActivityLoading extends ActivityRootInit<PresenternLoading> impleme
             String toGuide = ToolPreferences.getString(ActivityLoading.this, "loading");
             if (TextUtils.isEmpty(toGuide)) {
                 toGuide();
-                ToolPreferences.setString(ActivityLoading.this, "loading","1");
+                ToolPreferences.setString(ActivityLoading.this, "loading", "1");
             } else {
                 toLogin();
             }

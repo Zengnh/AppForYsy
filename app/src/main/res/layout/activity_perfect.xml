@@ -7,7 +7,10 @@
     android:background="@color/bgCom"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_title" />
+    <com.appforysy.utils.ToolTitleLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

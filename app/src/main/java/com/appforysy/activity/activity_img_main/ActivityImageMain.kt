@@ -4,7 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.widget.ImageView
+import android.view.View
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -22,7 +22,6 @@ import com.toolmvplibrary.activity_root.ItemClick
 import com.toolmvplibrary.tool_app.LogUtil
 import com.toolmvplibrary.view.DialogListener
 import com.toolmvplibrary.view.DialogStyleMy
-import java.util.*
 
 class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
     override fun setCutLayout(): Int {
@@ -32,9 +31,9 @@ class ActivityImageMain : ActivityRootInit<PresenterImgOther>() {
 
     var toolTitleLayout:ToolTitleLayout?=null
     override fun initView() {
-        toolTitleLayout = ToolTitleLayout(this)
+        toolTitleLayout = findViewById(R.id.titleLayout)
+        toolTitleLayout?.setBackClick(View.OnClickListener { finish() })
         recyclerViewMainFra=findViewById(R.id.recyclerViewMainFra)
-
         initEvent()
     }
 

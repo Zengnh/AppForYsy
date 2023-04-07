@@ -9,7 +9,49 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/layout_title" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp">
+
+            <com.appforysy.utils.ToolTitleLayout
+                android:id="@+id/titleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/drawerTitleBtn"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/cleanProDraw"
+                    android:layout_width="@dimen/drawerTitleBtn"
+                    android:layout_height="@dimen/drawerTitleBtn"
+                    android:src="@mipmap/icon_clean_pro"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/cbEditStatus"
+                    android:layout_width="@dimen/drawerTitleBtn"
+                    android:layout_height="@dimen/drawerTitleBtn"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/ch_open_edit"
+                    android:button="@null" />
+
+                <ImageView
+                    android:id="@+id/buttonDrawable"
+                    android:layout_width="@dimen/drawerTitleBtn"
+                    android:layout_height="@dimen/drawerTitleBtn"
+                    android:src="@mipmap/icon_set_item" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/drawableRoot"
@@ -19,9 +61,10 @@
             <com.toolmvplibrary.view.zoom_img.PhotoView
                 android:id="@+id/zoomImage"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:alpha="0.5" />
 
-            <com.appforysy.activity.draw_line.DrawingView
+            <com.appforysy.activity.draw_image_view.DrawingView
                 android:id="@+id/drawLineView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -30,49 +73,18 @@
     <!-- <dimen name="design_fab_size_normal">50dp</dimen>-->
     <!-- <dimen name ="design_fab_image_size">45dp</dimen>-->
 
-
-    <LinearLayout
-        android:id="@+id/editLayout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/editOutHight"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/buttonDrawable"
-            android:layout_width="@dimen/editOutHight"
-            android:layout_height="@dimen/editOutHight"
-            android:alpha="0.5"
-            android:background="@drawable/fill_shape_org_35"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/more_icon" />
-
-        <GridView
-            android:id="@+id/gridViewEidt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/editOutHight"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/fill_shape_blue_5"
-            android:horizontalSpacing="5dp"
-            android:verticalSpacing="5dp"
-            android:visibility="gone" />
-    </LinearLayout>
-
-
     <ListView
         android:id="@+id/listView"
-        android:layout_above="@id/editLayout"
         android:layout_width="@dimen/editOutHight"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="66dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/fill_shape_blue_5"
+        android:cacheColorHint="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="0px"
-        android:cacheColorHint="@android:color/transparent"
-        android:background="@drawable/fill_shape_blue_5"
         android:visibility="gone" />
+
 
 </RelativeLayout>

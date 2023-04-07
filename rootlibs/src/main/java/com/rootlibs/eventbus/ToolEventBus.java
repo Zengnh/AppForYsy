@@ -1,7 +1,5 @@
 package com.rootlibs.eventbus;
 
-import org.greenrobot.eventbus.EventBus;
-
 //https://github.com/greenrobot/EventBus
 // implementation 'org.greenrobot:eventbus:3.2.0'
 public class ToolEventBus {
@@ -25,13 +23,13 @@ public class ToolEventBus {
 //        EventBus.getDefault().unregister(this);
 //    }
 
-    public static void onStart(Object subscriber){
-        EventBus.getDefault().register(subscriber);
-    }
-    public static void onStop(Object subscriber){
-        EventBus.getDefault().unregister(subscriber);
-    }
-    public static void postEvent(Object event){
-        EventBus.getDefault().post(event);
-    }
+//    public static void onStart(Object subscriber){
+//        EventBus.getDefault().register(subscriber);
+//    }
+//    public static void onStop(Object subscriber){
+//        EventBus.getDefault().unregister(subscriber);
+//    }
+//    public static void postEvent(Object event){
+//        EventBus.getDefault().post(event);
+//    }
 }

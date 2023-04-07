@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.appforysy.R;
-import com.appforysy.activity.activity_cut_image.ActivityCutImage;
+import com.appforysy.activity.activity_game.ActivityGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class AdapterViewPager extends PagerAdapter {
                 ItemPagerContent mlqApp = new ItemPagerContent();
                 mlqApp.icon = R.mipmap.icon_demo;
                 mlqApp.itemName = "滑动特效";
-                mlqApp.nextClass = ActivityCutImage.class;
+                mlqApp.nextClass = ActivityGame.class;
                 content.add(mlqApp);
 
 //                ItemPagerContent mlqApp = new ItemPagerContent();

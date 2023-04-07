@@ -62,7 +62,7 @@ public class StudentFragmentJava extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bgImageView = view.findViewById(R.id.bgImageView);
         bgImageView.setImageResource(R.mipmap.img_guide_1);
-        toolTitleLayout = new ToolTitleLayout(this);
+        toolTitleLayout = view.findViewById(R.id.titleLayout);
         toolTitleLayout.hitBack();
         toolTitleLayout.setTitle("学习");
         initListData();

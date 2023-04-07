@@ -64,12 +64,14 @@ public class ToolSoundPool {
         voiceId = soundPool.load(context, R.raw.di, 1);
         succInfo = soundPool.load(context, R.raw.answer_right, 1);
         errorIno = soundPool.load(context, R.raw.answer_wrong, 1);
+        beep = soundPool.load(context, R.raw.beepnew, 1);
     }
 
     private final int voiceId;
     private final int succInfo;
     private final int errorIno;
     private final int readyGO;
+    private final int beep;
 
     public void playDi() {
         soundPool.play(voiceId, 1, 1, 1, 0, 1);
@@ -85,5 +87,8 @@ public class ToolSoundPool {
 
     public void playReadyGo() {
         soundPool.play(readyGO, 1, 1, 1, 0, 1);
+    }
+    public void playBeep() {
+        soundPool.play(beep, 1, 1, 1, 0, 1);
     }
 }

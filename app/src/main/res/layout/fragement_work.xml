@@ -1,40 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@mipmap/will_to_do" />
+    <include
+        android:id="@+id/titleLayout"
+        layout="@layout/layout_title" />
+    <!--    <ImageView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:src="@mipmap/will_to_do" />-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:paddingTop="25dp"-->
+    <!--        android:visibility="gone">-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/tvline"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="ff"-->
+    <!--            android:textColor="#000000"-->
+    <!--            android:textSize="20sp" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="ff"-->
+    <!--            android:textColor="#000000"-->
+    <!--            android:textSize="20sp" />-->
+    <!--    </LinearLayout>-->
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/infoLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="25dp"
-        android:visibility="gone">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#7dffffff"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleLayout">
 
         <TextView
-            android:id="@+id/tvline"
-            android:layout_width="match_parent"
+            android:id="@+id/tvFirst"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:gravity="center"
-            android:text="ff"
+            android:text="专注力是形成"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/tvInfo02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="ff"
-            android:textColor="#000000"
-            android:textSize="20sp" />
+            android:text="记忆和思维的前提"
+            android:textColor="#FA9C11"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/tvFirst"
+            app:layout_constraintTop_toBottomOf="@id/tvFirst" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </LinearLayout>
-</RelativeLayout>
+    <TextView
+        android:id="@+id/line01"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/fill_shape_black50"
+        android:gravity="center"
+        android:text="专注力"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/line02"
+        app:layout_constraintTop_toBottomOf="@id/infoLayout" />
+
+    <ImageView
+        android:layout_width="@dimen/sizeStep"
+        android:src="@mipmap/icon_next_step"
+        android:rotation="180"
+        app:layout_constraintLeft_toRightOf="@id/line01"
+        app:layout_constraintTop_toTopOf="@id/line01"
+        app:layout_constraintBottom_toBottomOf="@id/line01"
+        android:layout_height="@dimen/sizeStep"/>
+
+    <TextView
+        android:id="@+id/line02"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="@drawable/fill_shape_organ50"
+        android:gravity="center"
+        android:text="记忆力"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toRightOf="@id/line01"
+        app:layout_constraintRight_toLeftOf="@id/line03"
+        app:layout_constraintTop_toTopOf="@id/line01" />
+
+    <ImageView
+        android:layout_width="@dimen/sizeStep"
+        android:src="@mipmap/icon_next_step"
+        android:rotation="180"
+        app:layout_constraintLeft_toRightOf="@id/line02"
+        app:layout_constraintTop_toTopOf="@id/line02"
+        app:layout_constraintBottom_toBottomOf="@id/line02"
+        android:layout_height="@dimen/sizeStep"/>
+
+    <TextView
+        android:id="@+id/line03"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="@drawable/fill_shape_black50"
+        android:gravity="center"
+        android:text="理解力"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toRightOf="@id/line02"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/line01" />
+
+    <ImageView
+        android:layout_width="@dimen/sizeStep"
+        android:src="@mipmap/icon_next_step"
+        android:rotation="-90"
+        app:layout_constraintLeft_toLeftOf="@id/line03"
+        app:layout_constraintRight_toRightOf="@id/line03"
+        app:layout_constraintTop_toBottomOf="@id/line03"
+        android:layout_height="@dimen/sizeStep"/>
+
+    <TextView
+        android:id="@+id/lineSecond01"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/fill_shape_organ50"
+        android:gravity="center"
+        android:text="举一反三"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/lineSecond02"
+        app:layout_constraintTop_toBottomOf="@id/line01" />
+
+
+
+    <TextView
+        android:id="@+id/lineSecond02"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="@drawable/fill_shape_black50"
+        android:gravity="center"
+        android:text="深度思考"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/lineSecond01"
+        app:layout_constraintRight_toLeftOf="@id/lineSecond03"
+        app:layout_constraintTop_toTopOf="@id/lineSecond01" />
+
+    <ImageView
+        android:layout_width="@dimen/sizeStep"
+        android:src="@mipmap/icon_next_step"
+        app:layout_constraintTop_toTopOf="@id/lineSecond02"
+        app:layout_constraintBottom_toBottomOf="@id/lineSecond02"
+        app:layout_constraintRight_toLeftOf="@id/lineSecond02"
+        android:layout_height="@dimen/sizeStep"/>
+
+    <TextView
+        android:id="@+id/lineSecond03"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="@drawable/fill_shape_organ50"
+        android:gravity="center"
+        android:text="思维力"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/lineSecond02"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lineSecond01" />
+    <ImageView
+        android:layout_width="@dimen/sizeStep"
+        android:src="@mipmap/icon_next_step"
+        app:layout_constraintTop_toTopOf="@id/lineSecond03"
+        app:layout_constraintBottom_toBottomOf="@id/lineSecond03"
+        app:layout_constraintRight_toLeftOf="@id/lineSecond03"
+        android:layout_height="@dimen/sizeStep"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

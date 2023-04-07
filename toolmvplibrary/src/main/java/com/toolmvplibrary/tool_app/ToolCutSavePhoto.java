@@ -33,8 +33,10 @@ public class ToolCutSavePhoto {
         int h = view.getHeight();
         Bitmap bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bmp);
+        c.drawARGB(255, 255, 255, 255);
         view.layout(0, 0, w, h);
         view.draw(c);
+
         // 缩小图片
         Matrix matrix = new Matrix();
         matrix.postScale(0.5f, 0.5f); //长和宽放大缩小的比例

@@ -25,8 +25,8 @@ public class AdapterBtnItem extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return position;
+    public ItemInfo getItem(int position) {
+        return dataList.get(position);
     }
 
     @Override
@@ -56,7 +56,9 @@ public class AdapterBtnItem extends BaseAdapter {
     }
 
     private int cutSelectPos = 0;
-
+    public int getCutSelect(){
+        return cutSelectPos;
+    }
     public void setItemClick(int position) {
         this.cutSelectPos = position;
         notifyDataSetChanged();
