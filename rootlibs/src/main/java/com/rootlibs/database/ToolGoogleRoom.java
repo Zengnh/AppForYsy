@@ -34,8 +34,7 @@ public class ToolGoogleRoom {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                AppDatabase db = Room.databaseBuilder(context.getApplicationContext(),
-                        AppDatabase.class, "root_libs").build();
+                AppDatabase db = Room.databaseBuilder(context.getApplicationContext(),AppDatabase.class, "root_libs").build();
                 AppConfigControl userDao = db.getControl();
 //                AppDBConfig user = new AppDBConfig();
 //                user.configKey = "ssss";

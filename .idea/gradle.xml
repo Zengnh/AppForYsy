@@ -10,7 +10,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/CutImageView" />
+            <option value="$PROJECT_DIR$/LibraryAssets" />
+            <option value="$PROJECT_DIR$/ZxingLib" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/mrthumb" />
             <option value="$PROJECT_DIR$/rootlibs" />
             <option value="$PROJECT_DIR$/toolmvplibrary" />
           </set>

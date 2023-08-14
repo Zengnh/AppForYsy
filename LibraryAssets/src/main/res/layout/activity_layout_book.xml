@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="80dp"
+            android:text="开始"
+
+            android:gravity="center"
+            android:layout_height="40dp"/>
+        <Button
+            android:id="@+id/btnPause"
+            android:layout_width="80dp"
+            android:text="停止"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_height="40dp"/>
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/boolContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:text="书本标题"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="14dp" />
+    </ScrollView>
+</LinearLayout>

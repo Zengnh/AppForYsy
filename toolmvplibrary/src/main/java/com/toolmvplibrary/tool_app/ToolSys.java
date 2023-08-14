@@ -2,8 +2,11 @@ package com.toolmvplibrary.tool_app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 public class ToolSys {
 
@@ -121,4 +124,36 @@ public class ToolSys {
         return (int) (spValue * fontScale + 0.5f);
     }
 
+    /**
+     * 是否是平板
+     *
+     * @param context 上下文
+     * @return 是平板则返回true，反之返回false
+     */
+    public static boolean isPad(Context context) {
+        return (context.getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+    /**
+     * 是否是平板
+     *
+     * @param context 上下文
+     * @return 是平板则返回true，反之返回false
+     */
+    public static boolean isPadForScPx(Context context) {
+//        系统提供的是否是pad 的判断
+        boolean isPad = (context.getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+
+//        屏幕大于7英寸的也全部归为pad
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics dm = new DisplayMetrics();
+        display.getMetrics(dm);
+        double x = Math.pow(dm.widthPixels / dm.xdpi, 2);
+        double y = Math.pow(dm.heightPixels / dm.ydpi, 2);
+        double screenInches = Math.sqrt(x + y); // 屏幕尺寸
+        return isPad || screenInches >= 7.0;
+    }
 }

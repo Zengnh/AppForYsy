@@ -1,14 +1,19 @@
 package com.appforysy.activity.activity_main
 
+import android.animation.ObjectAnimator
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.graphics.Path
 import android.os.IBinder
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.FrameLayout
 import android.widget.GridView
+import android.widget.ImageView
+import androidx.core.view.marginLeft
 import androidx.fragment.app.Fragment
 import com.appforysy.R
 import com.appforysy.activity.activity_main.home.HomeFragmentJava
@@ -52,21 +57,6 @@ class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
                     adapter.setItemClick(position);
                     chagneFragmen(adapter.getItem(position).fra);
                 }
-//                adapter.setItemClick(position);
-//                if (position == 0) {
-//                    chagneFragmen(HomeFragmentJava());
-//                } else if (position == 1) {
-//                    chagneFragmen(StudentFragmentJava());
-////                    chagneFragmen(FragmentImgCard());
-//                } else if (position == 2) {
-//                    chagneFragmen(FragmentImgCard());
-//                } else if (position == 3) {
-//                    chagneFragmen(WorkFragment());
-//                } else if (position == 4) {
-//                    chagneFragmen(NotificationsFragment());
-//                } else if (position == 5) {
-//
-//                }
             }
         });
     }
@@ -88,6 +78,9 @@ class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
         adapter.notifyDataSetChanged()
     }
 
+    override fun onBackPressed() {
+//        super.onBackPressed()
+    }
     fun bindServiceMain() {
         LogUtil.i("bindservice")
         var intent = Intent(this, ServiceMain::class.java)
@@ -118,4 +111,6 @@ class ActivityMain : ActivityRootInit<PresenterMain>(), InterUiMain {
         val commit = this.supportFragmentManager.beginTransaction();
         commit.replace(R.id.nav_host_fragment, fra).commit();
     }
+
+
 }

@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:background="@color/bgCom">
 
-    <ImageView
-        android:id="@+id/bgImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+<!--    <ImageView-->
+<!--        android:id="@+id/bgImageView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scaleType="centerCrop" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:src="@mipmap/image_camer"
                     app:layout_scrollFlags="scroll|snap" />
@@ -43,11 +43,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@color/content11"
-                    app:tabIndicatorColor="@color/content12"
+                    android:background="@color/blue_m_t"
+                    app:tabIndicatorColor="@color/blue_m_s"
                     app:tabIndicatorHeight="3dp"
-                    app:tabSelectedTextColor="@color/content12"
-                    app:tabTextColor="#fff" />
+                    app:tabSelectedTextColor="@color/bgCom"
+                    app:tabTextColor="@color/myl_red2" />
                 <!--        app:tabMode="scrollable"-->
                 <!--        app:tabMode="scrollable"：是否超出屏幕-->
                 <!--        app:tabIndicatorColor ：指示线的颜色-->

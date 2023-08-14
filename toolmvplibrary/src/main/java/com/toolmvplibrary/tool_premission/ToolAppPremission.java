@@ -75,12 +75,12 @@ public class ToolAppPremission {
 //    ############################################################################
 
     /**
-     * 摄像头权限
+     * 录音
      *
      * @param act
      * @param reqCode
      */
-    public static void reqCamer(Activity act, int reqCode) {
+    public static void reqAudio(Activity act, int reqCode) {
         //先定义
         try {
             String[] PERMISSIONS_STORAGE = {
@@ -128,14 +128,14 @@ public class ToolAppPremission {
 //###########################################################
 
     // 检测摄像头权限
-    public static boolean checkPermission(Context context) {
+    public static boolean checkCamreaPermission(Context context) {
         return ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
     }
 
-    public static void requestCamer(Activity act, int reqCode) {
-        if (!checkPermission(act)) {
+    public static void requestCamera(Activity act, int reqCode) {
+        if (!checkCamreaPermission(act)) {
             ActivityCompat.requestPermissions(act, new String[]{
                     Manifest.permission.CAMERA,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,

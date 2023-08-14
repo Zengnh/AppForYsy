@@ -30,11 +30,6 @@
     <color name="btn_enable_true">#3298FE</color>
     <color name="btn_enable_false">#323298FE</color>
     <color name="bg_line_focu_false">#EBF1F7</color>
-
-
-    <color name="bgCom">#f5f5f7</color>
-
-
     <color name="content1">#ffe7e5</color>
     <color name="content2">#ec53a3</color>
     <color name="content3">#f1b380</color>
@@ -52,7 +47,9 @@
     <color name="content15">#d9d6d6</color>
     <color name="content16">#461a1a</color>
     <color name="content17">#c3ebeb</color>
+    <color name="content18">#99fbcd5d</color>
     <color name="blue_m_t">#FCC328</color>
+    <color name="blue_m_s">#FFA203</color>
     <color name="alph30_blue">#30067dff</color>
     <color name="alph30_while">#30000000</color>
 </resources>
